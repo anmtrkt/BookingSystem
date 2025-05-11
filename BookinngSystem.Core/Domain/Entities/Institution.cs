@@ -7,10 +7,14 @@ namespace BookingSystem.Core.Domain.Entities
         public string Name { get; private set; }
         public Guid? ParentId { get; private set; }
 
+
         // Navigation
         public Institution? Parent { get; private set; }
         private readonly List<Institution> _children = new();
         public IReadOnlyCollection<Institution> Children => _children.AsReadOnly();
+
+        private readonly List<Room> _rooms = new();
+        public IReadOnlyCollection<Room> Rooms => _rooms.AsReadOnly();
 
         private Institution(string name)
         {
@@ -19,13 +23,11 @@ namespace BookingSystem.Core.Domain.Entities
 
         public static Institution Create(string name, Institution? parent = null)
         {
-            var institution = new Institution(name)
+            var institution = new Institution(name);
+            if (parent != null)
             {
-                Parent = parent,
-                ParentId = parent?.Id
-            };
-
-            parent?._children.Add(institution);
+                institution.UpdateParent(parent);
+            }
             return institution;
         }
 
@@ -39,12 +41,6 @@ namespace BookingSystem.Core.Domain.Entities
             Name = newName;
             MarkAsModified();
         }
-        public void UpdateParent(Institution parent)
-        {
-            ParentId = parent.Id;
-            Parent = parent;
-            MarkAsModified();
-        }
         private bool HasCycle(Institution parent)
         {
             var current = this;
@@ -54,6 +50,30 @@ namespace BookingSystem.Core.Domain.Entities
                 current = current.Parent;
             }
             return false;
+        }
+
+        public void UpdateParent(Institution parent)
+        {
+            if (HasCycle(parent)) throw new InvalidOperationException("Cycle detected in institution hierarchy");
+            ParentId = parent.Id;
+            Parent = parent;
+            parent._children.Add(this);
+            MarkAsModified();
+        }
+        public void AddRoom(Room room)
+        {
+            if (_rooms.Contains(room)) return;
+            _rooms.Add(room);
+            room.OwnerInstitution = this;
+            MarkAsModified();
+        }
+
+        public void RemoveRoom(Room room)
+        {
+            if (!_rooms.Contains(room)) return;
+            _rooms.Remove(room);
+            room.OwnerInstitution = null;
+            MarkAsModified();
         }
 
     }

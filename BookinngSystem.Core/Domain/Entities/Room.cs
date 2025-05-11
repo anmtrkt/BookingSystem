@@ -1,10 +1,6 @@
-﻿/*using BookingSystem.Core.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using BookingSystem.Core.Domain.Common;
+using BookingSystem.Core.Domain.ValueObjects;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace BookingSystem.Core.Domain.Entities
 {
@@ -12,20 +8,30 @@ namespace BookingSystem.Core.Domain.Entities
     {
         public Guid BuildingId { get; private set; }
         public JsonDocument Equipment { get; private set; }
-        public bool isBooked { get; private set; } = false;
+        public bool IsBooked { get; private set; } = false;
         public uint CountOfPlaces { get; private set; }
+        public Guid OwnerInstitutionId { get; private set; }
         public Institution OwnerInstitution { get; private set; }
 
-        private Room(Guid buildingId, JsonDocument equipment, uint countOfPlaces, Institution ownerInstitution)
+        private Room(
+            Guid buildingId,
+            Equipment equipment,
+            uint countOfPlaces,
+            Institution ownerInstitution)
         {
             BuildingId = buildingId;
-            Equipment = equipment;
+            Equipment = equipment.ToJson();
             CountOfPlaces = countOfPlaces;
             OwnerInstitution = ownerInstitution;
+            OwnerInstitutionId = ownerInstitution.Id;
             Validate();
         }
 
-        public static Room Create(Guid buildingId, JsonDocument equipment, uint countOfPlaces, Institution ownerInstitution)
+        public static Room Create(
+            Guid buildingId,
+            Equipment equipment,
+            uint countOfPlaces,
+            Institution ownerInstitution)
         {
             return new Room(buildingId, equipment, countOfPlaces, ownerInstitution);
         }
@@ -34,77 +40,21 @@ namespace BookingSystem.Core.Domain.Entities
         /// <exception cref="ArgumentException"></exception>
         private void Validate()
         {
-            if (string.IsNullOrWhiteSpace(Equipment.ToString()))
-                throw new ArgumentException("Equipment can't be null");
+            if (CountOfPlaces <= 0)
+                throw new ArgumentException("Count of places must be greater than zero");
+            if (Equipment == null || !Equipment.RootElement.ValueKind.Equals(JsonValueKind.Object))
+                throw new ArgumentException("Equipment can't be null or empty");
+        
         }
-    }
-}*/
-using BookingSystem.Core.Domain.Common;
-
-namespace BookingSystem.Core.Domain.Entities
-{
-    public class Room : BaseEntity
-    {
-        public BuildingId BuildingId { get; }
-        public RoomEquipment Equipment { get; }
-        public Capacity Capacity { get; }
-        public InstitutionId OwnerInstitutionId { get; }
-
-        // Навигационное свойство (только для EF Core)
-        public Institution? OwnerInstitution { get; private set; }
-
-        private Room(
-            BuildingId buildingId,
-            RoomEquipment equipment,
-            Capacity capacity,
-            InstitutionId ownerInstitutionId)
+        public void UpdateEquipment(Equipment newEquipment)
         {
-            BuildingId = buildingId;
-            Equipment = equipment;
-            Capacity = capacity;
-            OwnerInstitutionId = ownerInstitutionId;
+            Equipment = newEquipment.ToJson();
+            MarkAsModified();
         }
-
-        public static Result<Room> Create(
-            BuildingId buildingId,
-            RoomEquipment equipment,
-            Capacity capacity,
-            InstitutionId ownerInstitutionId)
+        public void UpdateCountOfPlaces(uint newCount)
         {
-            if (capacity.Value == 0)
-                return Result.Failure<Room>("Capacity must be positive");
-
-            return new Room(buildingId, equipment, capacity, ownerInstitutionId);
+            CountOfPlaces = newCount;
+            MarkAsModified();
         }
-    }
-
-    // Value Objects
-    public record BuildingId(Guid Value);
-    public record InstitutionId(Guid Value);
-
-    public sealed class RoomEquipment
-    {
-        private readonly HashSet<string> _items;
-
-        public IReadOnlyCollection<string> Items => _items.ToList().AsReadOnly();
-
-        public RoomEquipment(IEnumerable<string> equipment)
-        {
-            _items = equipment.ToHashSet();
-            Validate();
-        }
-
-        private void Validate()
-        {
-            if (_items.Count == 0)
-                throw new ArgumentException("At least one equipment item required");
-        }
-
-        public bool HasEquipment(string item) => _items.Contains(item);
-    }
-
-    public record Capacity(uint Value)
-    {
-        public static implicit operator uint(Capacity c) => c.Value;
     }
 }

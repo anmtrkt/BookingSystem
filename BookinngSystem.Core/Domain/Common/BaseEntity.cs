@@ -5,10 +5,17 @@
         public Guid Id { get; protected set; }
         public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
         public DateTime? ModifiedAt { get; private set; }
+        public byte[] RowVersion { get; private set; } = Array.Empty<byte>();
 
-        public void MarkAsModified() => ModifiedAt = DateTime.UtcNow;
-
-        protected BaseEntity() => Id = Guid.NewGuid(); 
+        protected BaseEntity() => Id = Guid.NewGuid();
         protected BaseEntity(Guid id) => Id = id;
+
+        public void MarkAsModified()
+        {
+            ModifiedAt = DateTime.UtcNow;
+            RowVersion = Guid.NewGuid().ToByteArray(); // update RowVersion for Optimistic lock
+        }
+
+
     }
 }
