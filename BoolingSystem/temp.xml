@@ -1,0 +1,3385 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+The content has been processed where empty lines have been removed, security check has been disabled.
+
+<file_summary>
+	This section contains a summary of this file.
+
+	<purpose>
+		This file contains a packed representation of the entire repository's contents.
+		It is designed to be easily consumable by AI systems for analysis, code review,
+		or other automated processes.
+	</purpose>
+
+	<file_format>
+		The content is organized as follows:
+		1. This summary section
+		2. Repository information
+		3. Directory structure
+		4. Repository files (if enabled)
+		5. Multiple file entries, each consisting of:
+		- File path as an attribute
+		- Full contents of the file
+	</file_format>
+
+	<usage_guidelines>
+		- This file should be treated as read-only. Any changes should be made to the
+		original repository files, not this packed version.
+		- When processing this file, use the file path to distinguish
+		between different files in the repository.
+		- Be aware that this file may contain sensitive information. Handle it with
+		the same level of security as you would the original repository.
+	</usage_guidelines>
+
+	<notes>
+		- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+		- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+		- Files matching these patterns are excluded: */.git, */.vs
+		- Files matching patterns in .gitignore are excluded
+		- Files matching default ignore patterns are excluded
+		- Empty lines have been removed from all files
+		- Security check has been disabled - content may contain sensitive information
+		- Files are sorted by Git change count (files with more changes are at the bottom)
+	</notes>
+
+</file_summary>
+
+<directory_structure>
+	BoolingSystem — копия/
+	BookingSystem.API/
+	Controllers/
+	BookingController.cs
+	WeatherForecastController.cs
+	Program.cs
+	BookingSystem.Infrastructure/
+	EventHandlers/
+	BookingCreatedEventHandler.cs
+	Persistence/
+	Configurations/
+	AuditLogConfiguration.cs
+	BaseEntityConfiguration.cs
+	BranchConfiguration.cs
+	InstitutionConfiguration.cs
+	MaintenanceRequestConfiguration.cs
+	MeetingConfiguration.cs
+	NotificationConfiguration.cs
+	OutboxConfiguration.cs
+	ResourceAccessControlConfiguration.cs
+	RoleConfiguration.cs
+	RoomConfiguration.cs
+	ScheduleConfiguration.cs
+	UserConfiguration.cs
+	UserRoleConfiguration.cs
+	Repositories/
+	AuditLogRepository.cs
+	BaseRepository.cs
+	BranchRepository.cs
+	InstitutionRepository.cs
+	MaintenceRequestRepository.cs
+	MeetingRepository.cs
+	NotificationRepository.cs
+	RoleRepository.cs
+	RoomRepository.cs
+	ScheduleRepository.cs
+	UserRepository.cs
+	UserRoleRepository.cs
+	BookingSystemDbContext.cs
+	DesignTimeDbContextFactory.cs
+	UnitOfWork.cs
+	Services/
+	BookingService.cs
+	OutboxProcessor.cs
+	IntegrationLog.cs
+	BookinngSystem.Core/
+	Domain/
+	Common/
+	BaseEntity.cs
+	BaseUser.cs
+	Interfaces.cs
+	Entities/
+	Users/
+	RoleSystem/
+	ResourceAccessControl.cs
+	Role.cs
+	UserRole.cs
+	User.cs
+	AuditLog.cs
+	Branch.cs
+	Institution.cs
+	MaintenanceRequest.cs
+	Meeting.cs
+	Notification.cs
+	OutboxMessage.cs
+	Room.cs
+	Schedule.cs
+	Events/
+	BookingEvents/
+	BookingCanceledEvent.cs
+	BookingCreatedEvent.cs
+	BookingOverridenEvent.cs
+	BookingUncanceledEvent.cs
+	Common/
+	IDomainEvent.cs
+	InstitutionEvents/
+	InstitutionHierarchyChangedEvent.cs
+	Other/
+	AuditLogEntryCreatedEvent.cs
+	MaintenanceRequestRaisedEvent.cs
+	RoomEvents/
+	RoomBookedEvent.cs
+	RoomEquipmentUpdatedEvent.cs
+	UserEvents/
+	UserCreatedEvent.cs
+	UserRoleAssignedEvent.cs
+	UserUpdateInstitutionEvent.cs
+	Repositories/
+	IRepository.cs
+	ValueObjects/
+	Equipment.cs
+	PriorityLevel.cs
+	TimeRange.cs
+	ValueObject.cs
+	Utils/
+	ContactValidator.cs
+</directory_structure>
+
+<files>
+	This section contains the contents of the repository's files.
+
+	<file path="BoolingSystem — копия/BookingSystem.API/Controllers/BookingController.cs">
+		// File: BookingSystem.API/Controllers/BookingController.cs
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Infrastructure.Services;
+		using Microsoft.AspNetCore.Authorization;
+		using Microsoft.AspNetCore.Mvc;
+		[ApiController]
+		[Route("api/[controller]")]
+		public class BookingController : ControllerBase
+		{
+		private readonly BookingService _bookingService;
+		[HttpPost]
+		[Authorize(Roles = "User,Admin")]
+		public async Task<IActionResult>
+			BookRoom([FromBody] BookRoomRequest request)
+			{
+			var result = await _bookingService.BookRoom(
+			request.StartTime,
+			request.EndTime,
+			request.RoomId,
+			User.GetUserId()
+			);
+			return Ok(result);
+			}
+			[HttpDelete("{id}")]
+			[Authorize(Roles = "User,Admin")]
+			public async Task<IActionResult> CancelBooking(Guid id)
+    {
+        await _bookingService.CancelBookingAsync(id, User.GetUserId());
+        return NoContent();
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.API/Controllers/WeatherForecastController.cs">
+		using Microsoft.AspNetCore.Mvc;
+		namespace BookingSystem.API.Controllers;
+		[ApiController]
+		[Route("[controller]")]
+		public class WeatherForecastController : ControllerBase
+		{
+		private static readonly string[] Summaries = new[]
+		{
+		"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+		};
+		private readonly ILogger<WeatherForecastController>
+			_logger;
+			public WeatherForecastController(ILogger<WeatherForecastController>
+				logger)
+				{
+				_logger = logger;
+				}
+				[HttpGet(Name = "GetWeatherForecast")]
+				public IEnumerable<WeatherForecast> Get()
+    {
+        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        {
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        })
+        .ToArray();
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.API/Program.cs">
+		using BookingSystem.Infrastructure.Persistence;
+		using BookingSystem.Infrastructure.Persistence.Repositories;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.Extensions.Configuration;
+		using Microsoft.Extensions.DependencyInjection;
+		using BookingSystem.Core.Domain.Common.Interfaces;
+		using BookingSystem.Infrastructure.Services;
+		using Hangfire;
+		using Hangfire.PostgreSql;
+		var builder = WebApplication.CreateBuilder(args);
+		// Добавление конфигурации
+		builder.Services.AddDbContext<BookingSystemDbContext>
+			(options =>
+			options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+			b => b.MigrationsAssembly("BookingSystem.Infrastructure")));
+			// Регистрация репозиториев
+			builder.Services.AddScoped<IUserRepository, UserRepository="">
+				();
+				builder.Services.AddScoped<IRoleRepository, RoleRepository="">
+					();
+					builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository="">
+						();
+						builder.Services.AddScoped<IAuditLogRepository, AuditLogRepository="">
+							();
+							builder.Services.AddScoped<IBranchRepository, BranchRepository="">
+								();
+								builder.Services.AddScoped<IMaintenanceRepository, MaintenanceRequestRepository="">
+									();
+									builder.Services.AddScoped<INotificationRepository, NotificationRepository="">
+										();
+										builder.Services.AddScoped<IScheduleRepository, ScheduleRepository="">
+											();
+											builder.Services.AddScoped<IRoomRepository, RoomRepository="">
+												();
+												builder.Services.AddScoped<IMeetingRepository, MeetingRepository="">
+													();
+													builder.Services.AddScoped<IInstitutionRepository, InstitutionRepository="">
+														();
+														builder.Services.AddScoped<IUnitOfWork, UnitOfWork="">
+															();
+															builder.Services.AddHangfire(config =>
+															config.UsePostgreSqlStorage(options =>
+															{
+															options.UseNpgsqlConnection( builder.Configuration.GetConnectionString("HangfireConnection"));
+															}));
+															builder.Services.AddHangfireServer();
+															RecurringJob.AddOrUpdate<OutboxProcessor>("ProcessOutbox", x => x.ProcessOutboxMessages(), "*/5 * * * *");
+// Добавление MediatR
+//builder.Services.AddMediatR(typeof(Program));
+// Добавление других зависимостей
+builder.Services.AddControllers();
+var app = builder.Build();
+// Настройка HTTP запросов
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/EventHandlers/BookingCreatedEventHandler.cs">
+		using MediatR;
+		using BookingSystem.Core.Domain.Events;
+		using BookingSystem.Core.Domain.Repositories;
+		using BookingSystem.Core.Domain.Entities;
+		using System.Threading;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Application.EventHandlers
+		{
+		public class BookingCreatedEventHandler : INotificationHandler<BookingCreatedEvent>
+			{
+			private readonly INotificationRepository _notificationRepository;
+			private readonly IMeetingRepository _meetingRepository;
+			public BookingCreatedEventHandler(INotificationRepository notificationRepository, IMeetingRepository meetingRepository )
+			{
+			_notificationRepository = notificationRepository;
+			_meetingRepository = meetingRepository;
+			}
+			public async Task Handle(BookingCreatedEvent notification, CancellationToken cancellationToken)
+			{
+			var meeting = await _meetingRepository.GetByIdAsync(notification.MeetingId);
+			var creator = meeting.Creator;
+			for(int i = 0; i < meeting.Subscribers.Count; i++) 
+            {
+                var notificationMessage = $"Уважаемый {meeting.Subscribers[i].Name} {meeting.Subscribers[i].Surname}! {creator.FullName} назначил встречу {meeting.StartTime}, в {meeting.Room}";
+                var notificationEntity = Notification.Create(
+                    meeting.Subscribers[i].Id,
+                    "Meeting Booking",
+                    notificationMessage
+                );
+                await _notificationRepository.AddAsync(notificationEntity);
+            }
+        }
+    }
+}
+	</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/AuditLogConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class AuditLogConfiguration : IEntityTypeConfiguration<AuditLog>
+			{
+			public void Configure(EntityTypeBuilder<AuditLog> builder)
+        {
+            builder.ToTable("AuditLogs");
+            //builder.HasKey(al => al.Id);
+            builder.Property(al => al.UserId)
+                .IsRequired();
+            builder.Property(al => al.Action)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(al => al.EntityType)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(al => al.EntityId)
+                .IsRequired();
+            builder.Property(al => al.OldData)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.Property(al => al.NewData)
+                .IsRequired()
+                .HasMaxLength(256);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/BaseEntityConfiguration.cs">
+		using BookingSystem.Core.Domain.Common;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class BaseEntityConfiguration<T>
+			: IEntityTypeConfiguration<T>
+				where T : BaseEntity
+				{
+				public void Configure(EntityTypeBuilder<T> builder)
+        {
+            builder.HasKey(e => e.Id);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/BranchConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class BranchConfiguration : IEntityTypeConfiguration<Branch>
+			{
+			public void Configure(EntityTypeBuilder<Branch> builder)
+        {
+            builder.ToTable("Branches");
+            //builder.HasKey(b => b.Id);
+            builder.Property(b => b.Name)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.Property(b => b.Address)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.HasOne(b => b.Institution)
+                .WithMany(i => i.Branches)
+                .HasForeignKey(b => b.InstitutionId);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/InstitutionConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class InstitutionConfiguration : IEntityTypeConfiguration<Institution>
+			{
+			public void Configure(EntityTypeBuilder<Institution> builder)
+        {
+            builder.ToTable("Institutions");
+            //builder.HasKey(i => i.Id);
+            builder.Property(i => i.Name)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.Property(i => i.PriorityLevel)
+                .IsRequired();
+            builder.HasOne(i => i.Parent)
+                .WithMany(p => p.Children)
+                .HasForeignKey(i => i.ParentId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/MaintenanceRequestConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class MaintenanceRequestConfiguration : IEntityTypeConfiguration<MaintenanceRequest>
+			{
+			public void Configure(EntityTypeBuilder<MaintenanceRequest> builder)
+        {
+            builder.ToTable("MaintenanceRequests");
+            //builder.HasKey(mr => mr.Id);
+            builder.Property(mr => mr.RoomId)
+                .IsRequired();
+            builder.Property(mr => mr.EquipmentId)
+                .IsRequired();
+            builder.Property(mr => mr.Description)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.Property(mr => mr.Status)
+                .IsRequired()
+                .HasMaxLength(50);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/MeetingConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class MeetingConfiguration : IEntityTypeConfiguration<Meeting>
+			{
+			public void Configure(EntityTypeBuilder<Meeting> builder)
+        {
+            builder.ToTable("Meetings");
+            //builder.HasKey(m => m.Id);
+            builder.Property(m => m.CreatorId)
+                .IsRequired();
+            builder.Property(m => m.RoomId)
+                .IsRequired();
+            builder.Property(m => m.InstitutionId)
+                .IsRequired();
+            builder.Property(m => m.IsOverridden)
+                .IsRequired();
+            builder.OwnsOne(m => m.TimeRange, tr =>
+            {
+                tr.Property(t => t.Start).HasColumnName("StartTime");
+                tr.Property(t => t.End).HasColumnName("EndTime");
+            });
+            builder.Property(m => m.IsCancelled)
+                .IsRequired();
+            builder.HasOne(m => m.Creator)
+                .WithMany(u => u.CreatedMeetings)
+                .HasForeignKey(m => m.CreatorId);
+            builder.HasOne(m => m.Room)
+                .WithMany(r => r.Meetings)
+                .HasForeignKey(m => m.RoomId);
+            builder.HasOne(m => m.Institution)
+                .WithMany(i => i.Meetings)
+                .HasForeignKey(m => m.InstitutionId);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/NotificationConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class NotificationConfiguration : IEntityTypeConfiguration<Notification>
+			{
+			public void Configure(EntityTypeBuilder<Notification> builder)
+        {
+            builder.ToTable("Notifications");
+            //builder.HasKey(n => n.Id);
+            builder.Property(n => n.RecipientId)
+                .IsRequired();
+            builder.Property(n => n.MessageType)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(n => n.Content)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.Property(n => n.IsRead)
+                .IsRequired();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/OutboxConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		using Microsoft.EntityFrameworkCore;
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class OutboxConfiguration : IEntityTypeConfiguration<OutboxMessage>
+			{
+			public void Configure(EntityTypeBuilder<OutboxMessage> builder)
+        {
+            builder.ToTable("OutboxMessages");
+            builder.Property(x => x.EventType).IsRequired().HasMaxLength(255);
+            builder.Property(x => x.Payload).IsRequired().HasColumnType("jsonb");
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/ResourceAccessControlConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class ResourceAccessControlConfiguration : IEntityTypeConfiguration<ResourceAccessControl>
+			{
+			public void Configure(EntityTypeBuilder<ResourceAccessControl> builder)
+        {
+            builder.ToTable("ResourceAccessControls");
+            //builder.HasKey(rac => rac.Id);
+            builder.Property(rac => rac.ResourceId)
+                .IsRequired();
+            builder.Property(rac => rac.RoleId)
+                .IsRequired();
+            builder.Property(rac => rac.AccessType)
+                .IsRequired()
+                .HasMaxLength(50);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/RoleConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class RoleConfiguration : IEntityTypeConfiguration<Role>
+			{
+			public void Configure(EntityTypeBuilder<Role> builder)
+        {
+            builder.ToTable("Roles");
+            //builder.HasKey(r => r.Id);
+            builder.Property(r => r.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(r => r.Description)
+                .HasMaxLength(256);
+            builder.Property(r => r.Permissions)
+                .HasConversion(
+                    v => string.Join(",", v),
+                    v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList());
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/RoomConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class RoomConfiguration : IEntityTypeConfiguration<Room>
+			{
+			public void Configure(EntityTypeBuilder<Room> builder)
+        {
+            builder.ToTable("Rooms");
+            //builder.HasKey(r => r.Id);
+            builder.Property(r => r.BuildingId)
+                .IsRequired();
+            builder.Property(r => r.Equipment)
+                .IsRequired();
+            builder.Property(r => r.IsBooked)
+                .IsRequired();
+            builder.Property(r => r.IsAvailable)
+                .IsRequired();
+            builder.Property(r => r.CountOfPlaces)
+                .IsRequired();
+            builder.Property(r => r.OwnerInstitutionId)
+                .IsRequired(false);
+            builder.HasOne(r => r.OwnerInstitution)
+                .WithMany(i => i.Rooms)
+                .HasForeignKey(r => r.OwnerInstitutionId)
+                .OnDelete(DeleteBehavior.SetNull);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/ScheduleConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class ScheduleConfiguration : IEntityTypeConfiguration<Schedule>
+			{
+			public void Configure(EntityTypeBuilder<Schedule> builder)
+        {
+            builder.ToTable("Schedules");
+            //builder.HasKey(s => s.Id);
+            builder.Property(s => s.RoomId)
+                .IsRequired();
+            builder.Property(s => s.StartDate)
+                .IsRequired();
+            builder.Property(s => s.EndDate)
+                .IsRequired();
+            builder.Property(s => s.Reason)
+                .IsRequired()
+                .HasMaxLength(256);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/UserConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class UserConfiguration : IEntityTypeConfiguration<User>
+			{
+			public void Configure(EntityTypeBuilder<User> builder)
+        {
+            builder.ToTable("Users");
+            //builder.HasKey(u => u.Id);
+            builder.Property(u => u.Email)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.Property(u => u.PhoneNumber)
+                .IsRequired()
+                .HasMaxLength(15);
+            builder.Property(u => u.Surname)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(u => u.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(u => u.Patronymic)
+                .HasMaxLength(100);
+            builder.Property(u => u.FullName)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.Property(u => u.NormalizedEmail)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.Property(u => u.NormalizedPhoneNumber)
+                .IsRequired()
+                .HasMaxLength(15);
+            builder.Property(u => u.NormalizedSurname)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(u => u.NormalizedName)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(u => u.NormalizedPatronymic)
+                .HasMaxLength(100);
+            builder.Property(u => u.NormalizedFullName)
+                .IsRequired()
+                .HasMaxLength(256);
+            builder.HasOne(u => u.Institution)
+                .WithMany(i => i.Users)
+                .HasForeignKey(u => u.InstitutionId);
+            builder.Property(u => u.CreatedAt);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Configurations/UserRoleConfiguration.cs">
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Metadata.Builders;
+		namespace BookingSystem.Infrastructure.Persistence.Configurations
+		{
+		public class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
+			{
+			public void Configure(EntityTypeBuilder<UserRole> builder)
+        {
+            builder.ToTable("UserRoles");
+            //builder.HasKey(ur => ur.Id);
+            builder.Property(ur => ur.StartDate)
+                .IsRequired();
+            builder.Property(ur => ur.EndDate)
+                .IsRequired(false);
+            builder.HasOne(ur => ur.User)
+                .WithMany(u => u.UserRoles)
+                .HasForeignKey(ur => ur.UserId);
+            builder.HasOne(ur => ur.Role)
+                .WithMany(r => r.UserRoles)
+                .HasForeignKey(ur => ur.RoleId);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/AuditLogRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class AuditLogRepository : BaseRepository<AuditLog>, IAuditLogRepository
+    {
+        public AuditLogRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/BaseRepository.cs">
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System;
+		using System.Collections.Generic;
+		using System.Data;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class BaseRepository<T>
+			: IRepository<T>
+				where T : BaseEntity
+				{
+				protected readonly BookingSystemDbContext _dbContext;
+				protected readonly DbSet<T>
+					_dbSet;
+					public BaseRepository(BookingSystemDbContext dbContext)
+					{
+					_dbContext = dbContext;
+					_dbSet = dbContext.Set<T>
+						();
+						}
+						public virtual async Task<T>
+							GetByIdAsync(Guid id)
+							{
+							return await _dbSet.FindAsync(id);
+							}
+							public virtual T GetById(Guid id)
+							{
+							return _dbSet.Find(id);
+							}
+							public virtual async Task<List<T>
+								> GetAllNotArchiveAsync()
+								{
+								return await _dbSet.Where(e => e.IsArchive != true).ToListAsync();
+								}
+								public virtual List<T>
+									GetAllNotArchive()
+									{
+									return _dbSet.Where(e => e.IsArchive != true).ToList();
+									}
+									public virtual async Task<List<T>
+										> GetAllArchiveAsync()
+										{
+										return await _dbSet.Where(e => e.IsArchive == true).ToListAsync();
+										}
+										public virtual List<T>
+											GetAllArchive()
+											{
+											return _dbSet.Where(e => e.IsArchive == true).ToList();
+											}
+											public virtual async Task<List<T>
+												> GetAllAsync()
+												{
+												return await _dbSet.ToListAsync();
+												}
+												public virtual List<T> GetAll()
+        {
+            return _dbSet.ToList();
+        }
+        public virtual async Task AddAsync(T entity)
+        {
+            await _dbSet.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+        }
+        public virtual async Task UpdateAsync(T entity)
+        {
+            try
+            {
+                _dbContext.Entry(entity).OriginalValues["RowVersion"] = entity.RowVersion;
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new InvalidOperationException("Object has been change by other person");
+            }
+        }
+        public virtual void Update(T entity)
+        {
+            _dbSet.Update(entity);
+            _dbContext.SaveChanges();
+        }
+        public virtual async Task DeleteAsync(T entity)
+        {
+            _dbSet.Remove(entity);
+            await _dbContext.SaveChangesAsync();
+        }
+        public virtual void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+            _dbContext.SaveChanges();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/BranchRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class BranchRepository : BaseRepository<Branch>
+			, IBranchRepository
+			{
+			public BranchRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public async Task<List<Branch>
+				> GetAllByInstitutionAsync(Guid institutionId)
+				{
+				return await _dbSet
+				.Where(b => b.InstitutionId == institutionId)
+				.ToListAsync();
+				}
+				public List<Branch>
+					GetAllByInstitution(Guid institutionId)
+					{
+					return _dbSet
+					.Where(b => b.InstitutionId == institutionId)
+					.ToList();
+					}
+					public async Task<Branch> GetByAddressAsync(string address)
+        {
+            return await _dbSet.FirstOrDefaultAsync(b => b.Address == address);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/InstitutionRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class InstitutionRepository : BaseRepository<Institution>
+			, IInstitutionRepository
+			{
+			public InstitutionRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public async Task<List<Institution>
+				> GetAllChildrenAsync(Guid institutionId)
+				{
+				return await _dbContext.Institutions
+				.Where(i => i.ParentId == institutionId)
+				.ToListAsync();
+				}
+				public List<Institution>
+					GetAllChildren(Guid institutionId)
+					{
+					return _dbContext.Institutions
+					.Where(i => i.ParentId == institutionId)
+					.ToList();
+					}
+					public async Task<Institution>
+						GetParentAsync(Guid institutionId)
+						{
+						return await _dbContext.Institutions
+						.FirstOrDefaultAsync(i => i.Id == institutionId);
+						}
+						public Institution GetParent(Guid institutionId)
+						{
+						return _dbContext.Institutions
+						.FirstOrDefault(i => i.Id == institutionId)?.Parent;
+						}
+						public async Task<Institution>
+							GetByBranchAsync(Guid branchId)
+							{
+							return await _dbContext.Branches
+							.Where(b => b.Id == branchId)
+							.Select(b => b.Institution)
+							.FirstOrDefaultAsync();
+							}
+							public Institution GetByBranch(Guid branchId)
+							{
+							return _dbContext.Branches
+							.Where(b => b.Id == branchId)
+							.Select(b => b.Institution)
+							.FirstOrDefault();
+							}
+							public async Task<List<Branch>
+								> GetBranchesAsync(Guid institutionId)
+								{
+								return await _dbContext.Branches
+								.Where(b => b.InstitutionId == institutionId)
+								.ToListAsync();
+								}
+								public List<Branch> GetBranches(Guid institutionId)
+        {
+            return _dbContext.Branches
+                .Where(b => b.InstitutionId == institutionId)
+                .ToList();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/MaintenceRequestRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class MaintenanceRequestRepository : BaseRepository<MaintenanceRequest>
+			, IMaintenanceRepository
+			{
+			public MaintenanceRequestRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public async Task<List<MaintenanceRequest>
+				> GetAllByRoomAsync(Guid roomId)
+				{
+				return await _dbSet
+				.Where(mr => mr.RoomId == roomId)
+				.ToListAsync();
+				}
+				public List<MaintenanceRequest>
+					GetAllByRoom(Guid roomId)
+					{
+					return _dbSet
+					.Where(mr => mr.RoomId == roomId)
+					.ToList();
+					}
+					public async Task<List<MaintenanceRequest>
+						> GetAllByEquipmentAsync(Guid equipmentId)
+						{
+						return await _dbSet
+						.Where(mr => mr.EquipmentId == equipmentId)
+						.ToListAsync();
+						}
+						public List<MaintenanceRequest> GetAllByEquipment(Guid equipmentId)
+        {
+            return _dbSet
+                .Where(mr => mr.EquipmentId == equipmentId)
+                .ToList();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/MeetingRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class MeetingRepository : BaseRepository<Meeting>
+			, IMeetingRepository
+			{
+			public MeetingRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public List<Meeting>
+				GetMeetingsByRoom(Guid roomId)
+				{
+				return _dbContext.Meetings
+				.Where(m => m.RoomId == roomId)
+				.ToList();
+				}
+				public async Task<List<Meeting>
+					> GetMeetingsByRoomAsync(Guid roomId)
+					{
+					return await _dbContext.Meetings
+					.Where(m => m.RoomId == roomId)
+					.ToListAsync();
+					}
+					public List<Meeting> GetMeetingsByUser(Guid userId)
+        {
+            return _dbContext.Meetings
+                .Where(m => m.Subscribers.Any(s => s.Id == userId))
+                .ToList();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/NotificationRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class NotificationRepository : BaseRepository<Notification>
+			, INotificationRepository
+			{
+			public NotificationRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public async Task<List<Notification>
+				> GetByRecepientAsync(Guid recepientId)
+				{
+				return await _dbSet
+				.Where(n => n.RecipientId == recepientId)
+				.ToListAsync();
+				}
+				public List<Notification> GetByRecepient(Guid recepientId)
+        {
+            return _dbSet
+                .Where(n => n.RecipientId == recepientId)
+                .ToList();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/RoleRepository.cs">
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class RoleRepository : BaseRepository<Role>
+			, IRoleRepository
+			{
+			public RoleRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public async Task<Role> GetByNameAsync(string name)
+        {
+            return await _dbSet.FirstOrDefaultAsync(r => r.Name == name);
+        }
+        public Role GetByName(string name)
+        {
+            return _dbSet.FirstOrDefault(r => r.Name == name);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/RoomRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		using BookingSystem.Core.Domain.ValueObjects;
+		using Microsoft.EntityFrameworkCore;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class RoomRepository : BaseRepository<Room>
+			, IRoomRepository
+			{
+			public RoomRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public async Task<bool>
+				IsRoomAvailableAsync(Guid roomId, TimeRange timeRange)
+				{
+				var room = await GetByIdAsync(roomId);
+				if (room == null) return false;
+				var meetings = await _dbContext.Meetings
+				.Where(m => m.RoomId == roomId && !m.IsCancelled)
+				.ToListAsync();
+				for (int i = 0; i < meetings.Count; i++)
+            {
+                if (meetings[i].TimeRange.IsOverlapping(timeRange))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public async Task<bool>
+					IsRoomAvailableAsync(Room room, TimeRange timeRange)
+					{
+					var meetings = await _dbContext.Meetings
+					.Where(m => m.RoomId == room.Id && !m.IsCancelled)
+					.ToListAsync();
+					for(int i = 0; i< meetings.Count; i++)
+            {
+                if (meetings[i].TimeRange.IsOverlapping(timeRange))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public async Task<bool>
+						IsRoomAvailableAsync(User user, TimeRange timeRange, Room room)
+						{
+						var meetings = await _dbContext.Meetings
+						.Include(m => m.Creator)
+						.ThenInclude(u => u.Institution)
+						.Where(m => m.RoomId == room.Id && m.StartTime < timeRange.End && m.EndTime > timeRange.Start)
+						.ToListAsync();
+						var userPriority = user.Institution.PriorityLevel;
+						if (meetings != null)
+						{
+						for (int i = 0; i < meetings.Count; i++)
+                {
+                    if (meetings[i].TimeRange.IsOverlapping(timeRange))
+                    {
+                        if (meetings[i].Institution.PriorityLevel.IsHigherThan(userPriority))
+                        {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+            else return true;
+        }
+        public bool IsRoomAvailable(Room room, TimeRange timeRange)
+        {
+            var meetings =  _dbContext.Meetings
+                .Where(m => m.RoomId == room.Id && !m.IsCancelled)
+						.ToList();
+						for (int i = 0; i < meetings.Count; i++)
+            {
+                if (meetings[i].TimeRange.IsOverlapping(timeRange))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool IsRoomAvailable(Guid roomId, TimeRange timeRange)
+        {
+            var room = GetById(roomId);
+            if (room == null) return false;
+            var meetings = _dbContext.Meetings
+                .Where(m => m.RoomId == roomId && !m.IsCancelled)
+						.ToList();
+						for (int i = 0; i < meetings.Count; i++)
+            {
+                if (meetings[i].TimeRange.IsOverlapping(timeRange))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public async Task<List<Room>
+							> GetAllAvailableRoomsAsync()
+							{
+							return await _dbSet
+							.Where(r => r.IsAvailable)
+							.ToListAsync();
+							}
+							public List<Room>
+								GetAllAvailableRooms()
+								{
+								return _dbSet
+								.Where(r => r.IsAvailable)
+								.ToList();
+								}
+								public List<Room>
+									GetByEquipment()
+									{
+									throw new NotImplementedException();
+									}
+									public Task<List<Room>
+										> GetByEquipmentAsync()
+										{
+										throw new NotImplementedException();
+										}
+										public Task<List<Room>
+											> GetByInstitutionAsync()
+											{
+											throw new NotImplementedException();
+											}
+											public List<Room>
+												GetByInstitution()
+												{
+												throw new NotImplementedException();
+												}
+												public Task<List<Room>
+													> GetByBranchAsync()
+													{
+													throw new NotImplementedException();
+													}
+													public List<Room> GetByBranch()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/ScheduleRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class ScheduleRepository : BaseRepository<Schedule>
+			, IScheduleRepository
+			{
+			public ScheduleRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public async Task<Schedule> GetByRoomAsync(Guid roomId)
+        {
+            return await _dbSet.FirstOrDefaultAsync(s => s.RoomId == roomId);
+        }
+        public Schedule GetByRoom(Guid roomId)
+        {
+            return _dbSet.FirstOrDefault(s => s.RoomId == roomId);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/UserRepository.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Entities.Users;
+		using BookingSystem.Core.Domain.Repositories;
+		using BookingSystem.Core.Domain.ValueObjects;
+		using Microsoft.EntityFrameworkCore;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class UserRepository : BaseRepository<User>
+			, IUserRepository
+			{
+			public UserRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public async Task<User>
+				GetByEmailAsync(string email)
+				{
+				return await _dbSet.FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpperInvariant());
+				}
+				public User GetByEmail(string email)
+				{
+				return _dbSet.FirstOrDefault(u => u.NormalizedEmail == email.ToUpperInvariant());
+				}
+				public async Task<User>
+					GetByPhoneNumberAsync(string phone)
+					{
+					return await _dbSet.FirstOrDefaultAsync(u => u.NormalizedPhoneNumber == phone);
+					}
+					public User GetByPhoneNumber(string phone)
+					{
+					return _dbSet.FirstOrDefault(u => u.NormalizedPhoneNumber == phone);
+					}
+					public async Task<List<User>
+						> GetUsersByRoleAsync(Guid roleId)
+						{
+						return await _dbSet
+						.Where(u => u.UserRoles.Any(ur => ur.RoleId == roleId))
+						.ToListAsync();
+						}
+						public List<User>
+							GetUsersByRole(Guid roleId)
+							{
+							return _dbSet
+							.Where(u => u.UserRoles.Any(ur => ur.RoleId == roleId))
+							.ToList();
+							}
+							public async Task<List<User>
+								> GetUsersByRolesAsync(List<Guid>
+									rolesId)
+									{
+									return await _dbSet
+									.Where(u => u.UserRoles.Any(ur => rolesId.Contains(ur.RoleId)))
+									.ToListAsync();
+									}
+									public List<User>
+										GetUsersByRoles(List<Guid> rolesId)
+        {
+            return _dbSet
+                .Where(u => u.UserRoles.Any(ur => rolesId.Contains(ur.RoleId)))
+                .ToList();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/Repositories/UserRoleRepository.cs">
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		using BookingSystem.Core.Domain.Repositories;
+		using Microsoft.EntityFrameworkCore;
+		using System.Linq;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence.Repositories
+		{
+		public class UserRoleRepository : BaseRepository<UserRole>
+			, IUserRoleRepository
+			{
+			public UserRoleRepository(BookingSystemDbContext dbContext) : base(dbContext) { }
+			public UserRole GetByUserId(Guid userId)
+			{
+			return _dbSet.FirstOrDefault(ur => ur.UserId == userId);
+			}
+			public async Task<UserRole>
+				GetByUserIdAsync(Guid userId)
+				{
+				return await _dbSet.FirstOrDefaultAsync(ur => ur.UserId == userId);
+				}
+				public UserRole GetByRoleId(Guid roleId)
+				{
+				return _dbSet.FirstOrDefault(ur => ur.RoleId == roleId);
+				}
+				public async Task<UserRole> GetByRoleIdAsync(Guid roleId)
+        {
+            return await _dbSet.FirstOrDefaultAsync(ur => ur.RoleId == roleId);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/BookingSystemDbContext.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		using BookingSystem.Core.Domain.Entities.Users;
+		using BookingSystem.Core.Domain.ValueObjects;
+		using Microsoft.EntityFrameworkCore;
+		using System.Reflection;
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Infrastructure.Persistence.Configurations;
+		using System.Text.Json;
+		namespace BookingSystem.Infrastructure.Persistence
+		{
+		public class BookingSystemDbContext : DbContext
+		{
+		public BookingSystemDbContext(DbContextOptions<BookingSystemDbContext>
+			options)
+			: base(options)
+			{
+			}
+			public DbSet<OutboxMessage>
+				OutboxMessages { get; set; }
+				public DbSet<User>
+					Users { get; set; }
+					public DbSet<Role>
+						Roles { get; set; }
+						public DbSet<UserRole>
+							UserRoles { get; set; }
+							public DbSet<Institution>
+								Institutions { get; set; }
+								public DbSet<Branch>
+									Branches { get; set; }
+									public DbSet<Room>
+										Rooms { get; set; }
+										public DbSet<Meeting>
+											Meetings { get; set; }
+											public DbSet<Schedule>
+												Schedules { get; set; }
+												public DbSet<AuditLog>
+													AuditLogs { get; set; }
+													public DbSet<MaintenanceRequest>
+														MaintenanceRequests { get; set; }
+														public DbSet<Notification>
+															Notifications { get; set; }
+															public DbSet<ResourceAccessControl>
+																ResourceAccessControls { get; set; }
+																protected override void OnModelCreating(ModelBuilder modelBuilder)
+																{
+																modelBuilder.ApplyConfiguration(new BaseEntityConfiguration<BaseEntity>
+																	());
+																	modelBuilder.ApplyConfiguration(new AuditLogConfiguration());
+																	modelBuilder.ApplyConfiguration(new BranchConfiguration());
+																	modelBuilder.ApplyConfiguration(new InstitutionConfiguration());
+																	modelBuilder.ApplyConfiguration(new MaintenanceRequestConfiguration());
+																	modelBuilder.ApplyConfiguration(new MeetingConfiguration());
+																	modelBuilder.ApplyConfiguration(new NotificationConfiguration());
+																	modelBuilder.ApplyConfiguration(new ResourceAccessControlConfiguration());
+																	modelBuilder.ApplyConfiguration(new RoleConfiguration());
+																	modelBuilder.ApplyConfiguration(new RoomConfiguration());
+																	modelBuilder.ApplyConfiguration(new ScheduleConfiguration());
+																	modelBuilder.ApplyConfiguration(new UserConfiguration());
+																	modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
+																	modelBuilder.Entity<Institution>
+																		()
+																		.Property(i => i.PriorityLevel)
+																		.HasConversion(
+																		priority => priority.Level,
+																		level => PriorityLevel.Create(level)
+																		);
+																		modelBuilder.Entity<Room>
+																			()
+																			.Property(r => r.Equipment)
+																			.HasConversion(
+																			v => v.ToJson(),
+																			v => Equipment.FromJson(v));
+																			modelBuilder.Entity<Meeting>
+																				()
+																				.Ignore(m => m.TimeRange)
+																				.Property(m => m.StartTime)
+																				.IsRequired();
+																				modelBuilder.Entity<Meeting>
+																					()
+																					.Property(m => m.EndTime)
+																					.IsRequired();
+																					modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+																					base.OnModelCreating(modelBuilder);
+																					}
+																					public override async Task<int>
+																						SaveChangesAsync(CancellationToken cancellationToken = default)
+																						{
+																						var domainEvents = ChangeTracker
+																						.Entries<BaseEntity>
+																							()
+																							.SelectMany(e => e.Entity.DomainEvents)
+																							.ToList();
+																							var outboxMessages = domainEvents
+																							.Select(e => Core.Domain.Entities.OutboxMessage.Create(
+																							e.GetType().Name,
+																							JsonSerializer.Serialize(e)))
+																							.ToList();
+																							await Set<OutboxMessage>
+																								().AddRangeAsync(outboxMessages, cancellationToken);
+																								foreach (var entry in ChangeTracker.Entries<BaseEntity>())
+            {
+                entry.Entity.ClearDomainEvents();
+            }
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/DesignTimeDbContextFactory.cs">
+		using BookingSystem.Infrastructure.Persistence;
+		using Microsoft.EntityFrameworkCore;
+		using Microsoft.EntityFrameworkCore.Design;
+		using Microsoft.Extensions.Configuration;
+		using System.IO;
+		namespace BookingSystem.Infrastructure.Persistence
+		{
+		public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<BookingSystemDbContext>
+			{
+			public BookingSystemDbContext CreateDbContext(string[] args)
+			{
+			IConfigurationRoot configuration = new ConfigurationBuilder()
+			.SetBasePath(Directory.GetCurrentDirectory())
+			.AddJsonFile("appsettings.json")
+			.Build();
+			var builder = new DbContextOptionsBuilder<BookingSystemDbContext>();
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            builder.UseNpgsql(connectionString);
+            return new BookingSystemDbContext(builder.Options);
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Persistence/UnitOfWork.cs">
+		using BookingSystem.Core.Domain.Common.Interfaces;
+		using Microsoft.EntityFrameworkCore.Storage;
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Persistence
+		{
+		public class UnitOfWork: IUnitOfWork
+		{
+		private readonly BookingSystemDbContext _context;
+		private IDbContextTransaction _transaction;
+		public UnitOfWork(BookingSystemDbContext context)
+		{
+		_context = context;
+		}
+		public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
+        {
+            if (_transaction == null)
+                throw new InvalidOperationException("Transaction not started");
+            try
+            {
+                int result = await _context.SaveChangesAsync(cancellationToken);
+                await _transaction.CommitAsync(cancellationToken);
+                return result;
+            }
+            catch
+            {
+                await _transaction.RollbackAsync(cancellationToken);
+                throw;
+            }
+            finally
+            {
+                _transaction.Dispose();
+                _transaction = null;
+            }
+        }
+        public void BeginTransaction()
+        {
+            if (_transaction != null)
+                throw new InvalidOperationException("Transaction already started");
+            _transaction = _context.Database.BeginTransaction();
+        }
+        public void Rollback()
+        {
+            if (_transaction == null)
+                throw new InvalidOperationException("No active transaction");
+            _transaction.Rollback();
+            _transaction.Dispose();
+            _transaction = null;
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Services/BookingService.cs">
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Repositories;
+		using BookingSystem.Core.Domain.ValueObjects;
+		using BookingSystem.Core.Domain.Events;
+		using System.Threading.Tasks;
+		using BookingSystem.Core.Domain.Common.Interfaces;
+		namespace BookingSystem.Infrastructure.Services
+		{
+		public class BookingService
+		{
+		private readonly IRoomRepository _roomRepo;
+		private readonly IMeetingRepository _meetingRepo;
+		private readonly IInstitutionRepository _institutionRepo;
+		private readonly IUnitOfWork _unitOfWork;
+		public BookingService(
+		IRoomRepository roomRepo,
+		IMeetingRepository meetingRepo,
+		IInstitutionRepository institutionRepo)
+		{
+		_roomRepo = roomRepo;
+		_meetingRepo = meetingRepo;
+		_institutionRepo = institutionRepo;
+		}
+		public async Task<Guid>
+			BookRoom(DateTime startTime, DateTime endTime, Room room, User user, List<User>? subscribers = null)
+        {
+            if (!room.CanBeBooked(TimeRange.Create(startTime, endTime), user.Priority))
+                throw new ApplicationException("Room is not available");
+            _unitOfWork.BeginTransaction();
+            try
+            {
+                var meeting = Meeting.Create(
+                user,
+                room,
+                startTime,
+                endTime,
+                user.Institution,
+                subscribers ??= new());
+                await _meetingRepo.AddAsync(meeting);
+                await _unitOfWork.CommitAsync();
+                return meeting.Id;
+            }
+            catch
+            {
+                _unitOfWork.Rollback();
+                throw;
+            }
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/Services/OutboxProcessor.cs">
+		using BookingSystem.Core.Domain.Events;
+		using BookingSystem.Infrastructure.Persistence;
+		using Hangfire;
+		using MediatR;
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Text.Json;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Infrastructure.Services
+		{
+		public class OutboxProcessor
+		{
+		private readonly BookingSystemDbContext _context;
+		private readonly IPublisher _publisher;
+		public OutboxProcessor(BookingSystemDbContext context, IPublisher publisher)
+		{
+		_context = context;
+		_publisher = publisher;
+		}
+		[AutomaticRetry(Attempts = 3)]
+		public async Task ProcessOutboxMessages()
+		{
+		var messages = await _context
+		.OutboxMessages
+		.Where(m => m.ProcessedAt == null)
+		.OrderBy(m => m.CreatedAt)
+		.Take(100)
+		.ToListAsync();
+		foreach (var message in messages)
+		{
+		var eventType = Type.GetType(message.EventType);
+		var eventData = JsonSerializer.Deserialize(message.Payload, eventType) as IDomainEvent;
+		await _publisher.Publish(eventData);
+		message.ProcessedAt = DateTime.UtcNow;
+		}
+		await _context.SaveChangesAsync();
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookingSystem.Infrastructure/IntegrationLog.cs">
+		using BookingSystem.Core.Domain.Common;
+		namespace BookingSystem.Infrastructure
+		{
+		public class IntegrationLog : BaseEntity
+		{
+		public string IntegrationType { get; private set; }
+		public string ErrorMessage { get; private set; }
+		public DateTime OccurredAt { get; private set; }
+		private IntegrationLog() { } // Для сериализации
+		private IntegrationLog(
+		string integrationType,
+		string errorMessage,
+		DateTime occurredAt)
+		{
+		IntegrationType = integrationType;
+		ErrorMessage = errorMessage;
+		OccurredAt = occurredAt;
+		}
+		public static IntegrationLog Create(
+		string integrationType,
+		string errorMessage)
+		{
+		return new IntegrationLog(integrationType, errorMessage, DateTime.UtcNow);
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Common/BaseEntity.cs">
+		using BookingSystem.Core.Domain.Events;
+		using System.ComponentModel.DataAnnotations;
+		namespace BookingSystem.Core.Domain.Common
+		{
+		public abstract class BaseEntity
+		{
+		public Guid Id { get; protected set; }
+		public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+		public DateTime? ModifiedAt { get; private set; }
+		public bool IsArchive { get; private set; } = false;
+		[Timestamp]
+		public byte[] RowVersion { get; private set; } = Array.Empty<byte>
+			();
+			private readonly List<IDomainEvent>
+				_domainEvents = new();
+				public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+        protected BaseEntity() => Id = Guid.NewGuid();
+        protected BaseEntity(Guid id) => Id = id;
+        ///просмотр вызывающего метода и лог
+        public void MarkAsModified()
+        {
+            ModifiedAt = DateTime.UtcNow;
+            RowVersion = Guid.NewGuid().ToByteArray(); // update RowVersion for Optimistic lock
+        }
+        protected void AddDomainEvent(IDomainEvent eventItem)
+        {
+            _domainEvents.Add(eventItem);
+        }
+        protected void RemoveDomainEvent(IDomainEvent eventItem)
+        {
+            _domainEvents.Remove(eventItem);
+        }
+        public void ClearDomainEvents()
+        {
+            _domainEvents.Clear();
+        }
+        public void SetArchive()
+        {
+            IsArchive = true;
+            MarkAsModified();
+        }
+        public void SetUnarchive()
+        {
+            IsArchive = false;
+            MarkAsModified();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Common/BaseUser.cs">
+		using BookingSystem.Core.Utils;
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Text.RegularExpressions;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Core.Domain.Common
+		{
+		public class BaseUser : BaseEntity
+		{
+		public string Email { get; private set; }
+		public string PhoneNumber { get; private set; }
+		public string Surname { get; private set; }
+		public string Name { get; private set; }
+		public string? Patronymic { get; private set; }
+		public string FullName { get; private set; }
+		public string NormalizedEmail { get; private set; }
+		public string NormalizedPhoneNumber { get; private set; }
+		public string NormalizedSurname { get; private set; }
+		public string NormalizedName { get; private set; }
+		public string? NormalizedPatronymic { get; private set; }
+		public string NormalizedFullName { get; private set; }
+		/// <param name="email"></param>
+		/// <param name="phoneNumber"></param>
+		/// <param name="surname"></param>
+		/// <param name="name"></param>
+		/// <param name="patronymic"></param>
+		/// <exception cref="ArgumentException"></exception>
+		protected BaseUser(string email,
+		string phoneNumber, string surname, string name, string? patronymic = null)
+		{
+		if (string.IsNullOrWhiteSpace(surname)) throw new ArgumentException("Surname can't be null or whitespace", nameof(surname));
+		if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Name can't be null or whitespace", nameof(name));
+		UpdateEmail(email);
+		UpdatePhoneNumber(phoneNumber);
+		Surname = surname;
+		Name = name;
+		Patronymic = patronymic;
+		FullName = string.Join(" ", Surname, Name, Patronymic?.Trim());
+		NormalizedSurname = Surname.ToUpperInvariant();
+		NormalizedName = Name.ToUpperInvariant();
+		NormalizedPatronymic = Patronymic?.ToUpperInvariant() ?? string.Empty;
+		}
+		protected void UpdateEmail(string email)
+		{
+		ContactValidator.ValidateEmail(email);
+		Email = email;
+		NormalizedEmail = ContactValidator.NormalizeEmail(email);
+		}
+		protected void UpdatePhoneNumber(string phoneNumber)
+		{
+		ContactValidator.ValidatePhoneNumber(phoneNumber);
+		PhoneNumber = phoneNumber;
+		NormalizedPhoneNumber = ContactValidator.NormalizePhoneNumber(phoneNumber);
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Common/Interfaces.cs">
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Core.Domain.Common.Interfaces
+		{
+		public interface IDataInitializer
+		{
+		Task InitializeAsync();
+		}
+		public interface IUnitOfWork
+		{
+		Task<int> CommitAsync(CancellationToken cancellationToken = default);
+        public void BeginTransaction();
+        void Rollback();
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Users/RoleSystem/ResourceAccessControl.cs">
+		using BookingSystem.Core.Domain.Common;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class ResourceAccessControl : BaseEntity
+		{
+		public Guid ResourceId { get; private set; }
+		public Guid RoleId { get; private set; }
+		public string AccessType { get; private set; }
+		private ResourceAccessControl() { } // Для сериализации
+		private ResourceAccessControl(
+		Guid resourceId,
+		Guid roleId,
+		string accessType)
+		{
+		ResourceId = resourceId;
+		RoleId = roleId;
+		AccessType = accessType;
+		}
+		public static ResourceAccessControl Create(
+		Guid resourceId,
+		Guid roleId,
+		string accessType)
+		{
+		return new ResourceAccessControl(resourceId, roleId, accessType);
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Users/RoleSystem/Role.cs">
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		public class Role : BaseEntity
+		{
+		public string Name { get; private set; }
+		public string Description { get; private set; }
+		public List<string>
+			Permissions { get; private set; } = new List<string>
+				();
+				private readonly List<UserRole>
+					_userRoles = new();
+					public IReadOnlyCollection<UserRole>
+						UserRoles => _userRoles.AsReadOnly();
+						private Role() { }
+						private Role(string name, string description, List<string>
+							permissions)
+							{
+							if (string.IsNullOrWhiteSpace(name))
+							throw new ArgumentException("Role name can't be null or whitespace", nameof(name));
+							Name = name;
+							Description = description;
+							Permissions = permissions ?? new List<string>
+								();
+								}
+								public static Role Create(string name, string description, List<string> permissions = null)
+    {
+        return new Role(name, description, permissions);
+    }
+    public void UpdateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Role name can't be null or whitespace", nameof(name));
+        Name = name;
+        MarkAsModified();
+    }
+    public void UpdateDescription(string description)
+    {
+        Description = description;
+        MarkAsModified();
+    }
+    public void AddPermission(string permission)
+    {
+        if (string.IsNullOrWhiteSpace(permission))
+            throw new ArgumentException("Permission can't be null or whitespace", nameof(permission));
+        if (!Permissions.Contains(permission))
+        {
+            Permissions.Add(permission);
+            MarkAsModified();
+        }
+    }
+    public void RemovePermission(string permission)
+    {
+        if (string.IsNullOrWhiteSpace(permission))
+            throw new ArgumentException("Permission can't be null or whitespace", nameof(permission));
+        if (Permissions.Contains(permission))
+        {
+            Permissions.Remove(permission);
+            MarkAsModified();
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Users/RoleSystem/UserRole.cs">
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		using BookingSystem.Core.Domain.Entities.Users;
+		using System;
+		namespace BookingSystem.Core.Domain.Entities.Users.RoleSystem
+		{
+		public class UserRole : BaseEntity
+		{
+		public Guid UserId { get; private set; }
+		public Guid RoleId { get; private set; }
+		public DateTime StartDate { get; private set; }
+		public DateTime? EndDate { get; private set; }
+		public User User { get; private set; }
+		public Role Role { get; private set; }
+		private UserRole() { }
+		private UserRole(Guid userId, Guid roleId, DateTime startDate, DateTime? endDate)
+		{
+		UserId = userId;
+		RoleId = roleId;
+		StartDate = startDate;
+		EndDate = endDate;
+		}
+		public static UserRole Create(Guid userId, Guid roleId, DateTime startDate, DateTime? endDate = null)
+		{
+		return new UserRole(userId, roleId, startDate, endDate);
+		}
+		public void UpdateEndDate(DateTime? endDate)
+		{
+		EndDate = endDate;
+		MarkAsModified();
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Users/User.cs">
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		using BookingSystem.Core.Domain.Events;
+		using BookingSystem.Core.Domain.Events.UserEvents;
+		using BookingSystem.Core.Domain.ValueObjects;
+		using BookingSystem.Core.Utils;
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class User : BaseUser
+		{
+		public Guid InstitutionId { get; private set; }
+		public Institution Institution { get; private set; }
+		public PriorityLevel Priority { get; private set; }
+		private readonly List<UserRole>
+			_userRoles = new();
+			public IReadOnlyCollection<UserRole>
+				UserRoles => _userRoles.AsReadOnly();
+				private readonly List<Meeting>
+					_meetings = new();
+					public IReadOnlyCollection<Meeting>
+						CreatedMeetings => _meetings.AsReadOnly();
+						private User(
+						string email,
+						string phoneNumber,
+						string surname,
+						string name,
+						Guid institutionId,
+						PriorityLevel priorityLevel,
+						string? patronymic = null)
+						: base(email, phoneNumber, surname, name, patronymic)
+						{
+						InstitutionId = institutionId;
+						Priority = priorityLevel;
+						AddDomainEvent(new UserCreatedEvent(Id));
+						}
+						/// <summary>
+							/// Create with basePriority(from Institution)
+							///
+						</summary>
+						/// <param name="email"></param>
+						/// <param name="phoneNumber"></param>
+						/// <param name="surname"></param>
+						/// <param name="name"></param>
+						/// <param name="institution"></param>
+						/// <param name="patronymic"></param>
+						/// <returns></returns>
+						public static User Create(
+						string email,
+						string phoneNumber,
+						string surname,
+						string name,
+						Institution institution,
+						string? patronymic = null)
+						{
+						return new User(email, phoneNumber, surname, name, institution.Id, institution.PriorityLevel, patronymic);
+						}
+						public static User Create(
+						string email,
+						string phoneNumber,
+						string surname,
+						string name,
+						Institution institution,
+						byte priority,
+						string? patronymic = null)
+						{
+						return new User(email, phoneNumber, surname, name, institution.Id, PriorityLevel.Create(priority), patronymic);
+						}
+						new public void UpdateEmail(string email)
+						{
+						base.UpdateEmail(email);
+						MarkAsModified();
+						}
+						new public void UpdatePhoneNumber(string phoneNumber)
+						{
+						base.UpdatePhoneNumber(phoneNumber);
+						MarkAsModified();
+						}
+						public void UpdateInstitution(Institution institution)
+						{
+						AddDomainEvent(new UserUpdateInstitutionEvent(Id, InstitutionId, Institution.Id));
+						InstitutionId = institution.Id;
+						Institution = institution;
+						MarkAsModified();
+						}
+						/// <param name="role"></param>
+						/// <param name="startDate"></param>
+						/// <param name="endDate"></param>
+						/// <exception cref="ArgumentNullException"></exception>
+						public void AddRole(Role role, DateTime startDate, DateTime? endDate = null)
+						{
+						if (role == null) throw new ArgumentNullException(nameof(role));
+						var existingRole = _userRoles.FirstOrDefault(ur => ur.RoleId == role.Id);
+						if (existingRole != null)
+						{
+						existingRole.UpdateEndDate(endDate);
+						}
+						else
+						{
+						var userRole = UserRole.Create(Id, role.Id, startDate, endDate);
+						_userRoles.Add(userRole);
+						}
+						AddDomainEvent(new UserRoleAssignedEvent(
+						Id,
+						role.Id,
+						startDate));
+						MarkAsModified();
+						}
+						/// <param name="role"></param>
+						/// <exception cref="ArgumentNullException"></exception>
+						public void RemoveRole(Role role)
+						{
+						if (role == null) throw new ArgumentNullException(nameof(role));
+						var userRole = _userRoles.FirstOrDefault(ur => ur.RoleId == role.Id);
+						if (userRole != null)
+						{
+						_userRoles.Remove(userRole);
+						MarkAsModified();
+						}
+						}
+						}
+						}
+					</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/AuditLog.cs">
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Events;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class AuditLog : BaseEntity
+		{
+		public Guid UserId { get; private set; }
+		public string Action { get; private set; }
+		public string EntityType { get; private set; }
+		public Guid EntityId { get; private set; }
+		public string OldData { get; private set; }
+		public string NewData { get; private set; }
+		public User User { get; private set; }
+		public BaseEntity Entity { get; private set; }
+		private AuditLog() { } // Для сериализации
+		private AuditLog(
+		User user,
+		string action,
+		string entityType,
+		BaseEntity entity,
+		string oldData,
+		string newData)
+		{
+		UserId = user.Id;
+		User = user;
+		Action = action;
+		EntityType = entityType;
+		EntityId = entity.Id;
+		Entity = entity;
+		OldData = oldData;
+		NewData = newData;
+		}
+		public static AuditLog Create(
+		User user,
+		string action,
+		string entityType,
+		BaseEntity entity,
+		string oldData,
+		string newData)
+		{
+		var auditLog = new AuditLog(
+		user,
+		action,
+		entityType,
+		entity,
+		oldData,
+		newData);
+		auditLog.AddDomainEvent(new AuditLogEntryCreatedEvent(
+		auditLog.Id,
+		action,
+		entityType,
+		entity.Id,
+		oldData,
+		newData));
+		return auditLog;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Branch.cs">
+		using BookingSystem.Core.Domain.Common;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class Branch : BaseEntity
+		{
+		public Institution Institution { get; private set; }
+		public Guid InstitutionId { get; private set; }
+		public string Name { get; private set; }
+		public string Address { get; private set; }
+		private Branch() { } // Для сериализации
+		private Branch(
+		Institution institution,
+		string name,
+		string address)
+		{
+		Institution = institution;
+		InstitutionId = institution.Id;
+		Name = name;
+		Address = address;
+		}
+		public static Branch Create(
+		Institution institution,
+		string name,
+		string address)
+		{
+		return new Branch(institution, name, address);
+		}
+		public void UpdateAddress(string newAddress)
+		{
+		Address = newAddress;
+		MarkAsModified();
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Institution.cs">
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Events;
+		using BookingSystem.Core.Domain.ValueObjects;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class Institution : BaseEntity
+		{
+		public string Name { get; private set; }
+		public Guid? ParentId { get; private set; }
+		public PriorityLevel PriorityLevel { get; private set; }
+		// Navigation
+		public Institution? Parent { get; private set; }
+		private readonly List<Branch>
+			_branches = new();
+			public IReadOnlyCollection<Branch>
+				Branches => _branches.AsReadOnly();
+				private readonly List<Institution>
+					_children = new();
+					public IReadOnlyCollection<Institution>
+						Children => _children.AsReadOnly();
+						private readonly List<Room>
+							_rooms = new();
+							public IReadOnlyCollection<Room>
+								Rooms => _rooms.AsReadOnly();
+								private readonly List<User>
+									_users = new();
+									public IReadOnlyCollection<User>
+										Users => _users.AsReadOnly();
+										private readonly List<Meeting>
+											_meetings = new();
+											public IReadOnlyCollection<Meeting>
+												Meetings => _meetings.AsReadOnly();
+												private Institution(string name)
+												{
+												Name = name;
+												}
+												public static Institution Create(string name,byte priority, Institution? parent = null)
+												{
+												var institution = new Institution(name);
+												institution.SetPriority(priority);
+												if (parent != null)
+												{
+												institution.UpdateParent(parent);
+												}
+												return institution;
+												}
+												public void SetPriority(byte priority) {
+												PriorityLevel = PriorityLevel.Create(priority);
+												}
+												public void AddBranch(Branch branch)
+												{
+												if (_branches.Contains(branch)) return;
+												_branches.Add(branch);
+												MarkAsModified();
+												}
+												public void RemoveBranch(Branch branch)
+												{
+												if (!_branches.Contains(branch)) return;
+												_branches.Remove(branch);
+												MarkAsModified();
+												}
+												public void AddChildren(Institution institution)
+												{
+												if (_children.Contains(institution)) return;
+												_children.Add(institution);
+												MarkAsModified();
+												}
+												public void RemoveChildren(Institution institution)
+												{
+												if (!_children.Contains(institution)) return;
+												_children.Remove(institution);
+												MarkAsModified();
+												}
+												public void AddUser(User user)
+												{
+												if (_users.Contains(user)) return;
+												_users.Add(user);
+												MarkAsModified();
+												}
+												public void RemoveUser(User user)
+												{
+												if (!_users.Contains(user)) return;
+												_users.Remove(user);
+												MarkAsModified();
+												}
+												public void AddRoom(Room room)
+												{
+												if (_rooms.Contains(room)) return;
+												_rooms.Add(room);
+												room.ChangeOwner(this);
+												MarkAsModified();
+												}
+												public void RemoveRoom(Room room)
+												{
+												if (!_rooms.Contains(room)) return;
+												_rooms.Remove(room);
+												room.ChangeOwner(null);
+												MarkAsModified();
+												}
+												/// <param name="newName"></param>
+												/// <exception cref="ArgumentException"></exception>
+												public void UpdateName(string newName)
+												{
+												if (string.IsNullOrWhiteSpace(newName))
+												throw new ArgumentException("Name can't be null");
+												Name = newName;
+												MarkAsModified();
+												}
+												private bool HasCycle(Institution parent)
+												{
+												var current = this;
+												while (current != null)
+												{
+												if (current == parent) return true;
+												current = current.Parent;
+												}
+												return false;
+												}
+												public void UpdateParent(Institution parent)
+												{
+												if (HasCycle(parent)) throw new InvalidOperationException("Cycle detected in institution hierarchy");
+												ParentId = parent.Id;
+												Parent = parent;
+												parent._children.Add(this);
+												AddDomainEvent(new InstitutionHierarchyChangedEvent(
+												Id,
+												parent?.Id,
+												"Updated"));
+												MarkAsModified();
+												}
+												}
+												}
+											</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/MaintenanceRequest.cs">
+		using BookingSystem.Core.Domain.Common;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class MaintenanceRequest : BaseEntity
+		{
+		public Guid RoomId { get; private set; }
+		public Guid EquipmentId { get; private set; }
+		public string Description { get; private set; }
+		public string Status { get; private set; }
+		private MaintenanceRequest() { } // Для сериализации
+		private MaintenanceRequest(
+		Guid roomId,
+		Guid equipmentId,
+		string description)
+		{
+		RoomId = roomId;
+		EquipmentId = equipmentId;
+		Description = description;
+		Status = "Open";
+		}
+		public static MaintenanceRequest Create(
+		Guid roomId,
+		Guid equipmentId,
+		string description)
+		{
+		return new MaintenanceRequest(roomId, equipmentId, description);
+		}
+		public void UpdateStatus(string newStatus)
+		{
+		Status = newStatus;
+		MarkAsModified();
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Meeting.cs">
+		// Core/Domain/Entities/Meeting.cs
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Events;
+		using BookingSystem.Core.Domain.ValueObjects;
+		namespace BookingSystem.Core.Domain.Entities;
+		public class Meeting : BaseEntity
+		{
+		public Guid CreatorId { get; private set; }
+		public Guid RoomId { get; private set; }
+		public Guid InstitutionId { get; private set; }
+		public bool IsOverridden { get; private set; }
+		public TimeRange TimeRange { get; private set; }
+		public bool IsCancelled { get; private set; } = false;
+		public DateTime StartTime { get; private set; }
+		public DateTime EndTime { get; private set; }
+		// Navigation
+		public User Creator { get; private set; }
+		public Room Room { get; private set; }
+		public Institution Institution { get; private set; }
+		public List<User>
+			Subscribers { get; private set; }
+			private Meeting() { }
+			private Meeting(
+			User creator,
+			List<User>
+				subscribers,
+				Room room,
+				Institution institution,
+				TimeRange timeRange)
+				{
+				CreatorId = creator.Id;
+				RoomId = room.Id;
+				InstitutionId = institution.Id;
+				Subscribers = subscribers;
+				Room = room;
+				Creator = creator;
+				Institution = institution;
+				TimeRange = timeRange;
+				StartTime = timeRange.Start;
+				EndTime = timeRange.End;
+				AddDomainEvent(new BookingCreatedEvent(
+				Id,
+				CreatorId,
+				RoomId,
+				TimeRange.Start,
+				TimeRange.End
+				));
+				Validate();
+				}
+				public static Meeting Create(
+				User creator,
+				Room room,
+				DateTime startTime,
+				DateTime endTime,
+				Institution institution,
+				List<User>
+					subscribers = null)
+					{
+					return new Meeting(
+					creator,
+					subscribers??= new(),
+					room,
+					institution,
+					TimeRange.Create(startTime,endTime));
+					}
+					public void Cancel(string reason)
+					{
+					IsOverridden = true;
+					IsCancelled = true;
+					AddDomainEvent(new BookingCanceledEvent(
+					Id,
+					CreatorId,
+					reason));
+					MarkAsModified();
+					}
+					public void Uncancel()
+					{
+					IsCancelled = false;
+					AddDomainEvent(new BookingUncanceledEvent(
+					Id,
+					CreatorId
+					));
+					MarkAsModified();
+					}
+					public void Subscribe(User user)
+					{
+					Subscribers.Add(user);
+					MarkAsModified();
+					}
+					public void Unsubscribe(User user)
+					{
+					Subscribers.Remove(user);
+					MarkAsModified();
+					}
+					//Changing
+					/// <exception cref="InvalidOperationException"></exception>
+					public void MarkAsOverridden()
+					{
+					if (IsOverridden)
+					throw new InvalidOperationException("Booking are already taken");
+					IsOverridden = true;
+					MarkAsModified();
+					}
+					//Validation
+					/// <exception cref="ArgumentException"></exception>
+					private void Validate()
+					{
+					}
+					}
+				</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Notification.cs">
+		using BookingSystem.Core.Domain.Common;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class Notification : BaseEntity
+		{
+		public Guid RecipientId { get; private set; }
+		public string MessageType { get; private set; }
+		public string Content { get; private set; }
+		public bool IsRead { get; private set; }
+		private Notification() { } // Для сериализации
+		private Notification(
+		Guid recipientId,
+		string messageType,
+		string content)
+		{
+		RecipientId = recipientId;
+		MessageType = messageType;
+		Content = content;
+		IsRead = false;
+		}
+		public static Notification Create(
+		Guid recipientId,
+		string messageType,
+		string content)
+		{
+		return new Notification(recipientId, messageType, content);
+		}
+		public void MarkAsRead()
+		{
+		IsRead = true;
+		MarkAsModified();
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/OutboxMessage.cs">
+		using BookingSystem.Core.Domain.Common;
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class OutboxMessage : BaseEntity
+		{
+		public string EventType { get; set; }
+		public string Payload { get; set; }
+		public DateTime? ProcessedAt { get; set; }
+		private OutboxMessage(string eventType, string payload)
+		{
+		EventType = eventType;
+		Payload = payload;
+		}
+		public static OutboxMessage Create(string eventType, string payload)
+		{
+		return new OutboxMessage(eventType, payload);
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Room.cs">
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Events;
+		using BookingSystem.Core.Domain.ValueObjects;
+		using System.Text.Json;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class Room : BaseEntity
+		{
+		public Guid BuildingId { get; private set; }
+		public Equipment Equipment { get; private set; }
+		public bool IsBooked { get; private set; } = false;
+		public bool IsAvailable { get; private set; } = true;
+		public uint CountOfPlaces { get; private set; }
+		public Guid? OwnerInstitutionId { get; private set; }
+		public Institution? OwnerInstitution { get; private set; }
+		private readonly List<Meeting>
+			_meetings = new();
+			public IReadOnlyCollection<Meeting>
+				Meetings => _meetings.AsReadOnly();
+				private Room(
+				Guid buildingId,
+				Equipment equipment,
+				uint countOfPlaces,
+				Guid? ownerInstitutionId)
+				{
+				BuildingId = buildingId;
+				Equipment = equipment;
+				CountOfPlaces = countOfPlaces;
+				OwnerInstitutionId = ownerInstitutionId;
+				Validate();
+				}
+				public void ChangeOwner(Institution? newOwner)
+				{
+				if (newOwner!=null)
+				{
+				OwnerInstitution = newOwner;
+				OwnerInstitutionId = newOwner.Id;
+				}
+				else
+				{
+				OwnerInstitutionId = null;
+				OwnerInstitution = null;
+				}
+				MarkAsModified();
+				}
+				public static Room Create(
+				Guid buildingId,
+				Equipment equipment,
+				uint countOfPlaces,
+				Institution ownerInstitution)
+				{
+				return new Room(buildingId, equipment, countOfPlaces, ownerInstitution?.Id);
+				}
+				public void SetAvailable() {
+				IsAvailable = true;
+				MarkAsModified();
+				}
+				public void SetUnavailable() {
+				IsAvailable = false;
+				MarkAsModified();
+				}
+				/// <exception cref="ArgumentException"></exception>
+				private void Validate()
+				{
+				if (CountOfPlaces <= 0)
+				throw new ArgumentException("Count of places must be greater than zero");
+				/*    if (Equipment == null || !Equipment.RootElement.ValueKind.Equals(JsonValueKind.Object))
+				throw new ArgumentException("Equipment can't be null or empty");*/
+				}
+				public void UpdateEquipment(Equipment newEquipment)
+				{
+				var oldEquipment = Equipment;
+				Equipment = newEquipment;
+				MarkAsModified();
+				AddDomainEvent(new RoomEquipmentUpdatedEvent(
+				Id,
+				oldEquipment,
+				newEquipment));
+				}
+				public void UpdateCountOfPlaces(uint newCount)
+				{
+				CountOfPlaces = newCount;
+				MarkAsModified();
+				}
+				public bool CanBeBooked(TimeRange timeRange, PriorityLevel userPriority)
+				{
+				var overlappingMeetings = Meetings.Where(m => m.TimeRange.IsOverlapping(timeRange)).ToArray();
+				if(overlappingMeetings != null)
+				{
+				foreach( Meeting meeting in overlappingMeetings)
+				{
+				if (meeting.Creator.Priority.IsHigherThan(userPriority));
+				return false;
+				}
+				}
+				return true;
+				}
+				}
+				}
+			</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Entities/Schedule.cs">
+		using BookingSystem.Core.Domain.Common;
+		namespace BookingSystem.Core.Domain.Entities
+		{
+		public class Schedule : BaseEntity
+		{
+		public Guid RoomId { get; private set; }
+		public DateTime StartDate { get; private set; }
+		public DateTime EndDate { get; private set; }
+		public string Reason { get; private set; }
+		private Schedule() { } // Для сериализации
+		private Schedule(
+		Guid roomId,
+		DateTime startDate,
+		DateTime endDate,
+		string reason)
+		{
+		RoomId = roomId;
+		StartDate = startDate;
+		EndDate = endDate;
+		Reason = reason;
+		}
+		/// <exception cref="ArgumentException"></exception>
+		public static Schedule Create(
+		Guid roomId,
+		DateTime startDate,
+		DateTime endDate,
+		string reason)
+		{
+		if (startDate >= endDate) throw new ArgumentException("EndDate must be after StartDate");
+		return new Schedule(roomId, startDate, endDate, reason);
+		}
+		public bool IsWithinSchedule(DateTime date)
+		{
+		return date >= StartDate && date <= EndDate;
+		}
+		}
+		}
+	</file>
+	
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/BookingEvents/BookingCanceledEvent.cs">
+		using BookingSystem.Core.Domain.Events;
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class BookingCanceledEvent : IDomainEvent
+		{
+		public Guid MeetingId { get; }
+		public Guid UserId { get; }
+		public string Reason { get; }
+		public DateTime OccurredOn { get; }
+		public BookingCanceledEvent(
+		Guid meetingId,
+		Guid userId,
+		string reason)
+		{
+		MeetingId = meetingId;
+		UserId = userId;
+		Reason = reason;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/BookingEvents/BookingCreatedEvent.cs">
+		using BookingSystem.Core.Domain.Events;
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class BookingCreatedEvent : IDomainEvent
+		{
+		public Guid MeetingId { get; }
+		public Guid UserId { get; }
+		public Guid RoomId { get; }
+		public DateTime StartTime { get; }
+		public DateTime EndTime { get; }
+		public DateTime OccurredOn { get; }
+		public BookingCreatedEvent(
+		Guid meetingId,
+		Guid userId,
+		Guid roomId,
+		DateTime startTime,
+		DateTime endTime)
+		{
+		MeetingId = meetingId;
+		UserId = userId;
+		RoomId = roomId;
+		StartTime = startTime;
+		EndTime = endTime;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/BookingEvents/BookingOverridenEvent.cs">
+		using BookingSystem.Core.Domain.Events;
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class BookingOverriddenEvent : IDomainEvent
+		{
+		public Guid OldMeetingId { get; }
+		public Guid NewMeetingId { get; }
+		public Guid OverriderInstitutionId { get; }
+		public Guid OverridedInstitutionId { get; }
+		public DateTime OccurredOn { get; }
+		public BookingOverriddenEvent(
+		Guid oldMeetingId,
+		Guid newMeetingId,
+		Guid overriderInstitutionId,
+		Guid overridedInstitutionId)
+		{
+		OldMeetingId = oldMeetingId;
+		NewMeetingId = newMeetingId;
+		OverriderInstitutionId = overriderInstitutionId;
+		OverridedInstitutionId = overridedInstitutionId;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/BookingEvents/BookingUncanceledEvent.cs">
+		using BookingSystem.Core.Domain.Events;
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class BookingUncanceledEvent : IDomainEvent
+		{
+		public Guid MeetingId { get; }
+		public Guid UserId { get; }
+		public DateTime OccurredOn { get; }
+		public BookingUncanceledEvent(
+		Guid meetingId,
+		Guid userId)
+		{
+		MeetingId = meetingId;
+		UserId = userId;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/Common/IDomainEvent.cs">
+		using MediatR;
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public interface IDomainEvent:INotification
+		{
+		DateTime OccurredOn { get; }
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/InstitutionEvents/InstitutionHierarchyChangedEvent.cs">
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class InstitutionHierarchyChangedEvent : IDomainEvent
+		{
+		public Guid InstitutionId { get; }
+		public Guid? ParentId { get; }
+		public string ActionType { get; } // "Added" or "Removed"
+		public DateTime OccurredOn { get; }
+		public InstitutionHierarchyChangedEvent(
+		Guid institutionId,
+		Guid? parentId,
+		string actionType)
+		{
+		InstitutionId = institutionId;
+		ParentId = parentId;
+		ActionType = actionType;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/Other/AuditLogEntryCreatedEvent.cs">
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class AuditLogEntryCreatedEvent : IDomainEvent
+		{
+		public Guid AuditLogId { get; }
+		public string Action { get; }
+		public Guid EntityId { get; }
+		public string EntityType { get; }
+		public string OldData { get; }
+		public string NewData { get; }
+		public DateTime OccurredOn { get; }
+		public AuditLogEntryCreatedEvent(
+		Guid auditLogId,
+		string action,
+		string entityType,
+		Guid entityId,
+		string oldData,
+		string newData)
+		{
+		AuditLogId = auditLogId;
+		Action = action;
+		EntityType = entityType;
+		EntityId = entityId;
+		OldData = oldData;
+		NewData = newData;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/Other/MaintenanceRequestRaisedEvent.cs">
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class MaintenanceRequestRaisedEvent : IDomainEvent
+		{
+		public Guid RequestId { get; }
+		public Guid RoomId { get; }
+		public Guid EquipmentId { get; }
+		public string Description { get; }
+		public DateTime OccurredOn { get; }
+		public MaintenanceRequestRaisedEvent(
+		Guid requestId,
+		Guid roomId,
+		Guid equipmentId,
+		string description)
+		{
+		RequestId = requestId;
+		RoomId = roomId;
+		EquipmentId = equipmentId;
+		Description = description;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/RoomEvents/RoomBookedEvent.cs">
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class RoomBookedEvent : IDomainEvent
+		{
+		public Guid RoomId { get; }
+		public DateTime BookingTime { get; }
+		public Guid InstitutionId { get; }
+		public byte InstitutionPriority { get; }
+		public DateTime OccurredOn { get; }
+		public RoomBookedEvent(
+		Guid roomId,
+		Guid institutionId,
+		DateTime bookingTime,
+		byte institutionPriority)
+		{
+		RoomId = roomId;
+		InstitutionId = institutionId;
+		BookingTime = bookingTime;
+		InstitutionPriority = institutionPriority;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/RoomEvents/RoomEquipmentUpdatedEvent.cs">
+		using BookingSystem.Core.Domain.ValueObjects;
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class RoomEquipmentUpdatedEvent : IDomainEvent
+		{
+		public Guid RoomId { get; }
+		public Equipment OldEquipment { get; }
+		public Equipment NewEquipment { get; }
+		public DateTime OccurredOn { get; }
+		public RoomEquipmentUpdatedEvent(
+		Guid roomId,
+		Equipment oldEquipment,
+		Equipment newEquipment)
+		{
+		RoomId = roomId;
+		OldEquipment = oldEquipment;
+		NewEquipment = newEquipment;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/UserEvents/UserCreatedEvent.cs">
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Core.Domain.Events.UserEvents
+		{
+		class UserCreatedEvent : IDomainEvent
+		{
+		public Guid UserId { get; }
+		public DateTime OccurredOn { get; }
+		public UserCreatedEvent(
+		Guid userId
+		)
+		{
+		UserId = userId;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/UserEvents/UserRoleAssignedEvent.cs">
+		namespace BookingSystem.Core.Domain.Events
+		{
+		public class UserRoleAssignedEvent : IDomainEvent
+		{
+		public Guid UserId { get; }
+		public Guid RoleId { get; }
+		public DateTime EffectiveDate { get; }
+		public DateTime OccurredOn { get; }
+		public UserRoleAssignedEvent(
+		Guid userId,
+		Guid roleId,
+		DateTime effectiveDate)
+		{
+		UserId = userId;
+		RoleId = roleId;
+		EffectiveDate = effectiveDate;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Events/UserEvents/UserUpdateInstitutionEvent.cs">
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Core.Domain.Events.UserEvents
+		{
+		class UserUpdateInstitutionEvent : IDomainEvent
+		{
+		public Guid UserId { get; }
+		public Guid OldInstitutionId { get; }
+		public  Guid NewInstitutionId { get; }
+		public DateTime OccurredOn { get; }
+		public UserUpdateInstitutionEvent(
+		Guid userId,
+		Guid oldInstitutionId,
+		Guid newInstitutionId)
+		{
+		UserId = userId;
+		OldInstitutionId = oldInstitutionId;
+		NewInstitutionId = newInstitutionId;
+		OccurredOn = DateTime.UtcNow;
+		}
+		}
+		}
+	</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/Repositories/IRepository.cs">
+		using BookingSystem.Core.Domain.Common;
+		using BookingSystem.Core.Domain.Entities;
+		using BookingSystem.Core.Domain.Entities.Users.RoleSystem;
+		using BookingSystem.Core.Domain.ValueObjects;
+		using System;
+		using System.Collections.Generic;
+		using System.Linq;
+		using System.Text;
+		using System.Threading.Tasks;
+		namespace BookingSystem.Core.Domain.Repositories
+		{
+		public interface IRepository<T>
+			where T : BaseEntity
+			{
+			Task<T>
+				GetByIdAsync(Guid Id);
+				T GetById(Guid Id);
+				Task<List<T>
+					> GetAllNotArchiveAsync();
+					List<T>
+						GetAllNotArchive();
+						Task<List<T>
+							> GetAllArchiveAsync();
+							List<T>
+								GetAllArchive();
+								Task<List<T>
+									> GetAllAsync();
+									List<T>
+										GetAll();
+										Task AddAsync(T entity);
+										Task UpdateAsync(T entity);
+										void Update(T entity);
+										Task DeleteAsync(T entity);
+										void Delete(T entity);
+										}
+										public interface IRoomRepository : IRepository<Room>
+											{
+											Task<bool>
+												IsRoomAvailableAsync(Guid roomId, TimeRange timeRange);
+												bool IsRoomAvailable(Guid roomId, TimeRange timeRange);
+												Task<bool>
+													IsRoomAvailableAsync(Room room, TimeRange timeRange);
+													Task<bool>
+														IsRoomAvailableAsync(User user, TimeRange timeRange, Room room)
+														bool IsRoomAvailable(Room room, TimeRange timeRange);
+														Task<List<Room>
+															> GetAllAvailableRoomsAsync();
+															List<Room>
+																GetAllAvailableRooms();
+																List<Room>
+																	GetByEquipment();
+																	Task<List<Room>
+																		> GetByEquipmentAsync();
+																		Task<List<Room>
+																			> GetByInstitutionAsync();
+																			List<Room>
+																				GetByInstitution();
+																				Task<List<Room>
+																					> GetByBranchAsync();
+																					List<Room>
+																						GetByBranch();
+																						}
+																						public interface IMeetingRepository : IRepository<Meeting>
+																							{
+																							List<Meeting>
+																								GetMeetingsByRoom(Guid roomId);
+																								Task<List<Meeting>
+																									> GetMeetingsByRoomAsync(Guid roomId);
+																									List<Meeting>
+																										GetMeetingsByUser(Guid userId);
+																										}
+																										public interface IUserRepository : IRepository<User>
+																											{
+																											Task<User>
+																												GetByEmailAsync(string email);
+																												User GetByEmail(string email);
+																												Task<User>
+																													GetByPhoneNumberAsync(string phone);
+																													User GetByPhoneNumber(string phone);
+																													Task<List<User>
+																														> GetUsersByRoleAsync(Guid roleId);
+																														List<User>
+																															GetUsersByRole(Guid roleId);
+																															Task<List<User>
+																																> GetUsersByRolesAsync(List<Guid>
+																																	rolesId);
+																																	List<User>
+																																		GetUsersByRoles(List<Guid>
+																																			rolesId);
+																																			}
+																																			public interface IRoleRepository : IRepository<Role>
+																																				{
+																																				Task<Role>
+																																					GetByNameAsync(string name);
+																																					Role GetByName(string name);
+																																					}
+																																					public interface IUserRoleRepository : IRepository<UserRole>
+																																						{
+																																						UserRole GetByUserId(Guid userId);
+																																						Task<UserRole>
+																																							GetByUserIdAsync(Guid userId);
+																																							UserRole GetByRoleId(Guid roleId);
+																																							Task<UserRole>
+																																								GetByRoleIdAsync(Guid roleId);
+																																								}
+																																								public interface IAuditLogRepository : IRepository<AuditLog>
+																																									{
+																																									}
+																																									public interface IBranchRepository : IRepository<Branch>
+																																										{
+																																										Task<List<Branch>
+																																											> GetAllByInstitutionAsync(Guid institutionId);
+																																											List<Branch>
+																																												GetAllByInstitution(Guid institutionId);
+																																												Task<Branch>
+																																													GetByAddressAsync(string address);
+																																													}
+																																													public interface IMaintenanceRepository : IRepository<MaintenanceRequest>
+																																														{
+																																														Task<List<MaintenanceRequest>
+																																															> GetAllByRoomAsync(Guid roomId);
+																																															List<MaintenanceRequest>
+																																																GetAllByRoom(Guid roomId);
+																																																Task<List<MaintenanceRequest>
+																																																	> GetAllByEquipmentAsync(Guid equipmentId);
+																																																	List<MaintenanceRequest>
+																																																		GetAllByEquipment(Guid equipmentId);
+																																																		}
+																																																		public interface INotificationRepository : IRepository<Notification>
+																																																			{
+																																																			Task<List<Notification>
+																																																				> GetByRecepientAsync(Guid recepientId);
+																																																				List<Notification>
+																																																					GetByRecepient(Guid recepientId);
+																																																					}
+																																																					public interface IScheduleRepository : IRepository<Schedule>
+																																																						{
+																																																						Task<Schedule>
+																																																							GetByRoomAsync(Guid roomId);
+																																																							Schedule GetByRoom(Guid roomId);
+																																																							}
+																																																							public interface IInstitutionRepository : IRepository<Institution>
+																																																								{
+																																																								Task<List<Institution>
+																																																									> GetAllChildrenAsync(Guid institutionId);
+																																																									List<Institution>
+																																																										GetAllChildren(Guid institutionId);
+																																																										Task<Institution>
+																																																											GetParentAsync(Guid institutionId);
+																																																											Institution GetParent(Guid institutionId);
+																																																											Task<Institution>
+																																																												GetByBranchAsync(Guid branchId);
+																																																												Institution GetByBranch(Guid branchId);
+																																																												Task<List<Branch>
+																																																													> GetBranchesAsync(Guid institutionId);
+																																																													List<Branch> GetBranches(Guid institutionId);
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/ValueObjects/Equipment.cs">
+		// Ignore Spelling: Json
+		using System.Diagnostics;
+		using System.Text.Json;
+		namespace BookingSystem.Core.Domain.ValueObjects
+		{
+		public class Equipment : ValueObject
+		{
+		public bool HasProjector { get; private set; }
+		public bool HasSoundproofing { get; private set; }
+		public bool HasWhiteboard { get; private set; }
+		public bool HasInteractiveWhiteboard { get; private set; }
+		public ushort NumberOfComputers { get; private set; }
+		public bool HasVideoConferenceSystem { get; private set; }
+		public bool HasMicrophones { get; private set; }
+		public ushort NumberOfMicrophones { get; private set; }
+		public bool HasAirConditioning { get; private set; }
+		public bool HasTelevisions { get; private set; }
+		public ushort NumberOfTelevisions { get; private set; }
+		public bool HasWiFi { get; private set; }
+		private Equipment() { }
+		private Equipment(
+		bool hasProjector,
+		bool hasSoundproofing,
+		bool hasWhiteboard,
+		bool hasInteractiveWhiteboard,
+		bool hasVideoConferenceSystem,
+		bool hasMicrophones,
+		bool hasWiFi,
+		bool hasAirConditioning,
+		bool hasTelevions,
+		ushort numberOfMicrophones,
+		ushort numberOfTelevisions,
+		ushort numberOfComputers
+		)
+		{
+		HasProjector = hasProjector;
+		HasSoundproofing = hasSoundproofing;
+		HasWhiteboard = hasWhiteboard;
+		HasInteractiveWhiteboard = hasInteractiveWhiteboard;
+		NumberOfComputers = numberOfComputers;
+		HasVideoConferenceSystem = hasVideoConferenceSystem;
+		HasMicrophones = hasMicrophones;
+		NumberOfMicrophones = numberOfMicrophones;
+		HasAirConditioning = hasAirConditioning;
+		HasTelevisions = hasTelevions;
+		NumberOfTelevisions = numberOfTelevisions;
+		HasWiFi = hasWiFi;
+		}
+		public static Equipment Create(
+		bool hasProjector,
+		bool hasSoundproofing,
+		bool hasWhiteboard,
+		bool hasInteractiveWhiteboard,
+		bool hasVideoConferenceSystem,
+		bool hasMicrophones,
+		bool hasWiFi,
+		bool hasAirConditioning,
+		bool hasTelevions,
+		ushort numberOfMicrophones = 0,
+		ushort numberOfTelevisions = 0,
+		ushort numberOfComputers = 0)
+		{
+		return new Equipment(
+		hasProjector,
+		hasSoundproofing,
+		hasWhiteboard,
+		hasInteractiveWhiteboard,
+		hasVideoConferenceSystem,
+		hasMicrophones,
+		hasWiFi,
+		hasAirConditioning,
+		hasTelevions,
+		numberOfMicrophones,
+		numberOfTelevisions,
+		numberOfComputers);
+		}
+		public JsonDocument ToJson()
+		{
+		return JsonSerializer.SerializeToDocument(this);
+		}
+		public static Equipment FromJson(string json)
+		{
+		return JsonSerializer.Deserialize<Equipment>
+			(json);
+			}
+			public static Equipment FromJson(JsonDocument json)
+			{
+			return JsonSerializer.Deserialize<Equipment>
+				(json);
+				}
+				public override string ToString()
+				{
+				return JsonSerializer.Serialize(this);
+				}
+				protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return HasProjector;
+            yield return HasSoundproofing;
+            yield return HasWhiteboard;
+            yield return HasInteractiveWhiteboard;
+            yield return NumberOfComputers;
+            yield return HasVideoConferenceSystem;
+            yield return HasMicrophones;
+            yield return NumberOfMicrophones;
+            yield return HasAirConditioning;
+            yield return HasTelevisions;
+            yield return NumberOfTelevisions;
+            yield return HasWiFi;
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/ValueObjects/PriorityLevel.cs">
+		namespace BookingSystem.Core.Domain.ValueObjects
+		{
+		public class PriorityLevel : ValueObject
+		{
+		private const byte MinValue = 1;
+		private const byte MaxValue = 10;
+		public byte Level { get; private set; }
+		private PriorityLevel() { } // Для сериализации
+		private PriorityLevel(byte level)
+		{
+		if (level < MinValue || level > MaxValue)
+                throw new ArgumentOutOfRangeException(
+                    nameof(level),
+                    $"Priority must be in [{MinValue}, {MaxValue}]."
+                );
+            Level = level;
+        }
+        public static PriorityLevel Create(byte level)
+        {
+            return new PriorityLevel(level);
+        }
+        public bool IsHigherThan(PriorityLevel other)
+        {
+            return Level > other.Level;
+        }
+        public static PriorityLevel Highest => Create(MaxValue);
+        public static PriorityLevel Lowest => Create(MinValue);
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Level;
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/ValueObjects/TimeRange.cs">
+		namespace BookingSystem.Core.Domain.ValueObjects
+		{
+		public class TimeRange : ValueObject
+		{
+		public DateTime Start { get; private set; }
+		public DateTime End { get; private set; }
+		private TimeRange() { } // Для сериализации
+		private TimeRange(DateTime start, DateTime end)
+		{
+		if (start >= end)
+		throw new ArgumentException("End should be later than start");
+		if (end - start > TimeSpan.FromHours(24))
+		throw new ArgumentException("Max duration can't be more than 24h");
+		Start = start;
+		End = end;
+		}
+		public static TimeRange Create(DateTime start, DateTime end)
+		{
+		return new TimeRange(start, end);
+		}
+		public bool IsOverlapping(TimeRange other)
+		{
+		return (Start < other.End) && (End > other.Start);
+		}
+		public TimeSpan Duration => End - Start;
+		protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Start;
+            yield return End;
+        }
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Domain/ValueObjects/ValueObject.cs">
+		public abstract class ValueObject
+		{
+		protected static bool EqualOperator(ValueObject left, ValueObject right)
+		{
+		if (left is null ^ right is null)
+		{
+		return false;
+		}
+		return left is null || left.Equals(right);
+		}
+		protected static bool NotEqualOperator(ValueObject left, ValueObject right)
+		{
+		return !(EqualOperator(left, right));
+		}
+		protected abstract IEnumerable<object> GetEqualityComponents();
+    public override bool Equals(object obj)
+    {
+        if (obj == null || obj.GetType() != GetType())
+        {
+            return false;
+        }
+        var other = (ValueObject)obj;
+        return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
+    }
+    public override int GetHashCode()
+    {
+        return GetEqualityComponents()
+            .Select(x => x != null ? x.GetHashCode() : 0)
+            .Aggregate((x, y) => x ^ y);
+    }
+}
+</file>
+
+	<file path="BoolingSystem — копия/BookinngSystem.Core/Utils/ContactValidator.cs">
+		// Ignore Spelling: Utils
+		using System.Text.RegularExpressions;
+		namespace BookingSystem.Core.Utils
+		{
+		public static class ContactValidator
+		{
+		private const string EmailPattern = @"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}";
+		private const string PhoneNumberPattern = @"^\+?(\d[\d\-\.\s$$]{7,}\d)$";
+		public static void ValidateEmail(string email)
+		{
+		if (string.IsNullOrWhiteSpace(email))
+		throw new ArgumentException("Email can't be null or whitespace", nameof(email));
+		if (!Regex.IsMatch(email, EmailPattern))
+		throw new ArgumentException("Invalid email format", nameof(email));
+		}
+		public static string NormalizeEmail(string email)
+		{
+		return email.ToUpperInvariant();
+		}
+		public static void ValidatePhoneNumber(string phoneNumber)
+		{
+		if (string.IsNullOrWhiteSpace(phoneNumber))
+		throw new ArgumentException("Phone number can't be null or whitespace", nameof(phoneNumber));
+		if (!Regex.IsMatch(phoneNumber, PhoneNumberPattern))
+		throw new ArgumentException("Invalid phone number format", nameof(phoneNumber));
+		}
+		public static string NormalizePhoneNumber(string phoneNumber)
+		{
+		return new string(phoneNumber.Where(char.IsDigit).ToArray());
+		}
+		}
+		}
+	</file>
+
+</files>

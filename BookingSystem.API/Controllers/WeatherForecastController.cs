@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookingSystem.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {

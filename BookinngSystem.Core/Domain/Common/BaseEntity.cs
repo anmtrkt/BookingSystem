@@ -1,20 +1,38 @@
-﻿namespace BookingSystem.Core.Domain.Common
+﻿using BookingSystem.Core.Domain.Events;
+using System.ComponentModel.DataAnnotations;
+
+namespace BookingSystem.Core.Domain.Common
 {
     public abstract class BaseEntity
     {
-        public Guid Id { get; protected set; }
-        public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+        public Guid Id { get; init; }
+        public DateTime CreatedAt { get; init; }
         public DateTime? ModifiedAt { get; private set; }
-        public byte[] RowVersion { get; private set; } = Array.Empty<byte>();
+        public bool IsArchive { get; private set; } = false;
 
-        protected BaseEntity() => Id = Guid.NewGuid();
-        protected BaseEntity(Guid id) => Id = id;
+
+
+        protected BaseEntity() {
+            Id = Guid.NewGuid();
+            CreatedAt = DateTime.UtcNow;
+        }
 
         public void MarkAsModified()
         {
             ModifiedAt = DateTime.UtcNow;
-            RowVersion = Guid.NewGuid().ToByteArray(); // update RowVersion for Optimistic lock
+            
         }
+        public void SetArchive()
+        {
+            IsArchive = true;
+            MarkAsModified();
+        }
+        public void SetUnarchive()
+        {
+            IsArchive = false;
+            MarkAsModified();
+        }
+
 
 
     }

@@ -4,6 +4,7 @@
 
 using System.Diagnostics;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BookingSystem.Core.Domain.ValueObjects
 {
@@ -23,8 +24,38 @@ namespace BookingSystem.Core.Domain.ValueObjects
         public bool HasWiFi { get; private set; }
 
 
-        private Equipment() { }
+     
+        [JsonConstructor]
+        private Equipment(
+       bool hasProjector,
+       bool hasSoundproofing,
+       bool hasWhiteboard,
+       bool hasInteractiveWhiteboard,
+       ushort numberOfComputers,
+       bool hasVideoConferenceSystem,
+       bool hasMicrophones,
+       ushort numberOfMicrophones,
+       bool hasAirConditioning,
+       bool hasTelevisions,
+       ushort numberOfTelevisions,
+       bool hasWiFi
+   )
+        {
+            HasProjector = hasProjector;
+            HasSoundproofing = hasSoundproofing;
+            HasWhiteboard = hasWhiteboard;
+            HasInteractiveWhiteboard = hasInteractiveWhiteboard;
+            NumberOfComputers = numberOfComputers;
+            HasVideoConferenceSystem = hasVideoConferenceSystem;
+            HasMicrophones = hasMicrophones;
+            NumberOfMicrophones = numberOfMicrophones;
+            HasAirConditioning = hasAirConditioning;
+            HasTelevisions = hasTelevisions;
+            NumberOfTelevisions = numberOfTelevisions;
+            HasWiFi = hasWiFi;
+        }
 
+        private Equipment() { }
         private Equipment(
             bool hasProjector,
             bool hasSoundproofing,
@@ -82,26 +113,8 @@ namespace BookingSystem.Core.Domain.ValueObjects
                 numberOfTelevisions,
                 numberOfComputers);
         }
-        public JsonDocument ToJson()
-        {
-            return JsonSerializer.SerializeToDocument(this);
-        }
-
-
-        public static Equipment FromJson(string json)
-        {
-           
-            return JsonSerializer.Deserialize<Equipment>(json);
-
-        }
-        public static Equipment FromJson(JsonDocument json)
-        {
-            return JsonSerializer.Deserialize<Equipment>(json);
-        }
-        public override string ToString()
-        {
-            return JsonSerializer.Serialize(this);
-        }
+ 
+      
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
