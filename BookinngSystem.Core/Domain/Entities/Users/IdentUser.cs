@@ -22,6 +22,7 @@ namespace BookingSystem.Core.Domain.Entities.Users
     {
         public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
         public DateTime? ModifiedAt { get; private set; }
+        public PriorityLevel PostPriority { get; private set; }
         public bool IsArchive { get; private set; } = false;
         public string Post { get; private set; }
         public string LastPost { get; private set; } = "";
@@ -89,7 +90,10 @@ namespace BookingSystem.Core.Domain.Entities.Users
             UserName = Name;
             
         }
-        public static User Create( string name, string surname, string? patronymic, string? phoneNumber, string? email, Institution institution, string post, string lastPost = "")
+        public static User Create( 
+            string name, string surname, string? patronymic, 
+            string? phoneNumber, string? email, Institution institution, 
+            string post, PriorityLevel postLevel, string lastPost = "" )
         {
             string normalizedName = name.ToUpper();
             string normalizedSurname = surname.ToUpper();
@@ -102,13 +106,15 @@ namespace BookingSystem.Core.Domain.Entities.Users
             DateTime createdAt = DateTime.UtcNow;
             Guid id = Guid.NewGuid();
             
+            
 
             return new User(createdAt, modifiedAt, post, 
                 lastPost, surname, name, patronymic,
                 fullname, normalizedSurname, normalizedName, 
                 normalizedPatronymic, normalizedFullname, 
                 normalizedEmail, id, institution, phoneNumber)
-            { Email = email};
+            { Email = email,
+            PostPriority = postLevel};
         }
         public static UserDto TransformToDto(User user)
         {
@@ -121,7 +127,6 @@ namespace BookingSystem.Core.Domain.Entities.Users
                 LastPost = user.LastPost,
                 FullName = user.FullName,
                 IsManager = user.IsManager,
-                Institution = Institution.TransformToDto(user.Institution),
             };
 
         }

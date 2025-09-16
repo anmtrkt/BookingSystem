@@ -35,6 +35,7 @@ namespace BookingSystem.Infrastructure.Services.Services
         /// <exception cref="KeyNotFoundException"></exception>
         public async Task<Branch> CreateBranchAsync(CreateBranchDto createBranchDto)
         {
+            
             var inst = _dbContext.Institutions.Find(createBranchDto.InstitutionId);
             if (inst == null) throw new KeyNotFoundException("There is no such a branch");
             var branch = Branch.Create(inst, createBranchDto.Name, createBranchDto.Address);

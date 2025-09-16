@@ -1,4 +1,4 @@
-﻿using BookingSystem.Core.Domain.Common;
+using BookingSystem.Core.Domain.Common;
 using BookingSystem.Core.Domain.Events;
 using BookingSystem.Core.Domain.Events.RoomEvents;
 using BookingSystem.Core.Domain.Models.BranchModels;
@@ -14,7 +14,6 @@ namespace BookingSystem.Core.Domain.Entities.Institutions
 #pragma warning restore S2933 // Fields that are only assigned in the constructor should be "readonly"
         public ICollection<Building> Buildings => _buildings;
         public string Name { get; private set; }
-        public string Address { get; private set; }
 
 #pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Рассмотрите возможность добавления модификатора "required" или объявления значения, допускающего значение NULL.
         private Branch() { }

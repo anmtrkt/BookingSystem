@@ -11,11 +11,13 @@ namespace BookingSystem.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("Users");
 
+
             builder.HasKey(u => u.Id);
 
-            builder.Property(u => u.Name)
-                .IsRequired()
-                .HasMaxLength(128);
+            builder.OwnsOne(u => u.PostPriority, pp =>
+            {
+                pp.Property(p => p.Level).HasColumnName("PriorityLevel");
+            });
 
             builder.Property(u => u.Surname)
                 .IsRequired()

@@ -37,7 +37,38 @@ namespace BookingSystem.Infrastructure.Services.Services
             return Meeting.TransformToDto(meeting);
  
         }
-        
+        public async Task<bool> CheckIfCanBook(Room room, User user, Schedule schedule, DateTime startTime, DateTime endTime)
+        {
+            
+            for(int i = 0; i < schedule.TimeRanges.Count; i++)
+            {
+                if (schedule.TimeRanges.ElementAt(i).IsOverlapping(startTime, endTime))
+                {
+                    var meetingAtThisTimeRange = await _dbContext.Meetings.FirstOrDefaultAsync(m=>m.Id == schedule.TimeRanges.ElementAt(i).MeetingId);
+                    var creator = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == meetingAtThisTimeRange.CreatorId);
+                    bool iCan = CheckUserPriority(user, creator);
+                    if (iCan) { _dbContext.Meetings.Remove(meetingAtThisTimeRange);
+                        return CheckUserPriority(user, creator);
+                    };
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool CheckUserPriority(User tryingToCreate, User alreadyCreator)
+        {
+            var institution1 = _dbContext.Institutions.FirstOrDefault(i => i.Id == tryingToCreate.InstitutionId);
+            var institution2 = _dbContext.Institutions.FirstOrDefault(i => i.Id == alreadyCreator.InstitutionId);
+            if (institution1.PriorityLevel.IsEqual(institution2.PriorityLevel) == -1) return false;
+            if (institution1.PriorityLevel.IsEqual(institution2.PriorityLevel) == 1) return true;
+            else
+            {
+                if(tryingToCreate.PostPriority.IsEqual(alreadyCreator.PostPriority) == -1) return false;
+                if (tryingToCreate.PostPriority.IsEqual(alreadyCreator.PostPriority) == 1) return true;
+                return false;
+            };
+
+        }
         /// <returns></returns>
         /// <exception cref="KeyNotFoundException"></exception>
         public async Task<List<MeetingDto>> GetMeetingsAsync()
@@ -68,27 +99,29 @@ namespace BookingSystem.Infrastructure.Services.Services
         /// <returns></returns>
         /// <exception cref="KeyNotFoundException"></exception>
         /// <exception cref="InvalidOperationException"></exception>
-        public async Task<MeetingDto> CreateMeetingAsync(MeetingCreatedDto meetingDto, User user)
+        public async Task<MeetingDto?> CreateMeetingAsync(MeetingCreatedDto meetingDto, User user)
         {
+            
             var room = await _dbContext.Rooms.FindAsync(meetingDto.RoomId);
             if (room == null) throw new KeyNotFoundException($"Unable to create Meeting: Can not find a Room by given ID{meetingDto.RoomId}");
             var inst = await _dbContext.Institutions.FindAsync(meetingDto.InstitutionId);
             if (inst == null) throw new KeyNotFoundException($"Unable to create Meeting: Can not find a Institution by given ID{meetingDto.InstitutionId}");
-            var schedule = await _dbContext.Schedules.FindAsync(room.ScheduleId);
+            var schedule = await _dbContext.Schedules.Include(s => s.TimeRanges).Where(s => s.Id == room.ScheduleId).FirstOrDefaultAsync();
             if (schedule == null) throw new KeyNotFoundException($"Unable to create Meeting: Can not find a room Schedule by given ID{room.ScheduleId}");
+            bool iCan = await CheckIfCanBook(room, user, schedule, meetingDto.StartTime, meetingDto.EndTime);
+            if (!iCan) { return null; }
 
-            TimeRange meetingTimeRang = TimeRange.Create(meetingDto.StartTime, meetingDto.EndTime);
-            
-            foreach(var timeRange in schedule.TimeRanges)
-            {
-                if(timeRange.IsOverlapping(ref meetingTimeRang))
-                {
-                    throw new InvalidOperationException("This time is already taken");
-                }
-            }
-            schedule.AddTime(meetingTimeRang.Start, meetingTimeRang.End);
+
             var meeting = Meeting.Create(user, room, meetingDto.StartTime, meetingDto.EndTime, inst);
+            
+
+           
+            schedule.AddTime(meeting.TimeRange);
             await _dbContext.Meetings.AddAsync(meeting);
+            await _dbContext.SaveChangesAsync();
+            _dbContext.Schedules.Update(schedule);
+           
+    
             await _dbContext.SaveChangesAsync();
             return Meeting.TransformToDto(meeting);
         }

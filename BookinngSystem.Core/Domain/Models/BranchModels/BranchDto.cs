@@ -1,4 +1,4 @@
-﻿using BookingSystem.Core.Domain.Entities.Institutions;
+using BookingSystem.Core.Domain.Entities.Institutions;
 using BookingSystem.Core.Domain.Models.BuildingModels;
 using BookingSystem.Core.Domain.Models.InstitutionModels;
 using System;

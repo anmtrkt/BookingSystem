@@ -1,4 +1,5 @@
-﻿using BookingSystem.Core.Domain.Entities.Aggregates;
+﻿using BookingSystem.Core.Domain.Entities;
+using BookingSystem.Core.Domain.Entities.Aggregates;
 using BookingSystem.Core.Domain.Entities.Institutions;
 using BookingSystem.Core.Domain.Entities.Users;
 using BookingSystem.Core.Domain.Models.MeetingsModels;
@@ -14,7 +15,7 @@ namespace BookingSystem.Infrastructure.Services.Interfaces
 {
     public interface IMeetingService
     {
-
+        public Task<bool> CheckIfCanBook(Room room, User user, Schedule schedule, DateTime startTime, DateTime endTime);
         public Task<List<MeetingDto>> GetMeetingsByUserAsync(Guid userId);
 
         public Task CreateRequestAsync(Guid userId, Guid meetingId);

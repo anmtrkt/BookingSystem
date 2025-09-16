@@ -1,4 +1,4 @@
-﻿using BookingSystem.API.Services.Extensions;
+using BookingSystem.API.Services.Extensions;
 using BookingSystem.API.Services.Identity;
 using BookingSystem.API.Services.Models;
 using BookingSystem.Core.Domain.Entities.Users;
@@ -41,6 +41,7 @@ namespace BookingSystem.API.Services.UserServices
                 request.PhoneNumber,
                 request.Email,
                 inst,
+                request.PostPriority,
                 request.Post);
 
             var result = await _userManager.CreateAsync(user, request.Password);

@@ -1,4 +1,5 @@
 ﻿using BookingSystem.Core.Domain.Common;
+using BookingSystem.Core.Domain.Entities.Aggregates;
 using BookingSystem.Core.Domain.Entities.Institutions;
 using BookingSystem.Core.Domain.ValueObjects;
 
@@ -10,6 +11,7 @@ namespace BookingSystem.Core.Domain.Entities
         public IReadOnlyCollection<TimeRange> TimeRanges => _timeRanges.AsReadOnly();
         public Guid RoomId { get; private set; }
         public Room Room { get; private set; }
+
         public string Reason { get; private set; }
 
 #pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Рассмотрите возможность добавления модификатора "required" или объявления значения, допускающего значение NULL.
@@ -23,6 +25,7 @@ namespace BookingSystem.Core.Domain.Entities
             Reason = "";
             Room = room;
             RoomId = roomId;
+           
         }
 
 
@@ -34,13 +37,17 @@ namespace BookingSystem.Core.Domain.Entities
             
             return new Schedule(room,room.Id);
         }
-        public void AddTime(DateTime start, DateTime end)
+        public void AddTime(DateTime start, DateTime end, Meeting meeting)
         {
-            _timeRanges.Add(TimeRange.Create(start, end));
+            _timeRanges.Add(TimeRange.Create(start, end, meeting));
         }
-/*        public bool IsWithinSchedule(DateTime date)
+        public void AddTime(TimeRange meetingTime)
         {
-            return date >= StartDate && date <= EndDate;
-        }*/
+            _timeRanges.Add(meetingTime);
+        }
+        /*        public bool IsWithinSchedule(DateTime date)
+                {
+                    return date >= StartDate && date <= EndDate;
+                }*/
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -140,11 +141,12 @@ namespace BookingSystem.API.Controllers.BookingControllers
                 if (meetingDto.SubscriberIds.Count != 0 && !User.IsInRole("manager")) { return Unauthorized("You dont have permission to do this"); }
                 if (currentUser == null) return NotFound();
                 var meeting = await _meetingService.CreateMeetingAsync(meetingDto, currentUser);
-
+                if (meeting == null) return Conflict("На это время уже есть бронь");
                 return Ok(CreatedAtAction("GetMeeting", new { id = meeting.Id }, meeting));
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Debug.WriteLine(e.Message);
                 return BadRequest("Something went wrong");
             }
   

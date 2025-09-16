@@ -20,6 +20,6 @@ namespace BookingSystem.Core.Domain.Models.UserModels
         public required string LastPost { get; init; }
         public required string FullName { get; init; }
         public required bool IsManager { get; init; }
-        public required InstitutionDto Institution { get; init; }
+
     }
 }

@@ -37,5 +37,7 @@ namespace BookingSystem.Core.Domain.Models.UserModels
 
     [Phone(ErrorMessage = "Некорректный номер телефона.")]
     public string? PhoneNumber { get; set; }
+        [Required]
+        public int? PostPriority { get; set; }
 }
 }

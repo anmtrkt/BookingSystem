@@ -45,5 +45,8 @@ namespace BookingSystem.API.Services.Models
         [Required]
         [Display(Name = "Должность")]
         public string Post { get; set; } = null!;
+        [Required]
+        [Display(Name = "Должность")]
+        public byte PostPriority { get; set; }
     }
 }

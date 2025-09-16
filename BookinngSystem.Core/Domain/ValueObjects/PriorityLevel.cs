@@ -17,7 +17,7 @@
                     $"Priority must be in [{MinValue}, {MaxValue}]."
                 );
 
-            Level = MinValue;
+            Level = level;
         }
 
         public static PriorityLevel Create(byte level)
@@ -29,7 +29,12 @@
         {
             return Level > other.Level;
         }
-
+        public int IsEqual(PriorityLevel other)
+        {
+            if (this.Level < other.Level) return -1;
+            if (this.Level == other.Level) return 0;
+            else return 1;
+        }
         public static PriorityLevel Highest => Create(MaxValue);
         public static PriorityLevel Lowest => Create(MinValue);
 

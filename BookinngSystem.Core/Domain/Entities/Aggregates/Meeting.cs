@@ -32,8 +32,8 @@ public class Meeting : BaseEntity
         User creator,
         List<User> subscribers,
         Room room,
-        Institution institution,
-        TimeRange timeRange)
+        Institution institution, DateTime start, DateTime end
+        )
     {
         
         CreatorId = creator.Id;
@@ -51,7 +51,7 @@ public class Meeting : BaseEntity
         
        
 
-        TimeRange = timeRange;
+        TimeRange = TimeRange.Create(start, end, this);
 
 
         DomainEvents.Raise<MeetingCreatedEvent>(new MeetingCreatedEvent(
@@ -78,7 +78,7 @@ public class Meeting : BaseEntity
             subscribers??=new(),
             room,
             institution,
-            TimeRange.Create(startTime,endTime));
+            startTime,endTime);
 #pragma warning restore S1121 // Assignments should not be made from within sub-expressions
     }
     public static List<MeetingDto> TransformToDto(List<Meeting> meetings)
@@ -92,6 +92,7 @@ public class Meeting : BaseEntity
     }
     public static MeetingDto TransformToDto(Meeting meeting)
     {
+        if (meeting.Institution == null) throw new ArgumentNullException();
         return new MeetingDto()
         {
             Id = meeting.Id,
@@ -106,7 +107,7 @@ public class Meeting : BaseEntity
     }
     public void ChangeTime(DateTime newStart, DateTime newEnd)
     {
-        TimeRange = TimeRange.Create(newStart, newEnd);
+        TimeRange = TimeRange.Create(newStart, newEnd, this);
         DomainEvents.Raise<MeetingTimeChangedEvent>(new MeetingTimeChangedEvent());
     }
     public void ChangeSubscribers(List<User> newSubs)

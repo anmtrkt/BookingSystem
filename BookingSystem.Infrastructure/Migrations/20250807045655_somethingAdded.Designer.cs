@@ -3,6 +3,7 @@ using System;
 using BookingSystem.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookingSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(BookingSystemDbContext))]
-    partial class BookingSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250807045655_somethingAdded")]
+    partial class somethingAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -372,7 +375,8 @@ namespace BookingSystem.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -423,6 +427,11 @@ namespace BookingSystem.Infrastructure.Migrations
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
+
+                    b.Property<string>("Something")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
@@ -607,10 +616,8 @@ namespace BookingSystem.Infrastructure.Migrations
 
                             b1.ToTable("Meetings");
 
-                            b1.WithOwner("Meeting")
+                            b1.WithOwner()
                                 .HasForeignKey("MeetingId");
-
-                            b1.Navigation("Meeting");
                         });
 
                     b.Navigation("Creator");
@@ -783,29 +790,16 @@ namespace BookingSystem.Infrastructure.Migrations
                                 .HasColumnType("timestamp with time zone")
                                 .HasColumnName("EndTime");
 
-                            b1.Property<Guid>("MeetingId")
-                                .HasColumnType("uuid");
-
                             b1.Property<DateTime>("Start")
                                 .HasColumnType("timestamp with time zone")
                                 .HasColumnName("StartTime");
 
                             b1.HasKey("ScheduleId", "Id");
 
-                            b1.HasIndex("MeetingId");
-
                             b1.ToTable("ScheduleTimeRanges", (string)null);
-
-                            b1.HasOne("BookingSystem.Core.Domain.Entities.Aggregates.Meeting", "Meeting")
-                                .WithMany()
-                                .HasForeignKey("MeetingId")
-                                .OnDelete(DeleteBehavior.Cascade)
-                                .IsRequired();
 
                             b1.WithOwner()
                                 .HasForeignKey("ScheduleId");
-
-                            b1.Navigation("Meeting");
                         });
 
                     b.Navigation("Room");
@@ -825,27 +819,7 @@ namespace BookingSystem.Infrastructure.Migrations
                         .WithMany("Subscribers")
                         .HasForeignKey("MeetingId");
 
-                    b.OwnsOne("BookingSystem.Core.Domain.ValueObjects.PriorityLevel", "PostPriority", b1 =>
-                        {
-                            b1.Property<Guid>("UserId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<byte>("Level")
-                                .HasColumnType("smallint")
-                                .HasColumnName("PriorityLevel");
-
-                            b1.HasKey("UserId");
-
-                            b1.ToTable("AspNetUsers");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserId");
-                        });
-
                     b.Navigation("Institution");
-
-                    b.Navigation("PostPriority")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

@@ -52,13 +52,14 @@ namespace BookingSystem.Core.Domain.Entities.Institutions
         }
         public static InstitutionDto TransformToDto(Institution institution)
         {
-            return new InstitutionDto { Id = 
+            return new InstitutionDto()
+            { Id = 
                 institution.Id,
                 Name = institution.Name, 
                 PriorityLevel = institution.PriorityLevel, 
-                Parent = institution.Parent!=null 
+             /*   Parent = institution.Parent*//*!=null *//*
                 ? Institution.TransformToDto(institution.Parent)
-                : null }; 
+                : null */}; 
         }
         public void SetPriority(byte priority) {
             PriorityLevel = PriorityLevel.Create(priority);
