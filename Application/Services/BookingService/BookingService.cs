@@ -13,14 +13,16 @@ public class BookingService : IBookingService
     private readonly IBookingRepository _bookingRepo;
     private readonly IRoomRepository _roomRepo;
     private readonly IUserRepository _userRepo;
+    private readonly IInvitationRepository _invitationRepo;
     private readonly ILogger<BookingService> _logger;
     private readonly IUnitOfWork _unitOfWork;
 
-    public BookingService(IBookingRepository bookingRepo, IRoomRepository roomRepo, IUserRepository userRepo, ILogger<BookingService> logger,IUnitOfWork unitOfWork)
+    public BookingService(IBookingRepository bookingRepo, IRoomRepository roomRepo, IUserRepository userRepo, IInvitationRepository invitationRepo, ILogger<BookingService> logger, IUnitOfWork unitOfWork)
     {
         _bookingRepo = bookingRepo;
         _roomRepo = roomRepo;
         _userRepo = userRepo;
+        _invitationRepo = invitationRepo;
         _logger = logger;
         _unitOfWork = unitOfWork;
     }
@@ -152,9 +154,105 @@ public class BookingService : IBookingService
         return bookings.Select(MapToDto);
     }
 
+    public async Task<List<MeetingInvitationDto>> CreateInvitationsAsync(Guid meetingId, List<Guid> inviteesIds, Guid inviterId)
+    {
+        _logger.LogInformation("Attempting to create invitations for meeting {@MeetingId} for users {@InviteesIds}", meetingId, inviteesIds);
+
+        var meeting = await _bookingRepo.GetByIdAsyncWithInclude(meetingId);
+        if (meeting == null) throw new KeyNotFoundException($"Meeting with ID {meetingId} not found.");
+
+        var inviter = await _userRepo.GetByIdAsync(inviterId);
+        if (inviter == null) throw new KeyNotFoundException($"Inviter with ID {inviterId} not found.");
+
+        var invitees = await _userRepo.GetByIdsAsync(inviteesIds);
+        if (invitees.Count() != inviteesIds.Count)
+        {
+            var foundIds = invitees.Select(u => u.Id);
+            var notFoundIds = inviteesIds.Except(foundIds);
+            throw new ArgumentException($"One or more users not found. Invalid IDs: {string.Join(", ", notFoundIds)}");
+        }
+
+        var invitations = new List<MeetingInvitation>();
+        foreach (var invitee in invitees)
+        {
+            try
+            {
+                var invitation = meeting.CreateInvitation(invitee.Id, inviterId);
+                invitations.Add(invitation);
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.LogWarning("Skipping invitation for user {@UserId}: {Message}", invitee.Id, ex.Message);
+            }
+        }
+
+        await _unitOfWork.SaveChangesAsync();
+        _logger.LogInformation("Successfully created {Count} invitations for meeting {@MeetingId}", invitations.Count, meetingId);
+
+        return invitations.Select(MapToDto).ToList();
+    }
+
+    public async Task<MeetingInvitationDto> RespondToInvitationAsync(Guid invitationId, Guid userId, bool accept)
+    {
+        _logger.LogInformation("User {@UserId} responding to invitation {@InvitationId} with accept={Accept}", userId, invitationId, accept);
+
+        var invitation = await _invitationRepo.GetByIdAsyncWithInclude(invitationId);
+        if (invitation == null) throw new KeyNotFoundException($"Invitation with ID {invitationId} not found.");
+
+        if (invitation.InviteeId != userId)
+            throw new UnauthorizedAccessException("Only the invitee can respond to this invitation.");
+
+        if (accept)
+            invitation.Accept();
+        else
+            invitation.Decline();
+
+        await _invitationRepo.UpdateAsync(invitation);
+        await _unitOfWork.SaveChangesAsync();
+
+        _logger.LogInformation("User {@UserId} responded to invitation {@InvitationId} with accept={Accept}", userId, invitationId, accept);
+
+        return MapToDto(invitation);
+    }
+
+    public async Task<MeetingInvitationDto> CancelInvitationAsync(Guid invitationId, Guid userId)
+    {
+        _logger.LogInformation("User {@UserId} cancelling invitation {@InvitationId}", userId, invitationId);
+
+        var invitation = await _invitationRepo.GetByIdAsyncWithInclude(invitationId);
+        if (invitation == null) throw new KeyNotFoundException($"Invitation with ID {invitationId} not found.");
+
+        if (invitation.InviterId != userId && invitation.InviteeId != userId)
+            throw new UnauthorizedAccessException("Only the inviter or invitee can cancel this invitation.");
+
+        invitation.Cancel();
+
+        await _invitationRepo.UpdateAsync(invitation);
+        await _unitOfWork.SaveChangesAsync();
+
+        _logger.LogInformation("User {@UserId} cancelled invitation {@InvitationId}", userId, invitationId);
+
+        return MapToDto(invitation);
+    }
+
+    public async Task<List<MeetingInvitationDto>> GetInvitationsForUserAsync(Guid userId)
+    {
+        _logger.LogInformation("Getting invitations for user {@UserId}", userId);
+
+        var invitations = await _invitationRepo.GetByInviteeIdAsyncWithInclude(userId);
+        return invitations.Select(MapToDto).ToList();
+    }
+
+    public async Task<List<MeetingInvitationDto>> GetInvitationsForMeetingAsync(Guid meetingId)
+    {
+        _logger.LogInformation("Getting invitations for meeting {@MeetingId}", meetingId);
+
+        var invitations = await _invitationRepo.GetByMeetingIdAsyncWithInclude(meetingId);
+        return invitations.Select(MapToDto).ToList();
+    }
+
     private static BookingDto MapToDto(Meeting meeting)
     {
-
         return new()
         {
             Id = meeting.Id,
@@ -163,7 +261,25 @@ public class BookingService : IBookingService
             StartTime = meeting.TimeRange.Start,
             EndTime = meeting.TimeRange.End,
             IsCancelled = meeting.IsCancelled,
-            Purpose = meeting.Reason 
+            Purpose = meeting.Reason,
+            SubscribersNames = meeting.Subscribers.Select(s => s.Name ?? string.Empty).ToList(),
+            Invitations = meeting.Invitations.Select(MapToDto).ToList()
+        };
+    }
+
+    private static MeetingInvitationDto MapToDto(MeetingInvitation invitation)
+    {
+        return new()
+        {
+            Id = invitation.Id,
+            MeetingId = invitation.MeetingId,
+            InviteeId = invitation.InviteeId,
+            InviteeName = invitation.Invitee?.Name ?? string.Empty,
+            InviterId = invitation.InviterId,
+            InviterName = invitation.Inviter?.Name ?? string.Empty,
+            Status = invitation.Status.ToString(),
+            CreatedAt = invitation.CreatedAt,
+            RespondedAt = invitation.RespondedAt
         };
     }
 }

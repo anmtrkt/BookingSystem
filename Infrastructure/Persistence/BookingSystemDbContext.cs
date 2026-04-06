@@ -13,6 +13,7 @@ public class BookingSystemDbContext : IdentityDbContext<AppUser, IdentityRole<Gu
 
     }
     public DbSet<Meeting> Meetings { get; set; }
+    public DbSet<MeetingInvitation> MeetingInvitations { get; set; }
     public DbSet<Organization> Organizations { get; set; }
     public DbSet<Office> Offices { get; set; }
     public DbSet<Room> Rooms { get; set; }
