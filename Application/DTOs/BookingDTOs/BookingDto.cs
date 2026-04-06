@@ -9,4 +9,6 @@ public class BookingDto
     public DateTime EndTime { get; set; }
     public bool IsCancelled { get; set; }
     public string Purpose { get; set; } = string.Empty;
+    public List<string> SubscribersNames { get; set; } = new();
+    public List<MeetingInvitationDto> Invitations { get; set; } = new();
 }

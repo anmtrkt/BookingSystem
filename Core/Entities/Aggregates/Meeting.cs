@@ -13,6 +13,7 @@ public class Meeting : BaseEntity
     public string Reason { get; private set; }
     public bool IsCancelled { get; private set; } = false;
     public ICollection<AppUser> Subscribers { get; private set; } = new List<AppUser>();
+    public ICollection<MeetingInvitation> Invitations { get; private set; } = new List<MeetingInvitation>();
 #pragma warning disable CS8618 
     private Meeting() { }
 #pragma warning restore CS8618 
@@ -46,5 +47,21 @@ public class Meeting : BaseEntity
         {
             Subscribers.Remove(subscriberToRemove);
         }
+    }
+
+    public MeetingInvitation CreateInvitation(Guid inviteeId, Guid inviterId)
+    {
+        // Проверяем, нет ли уже активного приглашения для этого пользователя
+        var existingInvitation = Invitations
+            .FirstOrDefault(i => i.InviteeId == inviteeId && i.Status == InvitationStatus.Pending);
+        
+        if (existingInvitation != null)
+        {
+            throw new InvalidOperationException("Приглашение для этого пользователя уже существует.");
+        }
+
+        var invitation = new MeetingInvitation(Id, inviteeId, inviterId);
+        Invitations.Add(invitation);
+        return invitation;
     }
 }
