@@ -1,7 +1,6 @@
 using BookingSystem.Application.DTOs;
 using BookingSystem.Application.Services;
 using BookingSystem.Core.Entities; // Для Enum Role
-using BookingSystem.Infrastructure.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,32 +27,15 @@ public class UserController : ControllerBase
         // Проверяем, существует ли пользователь
         var existingUser = await _userManager.FindByEmailAsync(request.Email);
         if (existingUser != null) return BadRequest("Пользователь с таким Email уже существует.");
+        var user = await _userService.CreateUserAsync(request);
 
-        var appUser = new AppUser
-        {
-            UserName = request.Email,
-            Email = request.Email,
-            Name = request.Name,
-            Surname = request.Surname,
-            Post = request.Post,
-            PhoneNumber = request.PhoneNumber,
-            // Мапим строку роли в Enum (чисто для совместимости с твоей моделью, Identity это не использует)
-            Role = Enum.TryParse<Role>(request.Role, out var r) ? r : Role.User
-        };
 
-        // Создаем пользователя в Identity (с хэшированием пароля)
-        var result = await _userManager.CreateAsync(appUser, request.Password);
 
-        if (!result.Succeeded)
-        {
-            return BadRequest(result.Errors);
-        }
+        //await _userManager.AddToRoleAsync(user);
+        await _userManager.AddToRoleAsync(user, "User");
 
-        // Назначаем роль (строковую, для JWT)
-        var roleToAdd = request.Role == "Admin" ? "Admin" : "User";
-        await _userManager.AddToRoleAsync(appUser, roleToAdd);
 
-        return Ok(new { Message = "Пользователь создан", UserId = appUser.Id });
+        return Ok(new { Message = "Пользователь создан", UserId = user.Id });
     }
 
     [HttpGet]

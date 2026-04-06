@@ -4,12 +4,12 @@ namespace BookingSystem.Domain.Interfaces;
 
 public interface IUserRepository
 {
-    Task<User?> GetByIdAsync(Guid id);
-    Task<IEnumerable<User>> GetByIdsAsync(IEnumerable<Guid> usersIds);
+    Task<AppUser?> GetByIdAsync(Guid id);
+    Task<IEnumerable<AppUser>> GetByIdsAsync(IEnumerable<Guid> usersIds);
 
-    Task<User?> GetByEmailAsync(string email);
-    Task<IEnumerable<User>> GetAllAsync();
-    Task AddAsync(User user);
-    Task UpdateAsync(User user);
+    Task<AppUser?> GetByEmailAsync(string email);
+    Task<IEnumerable<AppUser>> GetAllAsync();
+    Task AddAsync(AppUser user, string password);
+    Task UpdateAsync(AppUser user);
     Task DeleteAsync(Guid id);
 }

@@ -37,12 +37,12 @@ public class BookingService : IBookingService
         {
             throw new BookingConflictException("Room is already booked during this time.");
         }
-        List<User> Subscribers = new();
+        List<AppUser> Subscribers = new();
         //подписка всех указанных подписчиков
         if (request.SubscribersId.Any())
         {
 
-            IEnumerable<User> users = await _userRepo.GetByIdsAsync(request.SubscribersId);
+            IEnumerable<AppUser> users = await _userRepo.GetByIdsAsync(request.SubscribersId);
             //если кто то не нашелся - эксепшен
             if (users.Count() != request.SubscribersId.Count())
             {
@@ -82,19 +82,20 @@ public class BookingService : IBookingService
         }
 
         booking.UpdateTimeRange(request.StartTime, request.EndTime);
-        if(request.SubscribersId.Count != booking.Subscribers.Count)
-        {
-            IEnumerable<User> users = await _userRepo.GetByIdsAsync(request.SubscribersId);
+
+            IEnumerable<AppUser> newUsers = await _userRepo.GetByIdsAsync(request.SubscribersId);
+     
             //если кто то не нашелся - эксепшен
-            if (users.Count() != request.SubscribersId.Count())
+            if (newUsers.Count() != request.SubscribersId.Count())
             {
-                var foundIds = users.Select(r => r.Id);
+                var foundIds = newUsers.Select(r => r.Id);
                 var notFoundIds = request.SubscribersId.Except(foundIds);
                 throw new ArgumentException($"One or more users not found. Invalid IDs: {string.Join(", ", notFoundIds)}");
             }
 
-                var newbie = users.Where(u => !booking.Subscribers.Contains(u)).ToList();
-                var unsubs = booking.Subscribers.Where(u => !users.Contains(u)).ToList();
+
+                var newbie = newUsers.Where(u => !booking.Subscribers.Contains(u)).ToList();
+                var unsubs = booking.Subscribers.Where(u => !newUsers.Contains(u)).ToList();
             foreach (var item in newbie)
             {
                 booking.Subscribe(item);
@@ -103,8 +104,7 @@ public class BookingService : IBookingService
             {
                 booking.Unsubscribe(item);
             }
-
-        }
+        
         await _bookingRepo.UpdateAsync(booking);
         await _unitOfWork.SaveChangesAsync();
         _logger.LogInformation("Succesfully update an meeting {@BookingId}, Time range: {@StartTime} -- {@EndTime}", request.BookingId, request.StartTime, request.EndTime);

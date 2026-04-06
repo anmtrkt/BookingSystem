@@ -1,14 +1,14 @@
 using BookingSystem.Api.Middleware;
 using BookingSystem.Api.Services;
 using BookingSystem.Application;
+using BookingSystem.Core.Entities;
 using BookingSystem.Infrastructure;
-using BookingSystem.Infrastructure.Identity;
 using BookingSystem.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Serilog;  
+using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);

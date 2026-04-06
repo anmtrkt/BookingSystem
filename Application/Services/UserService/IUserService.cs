@@ -1,4 +1,5 @@
 using BookingSystem.Application.DTOs;
+using BookingSystem.Core.Entities;
 
 namespace BookingSystem.Application.Services
 {
@@ -8,7 +9,7 @@ namespace BookingSystem.Application.Services
         public Task<UserDto> GetUserByEmailAsync(string email);
         /*        public Task<UserDto> GetUserByPhoneAsync(string phoneNumber);
                 public Task<UserDto> GetUserByNameAsync(string name);*/
-        public Task<UserDto> CreateUserAsync(CreateUserRequest request);
+        public Task<AppUser> CreateUserAsync(CreateUserRequest request);
         public Task<UserDto> UpdateUserAsync(UpdateUserRequest request);
         public Task DeleteUserAsync(Guid id);
         /*        public Task<List<UserDto>?> GetUsersByIdsAsync(ICollection<Guid> ids);*/

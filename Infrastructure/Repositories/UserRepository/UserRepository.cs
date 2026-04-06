@@ -1,7 +1,7 @@
 using BookingSystem.Core.Entities;
 using BookingSystem.Domain.Interfaces;
-using BookingSystem.Infrastructure.Identity;
 using BookingSystem.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookingSystem.Infrastructure.Repositories;
@@ -9,64 +9,46 @@ namespace BookingSystem.Infrastructure.Repositories;
 public class UserRepository : IUserRepository
 {
     private readonly BookingSystemDbContext _context;
+    private readonly UserManager<AppUser> _userManager;
 
-    public UserRepository(BookingSystemDbContext context)
+    public UserRepository(BookingSystemDbContext context, UserManager<AppUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
-    public async Task<User?> GetByIdAsync(Guid id)
+    public async Task<AppUser?> GetByIdAsync(Guid id)
     {
         var appUser = await _context.Users.FindAsync(id);
-        return appUser != null ? MapToDomain(appUser) : null;
+        return appUser != null ? appUser : null;
     }
-    public async Task<IEnumerable<User>> GetByIdsAsync(IEnumerable<Guid> usersIds)
+    public async Task<IEnumerable<AppUser>> GetByIdsAsync(IEnumerable<Guid> usersIds)
     {
         var appUsers = await _context.Users.Where(u => usersIds.Contains(u.Id))
                                                             .ToListAsync();
-        return appUsers.Select(MapToDomain);
+        return appUsers;
     }
-    public async Task<User?> GetByEmailAsync(string email)
+    public async Task<AppUser?> GetByEmailAsync(string email)
     {
-        var appUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-        return appUser != null ? MapToDomain(appUser) : null;
-    }
-
-    public async Task<IEnumerable<User>> GetAllAsync()
-    {
-        var appUsers = await _context.Users.ToListAsync();
-        return appUsers.Select(MapToDomain);
+        var appUser = await _userManager.FindByEmailAsync(email);
+        return appUser != null ? appUser : null;
     }
 
-    public async Task AddAsync(User user)
+    public async Task<IEnumerable<AppUser>> GetAllAsync()
     {
-        var appUser = new AppUser
-        {
-            UserName = user.Email,
-            Email = user.Email,
-            Name = user.Name,
-            Surname = user.Surname,
-            Post = user.Post
-        };
+        return await _context.Users.ToListAsync();
+    }
 
-        await _context.Users.AddAsync(appUser);
+    public async Task AddAsync(AppUser user, string password)
+    {
+        await _userManager.CreateAsync(user, password);
+    }
+
+    public async Task UpdateAsync(AppUser user)
+    {
+
+        _context.Users.Update(user);
         await Task.CompletedTask;
-    }
-
-    public async Task UpdateAsync(User user)
-    {
-        var appUser = await _context.Users.FindAsync(user.Id);
-        if (appUser != null)
-        {
-            appUser.Email = user.Email;
-            appUser.UserName = user.Email;
-            appUser.Name = user.Name;
-            appUser.Surname = user.Surname;
-            appUser.Post = user.Post;
-
-            _context.Users.Update(appUser);
-            await Task.CompletedTask;
-        }
     }
 
     public async Task DeleteAsync(Guid id)
@@ -77,14 +59,5 @@ public class UserRepository : IUserRepository
             _context.Users.Remove(appUser);
             await Task.CompletedTask;
         }
-    }
-
-    private static User MapToDomain(AppUser appUser)
-    {
-
-        return new User(appUser.Email, appUser.Post, appUser.Surname, appUser.Name, null, appUser.PhoneNumber)
-        {
-            Id = appUser.Id 
-        };
     }
 }

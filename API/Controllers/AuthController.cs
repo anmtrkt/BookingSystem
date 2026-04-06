@@ -1,5 +1,5 @@
 using BookingSystem.Api.Services;
-using BookingSystem.Infrastructure.Identity;
+using BookingSystem.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,4 @@
 using BookingSystem.Core.Entities;
-using BookingSystem.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace BookingSystem.Api.Data;
@@ -28,16 +27,15 @@ public static class DbInitializer
 
             if (adminUser == null)
             {
-                var newAdmin = new AppUser
-                {
-                    UserName = adminEmail,
-                    Email = adminEmail,
-                    Name = "Admin",
-                    Surname = "System",
-                    Post = "System Administrator",
-                    EmailConfirmed = true,
-                    Role = Role.Admin
-                };
+                var newAdmin =
+                new AppUser(
+           adminEmail,
+           "System Administrator",
+           "System",
+           "Admin",
+           "Admin",
+           "+79292376296");
+
 
                 var result = await userManager.CreateAsync(newAdmin, "Admin@12345");
 

@@ -2,6 +2,7 @@ using BookingSystem.Application.DTOs;
 using BookingSystem.Core.Entities;
 using BookingSystem.Domain.Interfaces;
 using BookingSystem.Infrastructure.Repositories.UnitOfWork;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging; // Не забудьте добавить using для ILogger
 
 namespace BookingSystem.Application.Services;
@@ -12,6 +13,7 @@ public class UserService : IUserService
     private readonly ILogger<UserService> _logger;
     private readonly IUnitOfWork _unitOfWork;
 
+
     public UserService(IUserRepository userRepo, ILogger<UserService> logger, IUnitOfWork unitOfWork)
     {
         _userRepo = userRepo;
@@ -19,11 +21,11 @@ public class UserService : IUserService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<UserDto> CreateUserAsync(CreateUserRequest request)
+    public async Task<AppUser> CreateUserAsync(CreateUserRequest request)
     {
         _logger.LogInformation("Attempting to create a user with email {Email}", request.Email);
 
-        var user = new User(
+        var user = new AppUser(
             request.Email,
             request.Post,
             request.Surname,
@@ -31,12 +33,12 @@ public class UserService : IUserService
             request.Patronymic,
             request.PhoneNumber
         );
-
-        await _userRepo.AddAsync(user);
+        
+        await _userRepo.AddAsync(user, request.Password);
         await _unitOfWork.SaveChangesAsync(); // Сохраняем изменения
 
         _logger.LogInformation("Successfully created user with ID {UserId}", user.Id);
-        return MapToDto(user);
+        return user;
 
     }
 
@@ -50,15 +52,14 @@ public class UserService : IUserService
             throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
         }
 
-        // Обновляем поля, если они были переданы
-        if (!string.IsNullOrEmpty(request.Email)) user.UpdateEmail(request.Email);
+        if (!string.IsNullOrEmpty(request.Email)) user.ChangeEmail(request.Email);
         if (!string.IsNullOrEmpty(request.Name)) user.ChangeName(request.Name);
         if (!string.IsNullOrEmpty(request.Surname)) user.ChangeSurname(request.Surname);
         if (!string.IsNullOrEmpty(request.Post)) user.ChangePost(request.Post);
-        if (!string.IsNullOrEmpty(request.PhoneNumber)) user.UpdatePhoneNumber(request.PhoneNumber);
+        if (!string.IsNullOrEmpty(request.PhoneNumber)) user.ChangePhoneNumber(request.PhoneNumber);
 
         await _userRepo.UpdateAsync(user);
-        await _unitOfWork.SaveChangesAsync(); // Сохраняем изменения
+        await _unitOfWork.SaveChangesAsync(); 
 
         _logger.LogInformation("Successfully updated user with ID {UserId}", user.Id);
         return MapToDto(user);
@@ -122,14 +123,14 @@ public class UserService : IUserService
 
     }
 
-    private static UserDto MapToDto(User user) => new()
+    private static UserDto MapToDto(AppUser user) => new()
     {
         Id = user.Id,
         Name = user.Name,
         Surname = user.Surname,
         Email = user.Email,
         Post = user.Post,
-        Patronymic = user.Patronymic, // Добавил недостающие поля
-        PhoneNumber = user.PhoneNumber
+        Patronymic = user.Patronymic, 
+        PhoneNumber = user.PhoneNumber,
     };
 }

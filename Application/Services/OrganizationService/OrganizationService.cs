@@ -43,11 +43,9 @@ public class OrganizationService : IOrganizationService
 
         org.UpdateName(request.Name);
 
-        if (request.OfficesId != null)
-        {
             //получить все офисы организации
             var officies = await _officeRepo.GetByIdsAsync(request.OfficesId);
-            //проверка на вхождение
+            //проверка на наличие таких данных в бд вообще
             if (officies.Count() != request.OfficesId.Count())
             {
                 var foundIds = officies.Select(r => r.Id);
@@ -74,7 +72,7 @@ public class OrganizationService : IOrganizationService
             {
                 org.AddOffice(room);
             }
-        }
+        
 
         await _orgRepo.UpdateAsync(org);
         await _unitOfWork.SaveChangesAsync();

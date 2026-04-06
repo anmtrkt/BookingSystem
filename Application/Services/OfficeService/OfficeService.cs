@@ -10,13 +10,15 @@ public class OfficeService : IOfficeService
 {
     private readonly IOfficeRepository _officeRepo;
     private readonly IRoomRepository _roomRepo;
+    private readonly IOrganizationRepository _organizationRepo;
     private readonly ILogger<OfficeService> _logger;
     private readonly IUnitOfWork _unitOfWork;
 
-    public OfficeService(IOfficeRepository officeRepo, IRoomRepository roomRepo, ILogger<OfficeService> logger, IUnitOfWork unitOfWork)
+    public OfficeService(IOfficeRepository officeRepo, IRoomRepository roomRepo, IOrganizationRepository organizationRepo,ILogger<OfficeService> logger, IUnitOfWork unitOfWork)
     {
         _officeRepo = officeRepo;
         _roomRepo = roomRepo;
+        _organizationRepo = organizationRepo;
         _logger = logger;
         _unitOfWork = unitOfWork;
     }
@@ -25,24 +27,9 @@ public class OfficeService : IOfficeService
     {
         _logger.LogInformation("Attempting to create an office for organization {@OrganizationId} at address {@Address}",
             request.OrganizationId, request.Address);
+        var org = _organizationRepo.GetByIdAsync(request.OrganizationId);
+        if (org is null) throw new KeyNotFoundException($"Organization with ID {request.OrganizationId} not found.");
         var office = new Office(request.Address, request.OrganizationId);
-        if (request.RoomsId != null && request.RoomsId.Any())
-        {
-            var foundRooms = await _roomRepo.GetByIdsAsync(request.RoomsId);
-
-
-            if (foundRooms.Count() != request.RoomsId.Count)
-            {
-                var foundIds = foundRooms.Select(r => r.Id);
-                var notFoundIds = request.RoomsId.Except(foundIds);
-                throw new ArgumentException($"One or more rooms not found. Invalid IDs: {string.Join(", ", notFoundIds)}");
-            }
-            foreach (var room in foundRooms)
-            {
-                office.AddRoom(room);
-            }
-        }
-
         await _officeRepo.AddAsync(office);
         await _unitOfWork.SaveChangesAsync();
         _logger.LogInformation("Successfully created office with ID {@OfficeId}", office.Id);
@@ -54,12 +41,11 @@ public class OfficeService : IOfficeService
     {
         _logger.LogInformation("Attempting to update an office {@OfficeId}", request.OfficeId);
 
-        var office = await _officeRepo.GetByIdAsync(request.OfficeId); if (office == null)
-            throw new KeyNotFoundException($"Office with ID {request.OfficeId} not found.");
+        var office = await _officeRepo.GetByIdAsync(request.OfficeId); 
+        if (office == null) throw new KeyNotFoundException($"Office with ID {request.OfficeId} not found.");
         office.ChangeAddress(request.Address);
-        if (request.RoomsId != null)
-        {
-            // Проверяем валидность всех ID
+
+  
             var requestedRooms = await _roomRepo.GetByIdsAsync(request.RoomsId);
             if (requestedRooms.Count() != request.RoomsId.Count())
             {
@@ -89,7 +75,7 @@ public class OfficeService : IOfficeService
             {
                 office.AddRoom(room);
             }
-        }
+        
 
         await _officeRepo.UpdateAsync(office);
         await _unitOfWork.SaveChangesAsync();

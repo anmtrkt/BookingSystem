@@ -4,10 +4,12 @@ namespace BookingSystem.Application.DTOs;
 public class CreateUserRequest
 {
     [Required]
+    [EmailAddress]
     [Display(Name = "Email")]
     public string Email { get; set; } = null!;
 
     [Required]
+    [Phone]
     [Display(Name = "Телефон")]
     public string PhoneNumber { get; set; } = null!;
 
@@ -39,7 +41,6 @@ public class CreateUserRequest
     [Required]
     [Display(Name = "Должность")]
     public string Post { get; set; } = null!;
-    public string Role { get; set; } = "User";
 }
 
 

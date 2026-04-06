@@ -1,6 +1,5 @@
 using BookingSystem.Core.Entities;
 using BookingSystem.Core.Entities.Aggregates;
-using BookingSystem.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -18,9 +17,11 @@ public class BookingSystemDbContext : IdentityDbContext<AppUser, IdentityRole<Gu
     public DbSet<Office> Offices { get; set; }
     public DbSet<Room> Rooms { get; set; }
     public DbSet<Schedule> Schedules { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+
         base.OnModelCreating(builder);
 
         builder.ApplyConfigurationsFromAssembly(typeof(BookingSystemDbContext).Assembly);
