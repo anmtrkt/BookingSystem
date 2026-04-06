@@ -70,4 +70,52 @@ public class BookingController : ControllerBase
             return NoContent();
       
     }
+
+    [HttpPost("{meetingId}/invitations")]
+    public async Task<ActionResult<List<MeetingInvitationDto>>> CreateInvitations(Guid meetingId, [FromBody] CreateInvitationRequest request)
+    {
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (!Guid.TryParse(userIdString, out var userId)) return BadRequest();
+
+        request.MeetingId = meetingId;
+        var invitations = await _bookingService.CreateInvitationsAsync(request.MeetingId, request.InviteesIds, userId);
+        return Ok(invitations);
+    }
+
+    [HttpPost("invitations/respond")]
+    public async Task<ActionResult<MeetingInvitationDto>> RespondToInvitation([FromBody] RespondToInvitationRequest request)
+    {
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (!Guid.TryParse(userIdString, out var userId)) return BadRequest();
+
+        var invitation = await _bookingService.RespondToInvitationAsync(request.InvitationId, userId, request.Accept);
+        return Ok(invitation);
+    }
+
+    [HttpPost("invitations/{invitationId}/cancel")]
+    public async Task<ActionResult<MeetingInvitationDto>> CancelInvitation(Guid invitationId)
+    {
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (!Guid.TryParse(userIdString, out var userId)) return BadRequest();
+
+        var invitation = await _bookingService.CancelInvitationAsync(invitationId, userId);
+        return Ok(invitation);
+    }
+
+    [HttpGet("invitations/my")]
+    public async Task<ActionResult<List<MeetingInvitationDto>>> GetMyInvitations()
+    {
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (!Guid.TryParse(userIdString, out var userId)) return BadRequest();
+
+        var invitations = await _bookingService.GetInvitationsForUserAsync(userId);
+        return Ok(invitations);
+    }
+
+    [HttpGet("{meetingId}/invitations")]
+    public async Task<ActionResult<List<MeetingInvitationDto>>> GetMeetingInvitations(Guid meetingId)
+    {
+        var invitations = await _bookingService.GetInvitationsForMeetingAsync(meetingId);
+        return Ok(invitations);
+    }
 }
