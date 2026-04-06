@@ -1,6 +1,7 @@
 using BookingSystem.Domain.Interfaces;
 using BookingSystem.Infrastructure.Repositories;
 using BookingSystem.Infrastructure.Repositories.InvitationRepository;
+using BookingSystem.Infrastructure.Repositories.NotificationRepository;
 using BookingSystem.Infrastructure.Repositories.UnitOfWork;
 using Infrastructure.Repositories.UnitOfWork;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,7 @@ public static class DependencyInjection
         services.AddScoped<IOfficeRepository, OfficeRepository>();
         services.AddScoped<IOrganizationRepository, OrganizationRepository>();
         services.AddScoped<IInvitationRepository, InvitationRepository>();
+        services.AddScoped<INotificationRepository, NotificationRepository>();
 
         return services;
     }

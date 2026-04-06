@@ -14,15 +14,17 @@ public class BookingService : IBookingService
     private readonly IRoomRepository _roomRepo;
     private readonly IUserRepository _userRepo;
     private readonly IInvitationRepository _invitationRepo;
+    private readonly INotificationService _notificationService;
     private readonly ILogger<BookingService> _logger;
     private readonly IUnitOfWork _unitOfWork;
 
-    public BookingService(IBookingRepository bookingRepo, IRoomRepository roomRepo, IUserRepository userRepo, IInvitationRepository invitationRepo, ILogger<BookingService> logger, IUnitOfWork unitOfWork)
+    public BookingService(IBookingRepository bookingRepo, IRoomRepository roomRepo, IUserRepository userRepo, IInvitationRepository invitationRepo, INotificationService notificationService, ILogger<BookingService> logger, IUnitOfWork unitOfWork)
     {
         _bookingRepo = bookingRepo;
         _roomRepo = roomRepo;
         _userRepo = userRepo;
         _invitationRepo = invitationRepo;
+        _notificationService = notificationService;
         _logger = logger;
         _unitOfWork = unitOfWork;
     }
@@ -66,6 +68,15 @@ public class BookingService : IBookingService
         await _bookingRepo.AddAsync(meeting);
         await _unitOfWork.SaveChangesAsync();
         _logger.LogInformation("Succesfully created an meeting with Id {@MeetingId}", meeting.Id );
+
+        // Отправка уведомлений о создании встречи
+        await _notificationService.SendMeetingCreatedEmailAsync(meeting.Id, creator.Id);
+        
+        // Уведомления для всех подписчиков
+        foreach (var subscriber in Subscribers)
+        {
+            await _notificationService.SendMeetingCreatedEmailAsync(meeting.Id, subscriber.Id);
+        }
 
         return MapToDto(meeting);
     }
@@ -189,6 +200,12 @@ public class BookingService : IBookingService
         await _unitOfWork.SaveChangesAsync();
         _logger.LogInformation("Successfully created {Count} invitations for meeting {@MeetingId}", invitations.Count, meetingId);
 
+        // Отправка уведомлений о приглашении каждому приглашенному
+        foreach (var invitation in invitations)
+        {
+            await _notificationService.SendMeetingInvitationEmailAsync(invitation.Id);
+        }
+
         return invitations.Select(MapToDto).ToList();
     }
 
@@ -209,6 +226,12 @@ public class BookingService : IBookingService
 
         await _invitationRepo.UpdateAsync(invitation);
         await _unitOfWork.SaveChangesAsync();
+
+        // Если приглашение отклонено - отправляем уведомление организатору
+        if (!accept)
+        {
+            await _notificationService.SendInvitationDeclinedEmailAsync(invitationId);
+        }
 
         _logger.LogInformation("User {@UserId} responded to invitation {@InvitationId} with accept={Accept}", userId, invitationId, accept);
 

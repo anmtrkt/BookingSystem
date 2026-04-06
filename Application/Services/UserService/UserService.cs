@@ -12,13 +12,15 @@ public class UserService : IUserService
     private readonly IUserRepository _userRepo;
     private readonly ILogger<UserService> _logger;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly INotificationService _notificationService;
 
 
-    public UserService(IUserRepository userRepo, ILogger<UserService> logger, IUnitOfWork unitOfWork)
+    public UserService(IUserRepository userRepo, ILogger<UserService> logger, IUnitOfWork unitOfWork, INotificationService notificationService)
     {
         _userRepo = userRepo;
         _logger = logger;
         _unitOfWork = unitOfWork;
+        _notificationService = notificationService;
     }
 
     public async Task<AppUser> CreateUserAsync(CreateUserRequest request)
@@ -36,6 +38,9 @@ public class UserService : IUserService
         
         await _userRepo.AddAsync(user, request.Password);
         await _unitOfWork.SaveChangesAsync(); // Сохраняем изменения
+
+        // Отправка уведомления о регистрации
+        await _notificationService.SendRegistrationEmailAsync(user.Id);
 
         _logger.LogInformation("Successfully created user with ID {UserId}", user.Id);
         return user;
