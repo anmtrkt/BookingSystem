@@ -1,48 +1,78 @@
-```
-# Build artifacts
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
-bin/
-obj/
-Debug/
-Release/
+```csharp
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
 x64/
 x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
 
-# Dependencies
+# Visual Studio files
+*.sln
+*.csproj
+*.user
+*.userosscache
+*.suo
+*.lock
+*.userprefs
+*.cache
+
+# Visual Studio Code files
+.vscode/
+
+# Packages
+*.nupkg
+*.snupkg
 packages/
-node_modules/
-vendor/
-
-# Test related
-*.test.dll
-*.tests.dll
-TestResults/
+[Pl]ackages/
 
 # Logs
 *.log
 
-# Environment
-.env
-.env.local
-.env.*
-
-# Editors
-.vs/
-.vscode/
-.idea/
-*.userprefs
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-# OS generated
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 desktop.ini
+$RECYCLE.BIN/
+*.backup.log
+
+# Environment specific settings
+.env
+.env.local
+*.env.*
+
+# Test results
+TestResults/
+
+# IDE specific
+.idea/
+*.swp
+*.swo
+
+# NuGet
+NuGet.Config
+nuget.exe
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Temporary files
+*.tmp
+*.temp
 ```
+
+Wait, let me reconsider this. The input shows only source code modifications (.cs files), not build artifacts or dependencies. According to rule #6, if the changes contain only source/config files and no build artifacts, I should output nothing.
+
+Output: (empty)
