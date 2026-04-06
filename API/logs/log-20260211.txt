@@ -1,0 +1,1391 @@
+2026-02-11 13:59:39.103 +05:00 [INF] User profile is available. Using 'C:\Users\anmtrkt.кампутар\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-11 14:00:12.303 +05:00 [INF] Now listening on: https://localhost:7124
+2026-02-11 14:00:12.308 +05:00 [INF] Now listening on: http://localhost:5164
+2026-02-11 14:00:12.651 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-11 14:00:12.666 +05:00 [INF] Hosting environment: Development
+2026-02-11 14:00:12.667 +05:00 [INF] Content root path: C:\trash\curs\BoolingSystem\API
+2026-02-11 14:00:12.870 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-11 14:00:12.870 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_vs/browserLink - null null
+2026-02-11 14:00:12.939 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 86.0498ms
+2026-02-11 14:00:13.011 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_vs/browserLink - 200 null text/javascript; charset=UTF-8 159.0078ms
+2026-02-11 14:00:13.039 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - null null
+2026-02-11 14:00:13.139 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 100.2616ms
+2026-02-11 15:05:52.932 +05:00 [INF] User profile is available. Using 'C:\Users\anmtrkt.кампутар\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-11 15:05:55.565 +05:00 [INF] Executed DbCommand (115ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 15:05:55.702 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 15:05:55.713 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 15:05:55.745 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 15:05:56.982 +05:00 [INF] Now listening on: https://localhost:7124
+2026-02-11 15:05:57.048 +05:00 [INF] Now listening on: http://localhost:5164
+2026-02-11 15:05:57.533 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-11 15:05:57.597 +05:00 [INF] Hosting environment: Development
+2026-02-11 15:05:57.613 +05:00 [INF] Content root path: C:\trash\curs\BoolingSystem\API
+2026-02-11 15:05:57.607 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_vs/browserLink - null null
+2026-02-11 15:05:57.607 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-11 15:05:57.751 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 168.5708ms
+2026-02-11 15:05:57.838 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_vs/browserLink - 200 null text/javascript; charset=UTF-8 256.2439ms
+2026-02-11 15:05:57.910 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - null null
+2026-02-11 15:05:58.287 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 377.1382ms
+2026-02-11 16:00:52.915 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 128
+2026-02-11 16:00:52.946 +05:00 [INF] CORS policy execution successful.
+2026-02-11 16:00:53.116 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 16:00:53.179 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 16:00:53.471 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 16:00:53.503 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2026-02-11 16:00:53.516 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 326.5292ms
+2026-02-11 16:00:53.519 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 16:00:53.531 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 401 null text/plain; charset=utf-8 616.5627ms
+2026-02-11 16:01:03.154 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 130
+2026-02-11 16:01:03.161 +05:00 [INF] CORS policy execution successful.
+2026-02-11 16:01:03.165 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 16:01:03.168 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 16:01:03.220 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 16:01:03.358 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2026-02-11 16:01:03.383 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 210.299ms
+2026-02-11 16:01:03.387 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 16:01:03.390 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 401 null text/plain; charset=utf-8 235.2648ms
+2026-02-11 16:01:07.013 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 129
+2026-02-11 16:01:07.031 +05:00 [INF] CORS policy execution successful.
+2026-02-11 16:01:07.038 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 16:01:07.041 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 16:01:07.048 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 16:01:07.305 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2026-02-11 16:01:07.402 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-02-11 16:01:07.429 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 385.5213ms
+2026-02-11 16:01:07.432 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 16:01:07.433 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 200 null application/json; charset=utf-8 419.8712ms
+2026-02-11 16:06:25.257 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/User - application/json 243
+2026-02-11 16:06:25.268 +05:00 [INF] CORS policy execution successful.
+2026-02-11 16:06:25.403 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 16:06:25.416 +05:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(BookingSystem.Application.DTOs.CreateUserRequest) on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 16:06:25.560 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 16:06:25.745 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2026-02-11 16:06:25.762 +05:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.Collections.Generic.List`1[[Microsoft.AspNetCore.Identity.IdentityError, Microsoft.Extensions.Identity.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]'.
+2026-02-11 16:06:25.768 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.CreateUser (API) in 344.4974ms
+2026-02-11 16:06:25.773 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 16:06:25.775 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/User - 400 null application/json; charset=utf-8 520.1677ms
+2026-02-11 16:07:44.433 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/User - application/json 257
+2026-02-11 16:07:44.449 +05:00 [INF] CORS policy execution successful.
+2026-02-11 16:07:44.456 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 16:07:44.460 +05:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(BookingSystem.Application.DTOs.CreateUserRequest) on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 16:07:44.485 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 16:07:44.661 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2026-02-11 16:07:44.672 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 16:07:44.955 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?', @p8='?', @p9='?', @p10='?', @p11='?', @p12='?' (DbType = Boolean), @p13='?', @p14='?' (DbType = Int32), @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Post", "Role", "SecurityStamp", "Surname", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2026-02-11 16:07:44.999 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2026-02-11 16:07:45.052 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='?' (DbType = Guid), @__get_Item_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE a."UserId" = @__get_Item_0 AND a."RoleId" = @__get_Item_1
+LIMIT 1
+2026-02-11 16:07:45.067 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2026-02-11 16:07:45.095 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2026-02-11 16:07:45.101 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 16:07:45.195 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p20='?' (DbType = Guid), @p2='?' (DbType = Int32), @p3='?', @p21='?', @p4='?', @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?', @p9='?', @p10='?', @p11='?', @p12='?', @p13='?' (DbType = Boolean), @p14='?', @p15='?' (DbType = Int32), @p16='?', @p17='?', @p18='?' (DbType = Boolean), @p19='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "Email" = @p4, "EmailConfirmed" = @p5, "LockoutEnabled" = @p6, "LockoutEnd" = @p7, "Name" = @p8, "NormalizedEmail" = @p9, "NormalizedUserName" = @p10, "PasswordHash" = @p11, "PhoneNumber" = @p12, "PhoneNumberConfirmed" = @p13, "Post" = @p14, "Role" = @p15, "SecurityStamp" = @p16, "Surname" = @p17, "TwoFactorEnabled" = @p18, "UserName" = @p19
+WHERE "Id" = @p20 AND "ConcurrencyStamp" = @p21;
+2026-02-11 16:07:45.221 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-02-11 16:07:45.237 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.CreateUser (API) in 770.3295ms
+2026-02-11 16:07:45.240 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 16:07:45.243 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/User - 200 null application/json; charset=utf-8 810.2897ms
+2026-02-11 19:56:19.797 +05:00 [INF] User profile is available. Using 'C:\Users\anmtrkt.кампутар\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-11 19:56:23.931 +05:00 [INF] Executed DbCommand (204ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 19:56:24.147 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 19:56:24.162 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 19:56:24.271 +05:00 [ERR] Failed executing DbCommand (53ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 19:56:24.371 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingSystem.Infrastructure.Persistence.BookingSystemDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2026-02-11 19:56:25.804 +05:00 [INF] Now listening on: https://localhost:7124
+2026-02-11 19:56:25.809 +05:00 [INF] Now listening on: http://localhost:5164
+2026-02-11 19:56:26.272 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_vs/browserLink - null null
+2026-02-11 19:56:26.273 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-11 19:56:26.307 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-11 19:56:26.379 +05:00 [INF] Hosting environment: Development
+2026-02-11 19:56:26.408 +05:00 [INF] Content root path: C:\trash\curs\BoolingSystem\API
+2026-02-11 19:56:26.433 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 180.5741ms
+2026-02-11 19:56:26.530 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_vs/browserLink - 200 null text/javascript; charset=UTF-8 280.4946ms
+2026-02-11 19:56:26.576 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - null null
+2026-02-11 19:56:26.793 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 216.4754ms
+2026-02-11 19:56:45.226 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 115
+2026-02-11 19:56:45.247 +05:00 [INF] CORS policy execution successful.
+2026-02-11 19:56:45.398 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 19:56:45.452 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 19:56:45.685 +05:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 19:56:45.706 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingSystem.Infrastructure.Persistence.BookingSystemDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2026-02-11 19:56:45.983 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 519.727ms
+2026-02-11 19:56:45.989 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 19:56:46.207 +05:00 [ERR] An unhandled exception occurred.
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at BookingSystem.Web.Controllers.AuthController.Login(LoginRequest request) in C:\trash\curs\BoolingSystem\API\Controllers\AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BookingSystem.Api.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\trash\curs\BoolingSystem\API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 24
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2026-02-11 19:56:46.314 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 500 null application/json 1087.9419ms
+2026-02-11 19:57:25.141 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 115
+2026-02-11 19:57:25.157 +05:00 [INF] CORS policy execution successful.
+2026-02-11 19:57:25.160 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 19:57:25.163 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 19:57:28.203 +05:00 [ERR] Failed executing DbCommand (22ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 19:57:28.211 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingSystem.Infrastructure.Persistence.BookingSystemDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2026-02-11 19:57:28.285 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 3119.4546ms
+2026-02-11 19:57:28.290 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 19:57:28.326 +05:00 [ERR] An unhandled exception occurred.
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at BookingSystem.Web.Controllers.AuthController.Login(LoginRequest request) in C:\trash\curs\BoolingSystem\API\Controllers\AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BookingSystem.Api.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\trash\curs\BoolingSystem\API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 24
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2026-02-11 19:57:28.352 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 500 null application/json 3211.498ms
+2026-02-11 19:57:36.556 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 115
+2026-02-11 19:57:36.590 +05:00 [INF] CORS policy execution successful.
+2026-02-11 19:57:36.597 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 19:57:36.603 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 19:57:38.402 +05:00 [ERR] Failed executing DbCommand (27ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 19:57:38.414 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'BookingSystem.Infrastructure.Persistence.BookingSystemDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2026-02-11 19:57:38.498 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 1888.5711ms
+2026-02-11 19:57:38.502 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 19:57:45.028 +05:00 [ERR] An unhandled exception occurred.
+Npgsql.PostgresException (0x80004005): 42703: столбец a.MeetingId не существует
+
+POSITION: 128
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at BookingSystem.Web.Controllers.AuthController.Login(LoginRequest request) in C:\trash\curs\BoolingSystem\API\Controllers\AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BookingSystem.Api.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\trash\curs\BoolingSystem\API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 24
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 42703
+    MessageText: столбец a.MeetingId не существует
+    Position: 128
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2026-02-11 19:57:45.068 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 500 null application/json 8512.7638ms
+2026-02-11 22:06:26.760 +05:00 [INF] User profile is available. Using 'C:\Users\anmtrkt.кампутар\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-11 22:06:32.129 +05:00 [INF] Executed DbCommand (207ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 22:06:32.259 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 22:06:32.779 +05:00 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetRoles" ("Id", "ConcurrencyStamp", "Name", "NormalizedName")
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-11 22:06:32.846 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 22:06:32.869 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 22:06:32.903 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetRoles" ("Id", "ConcurrencyStamp", "Name", "NormalizedName")
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-11 22:06:32.922 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 22:06:32.936 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-02-11 22:06:32.953 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetRoles" ("Id", "ConcurrencyStamp", "Name", "NormalizedName")
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-11 22:06:33.017 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:06:33.391 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2026-02-11 22:06:33.432 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:06:33.758 +05:00 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = Guid), @p8='?', @p9='?', @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?', @p16='?', @p17='?', @p18='?' (DbType = Boolean), @p19='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "MeetingId", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "Patronymic", "PhoneNumber", "PhoneNumberConfirmed", "Post", "SecurityStamp", "Surname", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2026-02-11 22:06:33.806 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2026-02-11 22:06:34.001 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__get_Item_0='?' (DbType = Guid), @__get_Item_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE a."UserId" = @__get_Item_0 AND a."RoleId" = @__get_Item_1
+LIMIT 1
+2026-02-11 22:06:34.026 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2026-02-11 22:06:34.106 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2026-02-11 22:06:34.132 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:06:34.273 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p21='?' (DbType = Guid), @p2='?' (DbType = Int32), @p3='?', @p22='?', @p4='?', @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = Guid), @p9='?', @p10='?', @p11='?', @p12='?', @p13='?', @p14='?', @p15='?' (DbType = Boolean), @p16='?', @p17='?', @p18='?', @p19='?' (DbType = Boolean), @p20='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "Email" = @p4, "EmailConfirmed" = @p5, "LockoutEnabled" = @p6, "LockoutEnd" = @p7, "MeetingId" = @p8, "Name" = @p9, "NormalizedEmail" = @p10, "NormalizedUserName" = @p11, "PasswordHash" = @p12, "Patronymic" = @p13, "PhoneNumber" = @p14, "PhoneNumberConfirmed" = @p15, "Post" = @p16, "SecurityStamp" = @p17, "Surname" = @p18, "TwoFactorEnabled" = @p19, "UserName" = @p20
+WHERE "Id" = @p21 AND "ConcurrencyStamp" = @p22;
+2026-02-11 22:06:35.667 +05:00 [INF] Now listening on: https://localhost:7124
+2026-02-11 22:06:35.674 +05:00 [INF] Now listening on: http://localhost:5164
+2026-02-11 22:06:36.132 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-11 22:06:36.140 +05:00 [INF] Hosting environment: Development
+2026-02-11 22:06:36.147 +05:00 [INF] Content root path: C:\trash\curs\BoolingSystem\API
+2026-02-11 22:06:37.852 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-11 22:06:37.858 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_vs/browserLink - null null
+2026-02-11 22:06:38.010 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 226.5436ms
+2026-02-11 22:06:38.606 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_vs/browserLink - 200 null text/javascript; charset=UTF-8 823.3385ms
+2026-02-11 22:06:38.711 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - null null
+2026-02-11 22:06:39.104 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 393.1752ms
+2026-02-11 22:18:08.834 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 129
+2026-02-11 22:18:08.880 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:18:09.165 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 22:18:09.240 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 22:18:13.731 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:18:13.930 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2026-02-11 22:18:13.951 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 4691.4296ms
+2026-02-11 22:18:13.960 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 22:18:13.978 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 401 null text/plain; charset=utf-8 5143.7056ms
+2026-02-11 22:18:20.669 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 129
+2026-02-11 22:18:20.675 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:18:20.680 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 22:18:20.687 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 22:18:20.746 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:18:20.963 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2026-02-11 22:18:21.070 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-02-11 22:18:21.093 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 401.2408ms
+2026-02-11 22:18:21.101 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 22:18:21.106 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 200 null application/json; charset=utf-8 438.2326ms
+2026-02-11 22:18:26.879 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 130
+2026-02-11 22:18:26.892 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:18:27.022 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 22:18:27.026 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-02-11 22:18:27.039 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:18:27.047 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2026-02-11 22:18:27.052 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 21.176ms
+2026-02-11 22:18:27.055 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-02-11 22:18:27.060 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 401 null text/plain; charset=utf-8 180.675ms
+2026-02-11 22:19:39.514 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/User - application/json 225
+2026-02-11 22:19:39.532 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:19:39.549 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 22:19:39.564 +05:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(BookingSystem.Application.DTOs.CreateUserRequest) on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 22:19:39.608 +05:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-02-11 22:19:39.693 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.CreateUser (API) in 120.8787ms
+2026-02-11 22:19:39.713 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 22:19:39.717 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/User - 400 null application/problem+json; charset=utf-8 206.9841ms
+2026-02-11 22:20:18.061 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/User - application/json 225
+2026-02-11 22:20:18.080 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:20:18.086 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 22:20:18.093 +05:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(BookingSystem.Application.DTOs.CreateUserRequest) on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 22:20:18.102 +05:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-02-11 22:20:18.108 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.CreateUser (API) in 8.3771ms
+2026-02-11 22:20:18.125 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 22:20:18.132 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/User - 400 null application/problem+json; charset=utf-8 72.7351ms
+2026-02-11 22:46:11.319 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/User - application/json 239
+2026-02-11 22:46:11.333 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:46:11.341 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 22:46:11.345 +05:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(BookingSystem.Application.DTOs.CreateUserRequest) on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 22:46:15.173 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:46:15.185 +05:00 [INF] Attempting to create a user with email user@example.com
+2026-02-11 22:46:15.317 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2026-02-11 22:46:15.325 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:46:15.366 +05:00 [INF] Executed DbCommand (30ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?' (DbType = Guid), @p8='?', @p9='?', @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?', @p16='?', @p17='?', @p18='?' (DbType = Boolean), @p19='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "MeetingId", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "Patronymic", "PhoneNumber", "PhoneNumberConfirmed", "Post", "SecurityStamp", "Surname", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2026-02-11 22:46:15.375 +05:00 [INF] Successfully created user with ID "6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18"
+2026-02-11 22:46:15.383 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2026-02-11 22:46:15.395 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (DbType = Guid), @__get_Item_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE a."UserId" = @__get_Item_0 AND a."RoleId" = @__get_Item_1
+LIMIT 1
+2026-02-11 22:46:15.407 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2026-02-11 22:46:15.420 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2026-02-11 22:46:15.432 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-02-11 22:46:15.443 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p21='?' (DbType = Guid), @p2='?' (DbType = Int32), @p3='?', @p22='?', @p4='?', @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = Guid), @p9='?', @p10='?', @p11='?', @p12='?', @p13='?', @p14='?', @p15='?' (DbType = Boolean), @p16='?', @p17='?', @p18='?', @p19='?' (DbType = Boolean), @p20='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "Email" = @p4, "EmailConfirmed" = @p5, "LockoutEnabled" = @p6, "LockoutEnd" = @p7, "MeetingId" = @p8, "Name" = @p9, "NormalizedEmail" = @p10, "NormalizedUserName" = @p11, "PasswordHash" = @p12, "Patronymic" = @p13, "PhoneNumber" = @p14, "PhoneNumberConfirmed" = @p15, "Post" = @p16, "SecurityStamp" = @p17, "Surname" = @p18, "TwoFactorEnabled" = @p19, "UserName" = @p20
+WHERE "Id" = @p21 AND "ConcurrencyStamp" = @p22;
+2026-02-11 22:46:15.459 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-02-11 22:46:15.477 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.CreateUser (API) in 4125.8236ms
+2026-02-11 22:46:15.481 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.CreateUser (API)'
+2026-02-11 22:46:15.487 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/User - 200 null application/json; charset=utf-8 4176.8796ms
+2026-02-11 22:47:11.741 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/User/6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18 - null null
+2026-02-11 22:47:11.760 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.GetById (API)'
+2026-02-11 22:47:11.773 +05:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.UserDto]] GetById(System.Guid) on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 22:47:11.788 +05:00 [INF] Attempting to find user by ID "6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18"
+2026-02-11 22:47:11.817 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__get_Item_0
+LIMIT 1
+2026-02-11 22:47:11.841 +05:00 [INF] Successfully found user with ID "6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18"
+2026-02-11 22:47:11.854 +05:00 [INF] Executing OkObjectResult, writing value of type 'BookingSystem.Application.DTOs.UserDto'.
+2026-02-11 22:47:11.868 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.GetById (API) in 85.9921ms
+2026-02-11 22:47:11.878 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.GetById (API)'
+2026-02-11 22:47:11.886 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/User/6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18 - 200 null application/json; charset=utf-8 154.4665ms
+2026-02-11 22:47:15.975 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/User - null null
+2026-02-11 22:47:15.983 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.GetAll (API)'
+2026-02-11 22:47:15.997 +05:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.UserDto]]] GetAll() on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 22:47:16.010 +05:00 [INF] Attempting to get all users
+2026-02-11 22:47:16.027 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+2026-02-11 22:47:16.039 +05:00 [INF] Successfully retrieved 2 users
+2026-02-11 22:47:16.046 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.AppUser, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.UserDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 22:47:16.054 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.GetAll (API) in 48.1226ms
+2026-02-11 22:47:16.060 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.GetAll (API)'
+2026-02-11 22:47:16.062 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/User - 200 null application/json; charset=utf-8 87.9038ms
+2026-02-11 22:47:27.015 +05:00 [INF] Request starting HTTP/2 DELETE https://localhost:7124/api/User/6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18 - null null
+2026-02-11 22:47:27.027 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:47:27.030 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.Delete (API)'
+2026-02-11 22:47:27.040 +05:00 [INF] Route matched with {action = "Delete", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(System.Guid) on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 22:47:27.061 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__get_Item_0
+LIMIT 1
+2026-02-11 22:47:27.120 +05:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?'], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "AspNetUsers"
+WHERE "Id" = @p0 AND "ConcurrencyStamp" = @p1;
+2026-02-11 22:47:27.151 +05:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-02-11 22:47:27.160 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.Delete (API) in 107.4501ms
+2026-02-11 22:47:27.167 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.Delete (API)'
+2026-02-11 22:47:27.173 +05:00 [INF] Request finished HTTP/2 DELETE https://localhost:7124/api/User/6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18 - 204 null null 158.3505ms
+2026-02-11 22:47:39.351 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/User/6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18 - null null
+2026-02-11 22:47:39.367 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.GetById (API)'
+2026-02-11 22:47:39.371 +05:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.UserDto]] GetById(System.Guid) on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 22:47:39.377 +05:00 [INF] Attempting to find user by ID "6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18"
+2026-02-11 22:47:39.387 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__get_Item_0
+LIMIT 1
+2026-02-11 22:47:39.558 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.GetById (API) in 181.4008ms
+2026-02-11 22:47:39.569 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.GetById (API)'
+2026-02-11 22:47:39.668 +05:00 [ERR] An unhandled exception occurred.
+System.Collections.Generic.KeyNotFoundException: User with ID 6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18 not found.
+   at BookingSystem.Application.Services.UserService.GetUserByIdAsync(Guid id) in C:\trash\curs\BoolingSystem\Application\Services\UserService\UserService.cs:line 93
+   at BookingSystem.Web.Controllers.UserController.GetById(Guid id) in C:\trash\curs\BoolingSystem\API\Controllers\UserControllers.cs:line 52
+   at lambda_method330(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BookingSystem.Api.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\trash\curs\BoolingSystem\API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 24
+2026-02-11 22:47:39.877 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/User/6c0ef7c6-f78d-458f-a02d-4fb0d2f29c18 - 404 null application/json 526.3244ms
+2026-02-11 22:47:50.310 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/User - null null
+2026-02-11 22:47:50.315 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.GetAll (API)'
+2026-02-11 22:47:50.317 +05:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.UserDto]]] GetAll() on controller BookingSystem.Web.Controllers.UserController (API).
+2026-02-11 22:47:50.324 +05:00 [INF] Attempting to get all users
+2026-02-11 22:47:50.333 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."MeetingId", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+2026-02-11 22:47:50.341 +05:00 [INF] Successfully retrieved 1 users
+2026-02-11 22:47:50.345 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.AppUser, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.UserDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 22:47:50.352 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.GetAll (API) in 28.7695ms
+2026-02-11 22:47:50.356 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.GetAll (API)'
+2026-02-11 22:47:50.358 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/User - 200 null application/json; charset=utf-8 49.3177ms
+2026-02-11 22:48:18.742 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Organization - application/json 34
+2026-02-11 22:48:18.757 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:48:18.763 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:48:18.777 +05:00 [INF] Route matched with {action = "Create", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OrganizationDto]] Create(BookingSystem.Application.DTOs.CreateOrganizationRequest) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:48:18.797 +05:00 [INF] Attempting to create an Vasyan Interactive organization
+2026-02-11 22:48:18.862 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Boolean), @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Organizations" ("Id", "IsArchive", "Name")
+VALUES (@p0, @p1, @p2);
+2026-02-11 22:48:18.888 +05:00 [INF] Succesfully created an Vasyan Interactive organization
+2026-02-11 22:48:18.898 +05:00 [INF] Executing CreatedAtActionResult, writing value of type 'BookingSystem.Application.DTOs.OrganizationDto'.
+2026-02-11 22:48:18.947 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.Create (API) in 160.4104ms
+2026-02-11 22:48:18.951 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:48:18.954 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Organization - 201 null application/json; charset=utf-8 220.1125ms
+2026-02-11 22:48:31.618 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Organization/585e8ef1-60bd-48ea-b657-dd7ee05172db - null null
+2026-02-11 22:48:31.627 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetById (API)'
+2026-02-11 22:48:31.638 +05:00 [INF] Route matched with {action = "GetById", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OrganizationDto]] GetById(System.Guid) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:48:31.654 +05:00 [INF] Try to find organization with ID "585e8ef1-60bd-48ea-b657-dd7ee05172db"
+2026-02-11 22:48:31.675 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+WHERE o."Id" = @__id_0
+LIMIT 1
+2026-02-11 22:48:31.694 +05:00 [INF] Succesfully find organization with ID "585e8ef1-60bd-48ea-b657-dd7ee05172db"
+2026-02-11 22:48:31.701 +05:00 [INF] Executing OkObjectResult, writing value of type 'BookingSystem.Application.DTOs.OrganizationDto'.
+2026-02-11 22:48:31.712 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.GetById (API) in 64.2783ms
+2026-02-11 22:48:31.719 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetById (API)'
+2026-02-11 22:48:31.727 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Organization/585e8ef1-60bd-48ea-b657-dd7ee05172db - 200 null application/json; charset=utf-8 109.8426ms
+2026-02-11 22:48:35.025 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Organization - null null
+2026-02-11 22:48:35.035 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 22:48:35.046 +05:00 [INF] Route matched with {action = "GetAll", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OrganizationDto]]] GetAll() on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:48:35.063 +05:00 [INF] Try to get all organizations
+2026-02-11 22:48:35.078 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+2026-02-11 22:48:35.101 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Organization, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OrganizationDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 22:48:35.112 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.GetAll (API) in 59.3994ms
+2026-02-11 22:48:35.120 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 22:48:35.127 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Organization - 200 null application/json; charset=utf-8 101.9909ms
+2026-02-11 22:49:32.335 +05:00 [INF] Request starting HTTP/2 PUT https://localhost:7124/api/Organization - application/json 163
+2026-02-11 22:49:32.357 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:49:32.360 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.Update (API)'
+2026-02-11 22:49:32.373 +05:00 [INF] Route matched with {action = "Update", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OrganizationDto]] Update(BookingSystem.Application.DTOs.UpdateOrganizationRequest) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:49:38.446 +05:00 [INF] Attempting to update an Vasyan Interactive 2.0 organization "585e8ef1-60bd-48ea-b657-dd7ee05172db"
+2026-02-11 22:49:39.183 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+WHERE o."Id" = @__id_0
+LIMIT 1
+2026-02-11 22:49:49.257 +05:00 [INF] Executed DbCommand (153ms) [Parameters=[@__officiesId_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."Address", o."IsArchive", o."OrganizationId", o."RoomsId"
+FROM "Offices" AS o
+WHERE o."Id" = ANY (@__officiesId_0)
+2026-02-11 22:50:06.326 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.Update (API) in 33943.9914ms
+2026-02-11 22:50:06.330 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.Update (API)'
+2026-02-11 22:50:06.382 +05:00 [ERR] An unhandled exception occurred.
+System.ArgumentException: One or more officies not found. Invalid IDs: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+   at BookingSystem.Application.Services.OrganizationService.UpdateOrganizationAsync(UpdateOrganizationRequest request) in C:\trash\curs\BoolingSystem\Application\Services\OrganizationService\OrganizationService.cs:line 55
+   at BookingSystem.Web.Controllers.OrganizationController.Update(UpdateOrganizationRequest request) in C:\trash\curs\BoolingSystem\API\Controllers\OrganizationController.cs:line 48
+   at lambda_method429(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BookingSystem.Api.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\trash\curs\BoolingSystem\API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 24
+2026-02-11 22:50:06.395 +05:00 [INF] Request finished HTTP/2 PUT https://localhost:7124/api/Organization - 400 null application/json 34060.9295ms
+2026-02-11 22:50:15.994 +05:00 [INF] Request starting HTTP/2 PUT https://localhost:7124/api/Organization - application/json 120
+2026-02-11 22:50:15.999 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:50:16.002 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.Update (API)'
+2026-02-11 22:50:16.005 +05:00 [INF] Route matched with {action = "Update", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OrganizationDto]] Update(BookingSystem.Application.DTOs.UpdateOrganizationRequest) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:50:18.729 +05:00 [INF] Attempting to update an Vasyan Interactive 2.0 organization "585e8ef1-60bd-48ea-b657-dd7ee05172db"
+2026-02-11 22:50:18.738 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+WHERE o."Id" = @__id_0
+LIMIT 1
+2026-02-11 22:50:18.768 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__officiesId_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."Address", o."IsArchive", o."OrganizationId", o."RoomsId"
+FROM "Offices" AS o
+WHERE o."Id" = ANY (@__officiesId_0)
+2026-02-11 22:52:55.839 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p2='?' (DbType = Guid), @p0='?' (DbType = Boolean), @p1='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Organizations" SET "IsArchive" = @p0, "Name" = @p1
+WHERE "Id" = @p2;
+2026-02-11 22:52:56.456 +05:00 [INF] Succesfully updated an Vasyan Interactive 2.0 organization
+2026-02-11 22:52:59.880 +05:00 [INF] Executing OkObjectResult, writing value of type 'BookingSystem.Application.DTOs.OrganizationDto'.
+2026-02-11 22:52:59.884 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.Update (API) in 163876.2978ms
+2026-02-11 22:52:59.887 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.Update (API)'
+2026-02-11 22:52:59.899 +05:00 [INF] Request finished HTTP/2 PUT https://localhost:7124/api/Organization - 200 null application/json; charset=utf-8 163905.3653ms
+2026-02-11 22:53:05.293 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Organization - null null
+2026-02-11 22:53:05.302 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 22:53:05.308 +05:00 [INF] Route matched with {action = "GetAll", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OrganizationDto]]] GetAll() on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:53:05.315 +05:00 [INF] Try to get all organizations
+2026-02-11 22:53:05.322 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+2026-02-11 22:53:05.334 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Organization, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OrganizationDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 22:53:05.338 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.GetAll (API) in 24.3913ms
+2026-02-11 22:53:05.340 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 22:53:05.344 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Organization - 200 null application/json; charset=utf-8 51.3106ms
+2026-02-11 22:53:35.461 +05:00 [INF] Request starting HTTP/2 DELETE https://localhost:7124/api/Organization/585e8ef1-60bd-48ea-b657-dd7ee05172db - null null
+2026-02-11 22:53:35.467 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:53:35.472 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.Delete (API)'
+2026-02-11 22:53:35.483 +05:00 [INF] Route matched with {action = "Delete", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(System.Guid) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:53:35.495 +05:00 [INF] Try to delete organization with ID "585e8ef1-60bd-48ea-b657-dd7ee05172db"
+2026-02-11 22:53:35.574 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+WHERE o."Id" = @__id_0
+LIMIT 1
+2026-02-11 22:53:35.590 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Organizations"
+WHERE "Id" = @p0;
+2026-02-11 22:53:35.593 +05:00 [INF] Successfully deleted an organization with ID "585e8ef1-60bd-48ea-b657-dd7ee05172db"
+2026-02-11 22:53:35.595 +05:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-02-11 22:53:35.597 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.Delete (API) in 106.4501ms
+2026-02-11 22:53:35.599 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.Delete (API)'
+2026-02-11 22:53:35.603 +05:00 [INF] Request finished HTTP/2 DELETE https://localhost:7124/api/Organization/585e8ef1-60bd-48ea-b657-dd7ee05172db - 204 null null 150.1692ms
+2026-02-11 22:53:38.864 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Organization - null null
+2026-02-11 22:53:38.883 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 22:53:38.885 +05:00 [INF] Route matched with {action = "GetAll", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OrganizationDto]]] GetAll() on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:53:38.891 +05:00 [INF] Try to get all organizations
+2026-02-11 22:53:38.897 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+2026-02-11 22:53:38.904 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Organization, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OrganizationDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 22:53:38.909 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.GetAll (API) in 18.2611ms
+2026-02-11 22:53:38.912 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 22:53:38.916 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Organization - 200 null application/json; charset=utf-8 51.2265ms
+2026-02-11 22:53:43.944 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Organization - application/json 34
+2026-02-11 22:53:43.950 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:53:43.954 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:53:43.957 +05:00 [INF] Route matched with {action = "Create", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OrganizationDto]] Create(BookingSystem.Application.DTOs.CreateOrganizationRequest) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:53:43.968 +05:00 [INF] Attempting to create an Vasyan Interactive organization
+2026-02-11 22:53:44.002 +05:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Boolean), @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Organizations" ("Id", "IsArchive", "Name")
+VALUES (@p0, @p1, @p2);
+2026-02-11 22:53:44.012 +05:00 [INF] Succesfully created an Vasyan Interactive organization
+2026-02-11 22:53:44.016 +05:00 [INF] Executing CreatedAtActionResult, writing value of type 'BookingSystem.Application.DTOs.OrganizationDto'.
+2026-02-11 22:53:44.023 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.Create (API) in 56.8456ms
+2026-02-11 22:53:44.030 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:53:44.032 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Organization - 201 null application/json; charset=utf-8 88.9159ms
+2026-02-11 22:53:45.789 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Organization - application/json 34
+2026-02-11 22:53:45.794 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:53:45.797 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:53:45.801 +05:00 [INF] Route matched with {action = "Create", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OrganizationDto]] Create(BookingSystem.Application.DTOs.CreateOrganizationRequest) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:53:45.807 +05:00 [INF] Attempting to create an Vasyan Interactive organization
+2026-02-11 22:53:45.842 +05:00 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Boolean), @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Organizations" ("Id", "IsArchive", "Name")
+VALUES (@p0, @p1, @p2);
+2026-02-11 22:53:45.851 +05:00 [INF] Succesfully created an Vasyan Interactive organization
+2026-02-11 22:53:45.857 +05:00 [INF] Executing CreatedAtActionResult, writing value of type 'BookingSystem.Application.DTOs.OrganizationDto'.
+2026-02-11 22:53:45.865 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.Create (API) in 58.9153ms
+2026-02-11 22:53:45.872 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:53:45.880 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Organization - 201 null application/json; charset=utf-8 91.0223ms
+2026-02-11 22:53:46.382 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Organization - application/json 34
+2026-02-11 22:53:46.386 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:53:46.392 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:53:46.395 +05:00 [INF] Route matched with {action = "Create", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OrganizationDto]] Create(BookingSystem.Application.DTOs.CreateOrganizationRequest) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:53:46.400 +05:00 [INF] Attempting to create an Vasyan Interactive organization
+2026-02-11 22:53:46.432 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Boolean), @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Organizations" ("Id", "IsArchive", "Name")
+VALUES (@p0, @p1, @p2);
+2026-02-11 22:53:46.438 +05:00 [INF] Succesfully created an Vasyan Interactive organization
+2026-02-11 22:53:46.444 +05:00 [INF] Executing CreatedAtActionResult, writing value of type 'BookingSystem.Application.DTOs.OrganizationDto'.
+2026-02-11 22:53:46.449 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.Create (API) in 50.2514ms
+2026-02-11 22:53:46.455 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:53:46.464 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Organization - 201 null application/json; charset=utf-8 82.4317ms
+2026-02-11 22:53:47.231 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Organization - application/json 34
+2026-02-11 22:53:47.235 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:53:47.237 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:53:47.240 +05:00 [INF] Route matched with {action = "Create", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OrganizationDto]] Create(BookingSystem.Application.DTOs.CreateOrganizationRequest) on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:53:47.247 +05:00 [INF] Attempting to create an Vasyan Interactive organization
+2026-02-11 22:53:47.254 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Boolean), @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Organizations" ("Id", "IsArchive", "Name")
+VALUES (@p0, @p1, @p2);
+2026-02-11 22:53:47.265 +05:00 [INF] Succesfully created an Vasyan Interactive organization
+2026-02-11 22:53:47.268 +05:00 [INF] Executing CreatedAtActionResult, writing value of type 'BookingSystem.Application.DTOs.OrganizationDto'.
+2026-02-11 22:53:47.276 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.Create (API) in 30.4892ms
+2026-02-11 22:53:47.280 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.Create (API)'
+2026-02-11 22:53:47.283 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Organization - 201 null application/json; charset=utf-8 52.1996ms
+2026-02-11 22:53:49.573 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Organization - null null
+2026-02-11 22:53:49.577 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 22:53:49.581 +05:00 [INF] Route matched with {action = "GetAll", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OrganizationDto]]] GetAll() on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 22:53:49.588 +05:00 [INF] Try to get all organizations
+2026-02-11 22:53:49.594 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+2026-02-11 22:53:49.605 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Organization, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OrganizationDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 22:53:49.608 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.GetAll (API) in 20.3923ms
+2026-02-11 22:53:49.611 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 22:53:49.614 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Organization - 200 null application/json; charset=utf-8 41.4728ms
+2026-02-11 22:53:57.623 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Office - null null
+2026-02-11 22:53:57.629 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.GetAll (API)'
+2026-02-11 22:53:57.639 +05:00 [INF] Route matched with {action = "GetAll", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OfficeDto]]] GetAll() on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-02-11 22:53:57.648 +05:00 [INF] Try to get all officies
+2026-02-11 22:53:57.665 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."Address", o."IsArchive", o."OrganizationId", o."RoomsId"
+FROM "Offices" AS o
+2026-02-11 22:53:57.675 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Office, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OfficeDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 22:53:57.683 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.GetAll (API) in 41.407ms
+2026-02-11 22:53:57.689 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.GetAll (API)'
+2026-02-11 22:53:57.697 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Office - 200 null application/json; charset=utf-8 74.0763ms
+2026-02-11 22:54:58.380 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Office - application/json 179
+2026-02-11 22:54:58.403 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:54:58.404 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-02-11 22:54:58.415 +05:00 [INF] Route matched with {action = "Create", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OfficeDto]] Create(BookingSystem.Application.DTOs.CreateOfficeRequest) on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-02-11 22:54:58.437 +05:00 [INF] Attempting to create an office for organization "3fa85f64-5717-4562-b3fc-2c963f66afa6" at address Pushkin street, Kolotyshkina building
+2026-02-11 22:54:58.504 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__roomsId_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CountOfPlaces", r."IsArchive", r."IsAvailable", r."Number", r."OfficeId", r."ScheduleId", r."HasAirConditioning", r."HasInteractiveWhiteboard", r."HasMicrophones", r."HasProjector", r."HasSoundproofing", r."HasTelevisions", r."HasVideoConferenceSystem", r."HasWhiteboard", r."HasWiFi", r."NumberOfComputers", r."NumberOfMicrophones", r."NumberOfTelevisions"
+FROM "Rooms" AS r
+WHERE r."Id" = ANY (@__roomsId_0)
+2026-02-11 22:54:58.641 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.Create (API) in 222.2036ms
+2026-02-11 22:54:58.646 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-02-11 22:54:58.746 +05:00 [ERR] An unhandled exception occurred.
+System.ArgumentException: One or more rooms not found. Invalid IDs: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+   at BookingSystem.Application.Services.OfficeService.CreateOfficeAsync(CreateOfficeRequest request) in C:\trash\curs\BoolingSystem\Application\Services\OfficeService\OfficeService.cs:line 38
+   at BookingSystem.Web.Controllers.OfficeController.Create(CreateOfficeRequest request) in C:\trash\curs\BoolingSystem\API\Controllers\OfficeController.cs:line 37
+   at lambda_method458(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BookingSystem.Api.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\trash\curs\BoolingSystem\API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 24
+2026-02-11 22:54:58.760 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Office - 400 null application/json 379.7667ms
+2026-02-11 22:55:09.176 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Office - application/json 136
+2026-02-11 22:55:09.192 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:55:09.195 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-02-11 22:55:09.200 +05:00 [INF] Route matched with {action = "Create", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OfficeDto]] Create(BookingSystem.Application.DTOs.CreateOfficeRequest) on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-02-11 22:55:09.214 +05:00 [INF] Attempting to create an office for organization "3fa85f64-5717-4562-b3fc-2c963f66afa6" at address Pushkin street, Kolotyshkina building
+2026-02-11 22:55:09.320 +05:00 [ERR] Failed executing DbCommand (57ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = Boolean), @p3='?' (DbType = Guid), @p4='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Offices" ("Id", "Address", "IsArchive", "OrganizationId", "RoomsId")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-02-11 22:55:09.369 +05:00 [ERR] An exception occurred in the database while saving changes for context type 'BookingSystem.Infrastructure.Persistence.BookingSystemDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23503
+    MessageText: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Offices
+    ConstraintName: FK_Offices_Organizations_OrganizationId
+    File: ri_triggers.c
+    Line: 2610
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23503
+    MessageText: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Offices
+    ConstraintName: FK_Offices_Organizations_OrganizationId
+    File: ri_triggers.c
+    Line: 2610
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-02-11 22:55:09.544 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.Create (API) in 334.2616ms
+2026-02-11 22:55:09.551 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-02-11 22:55:09.657 +05:00 [ERR] An unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23503
+    MessageText: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Offices
+    ConstraintName: FK_Offices_Organizations_OrganizationId
+    File: ri_triggers.c
+    Line: 2610
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at BookingSystem.Application.Services.OfficeService.CreateOfficeAsync(CreateOfficeRequest request) in C:\trash\curs\BoolingSystem\Application\Services\OfficeService\OfficeService.cs:line 47
+   at BookingSystem.Web.Controllers.OfficeController.Create(CreateOfficeRequest request) in C:\trash\curs\BoolingSystem\API\Controllers\OfficeController.cs:line 37
+   at lambda_method458(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BookingSystem.Api.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\trash\curs\BoolingSystem\API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 24
+2026-02-11 22:55:09.725 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Office - 500 null application/json 549.5619ms
+2026-02-11 22:55:29.988 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Office - application/json 136
+2026-02-11 22:55:30.009 +05:00 [INF] CORS policy execution successful.
+2026-02-11 22:55:30.014 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-02-11 22:55:30.017 +05:00 [INF] Route matched with {action = "Create", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OfficeDto]] Create(BookingSystem.Application.DTOs.CreateOfficeRequest) on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-02-11 22:55:35.468 +05:00 [INF] Attempting to create an office for organization "3fa85f64-5717-4562-b3fc-2c963f66afa6" at address Pushkin street, Kolotyshkina building
+2026-02-11 22:55:50.557 +05:00 [ERR] Failed executing DbCommand (24ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = Boolean), @p3='?' (DbType = Guid), @p4='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Offices" ("Id", "Address", "IsArchive", "OrganizationId", "RoomsId")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-02-11 22:55:50.572 +05:00 [ERR] An exception occurred in the database while saving changes for context type 'BookingSystem.Infrastructure.Persistence.BookingSystemDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23503
+    MessageText: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Offices
+    ConstraintName: FK_Offices_Organizations_OrganizationId
+    File: ri_triggers.c
+    Line: 2610
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23503
+    MessageText: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Offices
+    ConstraintName: FK_Offices_Organizations_OrganizationId
+    File: ri_triggers.c
+    Line: 2610
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-02-11 22:55:50.690 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.Create (API) in 20665.567ms
+2026-02-11 22:55:50.693 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-02-11 22:55:50.742 +05:00 [ERR] An unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23503: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23503
+    MessageText: INSERT или UPDATE в таблице "Offices" нарушает ограничение внешнего ключа "FK_Offices_Organizations_OrganizationId"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Offices
+    ConstraintName: FK_Offices_Organizations_OrganizationId
+    File: ri_triggers.c
+    Line: 2610
+    Routine: ri_ReportViolation
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at BookingSystem.Application.Services.OfficeService.CreateOfficeAsync(CreateOfficeRequest request) in C:\trash\curs\BoolingSystem\Application\Services\OfficeService\OfficeService.cs:line 47
+   at BookingSystem.Web.Controllers.OfficeController.Create(CreateOfficeRequest request) in C:\trash\curs\BoolingSystem\API\Controllers\OfficeController.cs:line 37
+   at lambda_method458(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BookingSystem.Api.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\trash\curs\BoolingSystem\API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 24
+2026-02-11 22:55:50.771 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Office - 500 null application/json 20783.9111ms
+2026-02-11 23:03:15.575 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Organization - null null
+2026-02-11 23:03:22.153 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 23:03:22.157 +05:00 [INF] Route matched with {action = "GetAll", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OrganizationDto]]] GetAll() on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 23:03:22.163 +05:00 [INF] Try to get all organizations
+2026-02-11 23:03:22.247 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+2026-02-11 23:03:22.256 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Organization, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OrganizationDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 23:03:22.264 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.GetAll (API) in 102.0651ms
+2026-02-11 23:03:22.269 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 23:03:22.272 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Organization - 200 null application/json; charset=utf-8 6702.2625ms
+2026-02-11 23:03:25.550 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Organization - null null
+2026-02-11 23:03:25.555 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 23:03:25.557 +05:00 [INF] Route matched with {action = "GetAll", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OrganizationDto]]] GetAll() on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-02-11 23:03:25.560 +05:00 [INF] Try to get all organizations
+2026-02-11 23:03:25.566 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name"
+FROM "Organizations" AS o
+2026-02-11 23:03:25.590 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Organization, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OrganizationDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 23:03:25.594 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.GetAll (API) in 33.8862ms
+2026-02-11 23:03:25.598 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-02-11 23:03:25.602 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Organization - 200 null application/json; charset=utf-8 51.6393ms
+2026-02-11 23:03:40.450 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Office - application/json 136
+2026-02-11 23:03:40.456 +05:00 [INF] CORS policy execution successful.
+2026-02-11 23:03:40.459 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-02-11 23:03:40.464 +05:00 [INF] Route matched with {action = "Create", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OfficeDto]] Create(BookingSystem.Application.DTOs.CreateOfficeRequest) on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-02-11 23:03:44.987 +05:00 [INF] Attempting to create an office for organization "94245d96-637e-4662-b5bf-bd29fc145d9d" at address Pushkin street, Kolotyshkina building
+2026-02-11 23:03:45.023 +05:00 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = Boolean), @p3='?' (DbType = Guid), @p4='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Offices" ("Id", "Address", "IsArchive", "OrganizationId", "RoomsId")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-02-11 23:03:45.031 +05:00 [INF] Successfully created office with ID "8fb1f4df-fd20-40d4-bb0e-bb562e8ce79a"
+2026-02-11 23:03:45.035 +05:00 [INF] Executing CreatedAtActionResult, writing value of type 'BookingSystem.Application.DTOs.OfficeDto'.
+2026-02-11 23:03:45.045 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.Create (API) in 4575.3106ms
+2026-02-11 23:03:45.048 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-02-11 23:03:45.052 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Office - 201 null application/json; charset=utf-8 4602.4941ms
+2026-02-11 23:03:50.881 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Office - null null
+2026-02-11 23:03:50.886 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.GetAll (API)'
+2026-02-11 23:03:50.892 +05:00 [INF] Route matched with {action = "GetAll", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OfficeDto]]] GetAll() on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-02-11 23:03:50.899 +05:00 [INF] Try to get all officies
+2026-02-11 23:03:50.907 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."Address", o."IsArchive", o."OrganizationId", o."RoomsId"
+FROM "Offices" AS o
+2026-02-11 23:03:50.926 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Office, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OfficeDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-02-11 23:03:50.932 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.GetAll (API) in 32.9331ms
+2026-02-11 23:03:50.937 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.GetAll (API)'
+2026-02-11 23:03:50.942 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Office - 200 null application/json; charset=utf-8 62.2438ms

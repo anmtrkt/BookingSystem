@@ -1,0 +1,187 @@
+2026-01-30 17:37:01.187 +05:00 [INF] User profile is available. Using 'C:\Users\anmtrkt.кампутар\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-30 17:37:03.123 +05:00 [INF] Executed DbCommand (58ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-01-30 17:37:03.191 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-01-30 17:37:03.196 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2026-01-30 17:37:03.208 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-01-30 17:37:04.069 +05:00 [INF] Now listening on: https://localhost:7124
+2026-01-30 17:37:04.072 +05:00 [INF] Now listening on: http://localhost:5164
+2026-01-30 17:37:04.272 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-30 17:37:04.302 +05:00 [INF] Hosting environment: Development
+2026-01-30 17:37:04.304 +05:00 [INF] Content root path: C:\trash\curs\BoolingSystem\API
+2026-01-30 17:37:04.475 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-30 17:37:04.475 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_vs/browserLink - null null
+2026-01-30 17:37:04.541 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 82.1664ms
+2026-01-30 17:37:04.657 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_vs/browserLink - 200 null text/javascript; charset=UTF-8 200.2646ms
+2026-01-30 17:37:04.691 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - null null
+2026-01-30 17:37:04.825 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 133.9852ms
+2026-01-30 17:37:16.831 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Office - null null
+2026-01-30 17:37:17.068 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-01-30 17:37:17.078 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-01-30 17:37:17.083 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Office - 401 0 null 251.8986ms
+2026-01-30 17:37:49.670 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Auth/login - application/json 129
+2026-01-30 17:37:49.685 +05:00 [INF] CORS policy execution successful.
+2026-01-30 17:37:49.693 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-01-30 17:37:49.753 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Microsoft.AspNetCore.Identity.Data.LoginRequest) on controller BookingSystem.Web.Controllers.AuthController (API).
+2026-01-30 17:37:49.965 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2026-01-30 17:37:50.249 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2026-01-30 17:37:50.421 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-30 17:37:50.443 +05:00 [INF] Executed action BookingSystem.Web.Controllers.AuthController.Login (API) in 676.6405ms
+2026-01-30 17:37:50.447 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.AuthController.Login (API)'
+2026-01-30 17:37:50.459 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Auth/login - 200 null application/json; charset=utf-8 788.3906ms
+2026-01-30 17:37:54.938 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Office - null null
+2026-01-30 17:37:55.056 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.GetAll (API)'
+2026-01-30 17:37:55.066 +05:00 [INF] Route matched with {action = "GetAll", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OfficeDto]]] GetAll() on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-01-30 17:37:55.076 +05:00 [INF] Try to get all officies
+2026-01-30 17:37:55.226 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."Address", o."IsArchive", o."OrganizationId", r."Id", r."CountOfPlaces", r."IsArchive", r."IsAvailable", r."Number", r."OfficeId", r."ScheduleId", r."HasAirConditioning", r."HasInteractiveWhiteboard", r."HasMicrophones", r."HasProjector", r."HasSoundproofing", r."HasTelevisions", r."HasVideoConferenceSystem", r."HasWhiteboard", r."HasWiFi", r."NumberOfComputers", r."NumberOfMicrophones", r."NumberOfTelevisions"
+FROM "Offices" AS o
+LEFT JOIN "Rooms" AS r ON o."Id" = r."OfficeId"
+ORDER BY o."Id"
+2026-01-30 17:37:55.244 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Office, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OfficeDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-30 17:37:55.259 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.GetAll (API) in 187.7684ms
+2026-01-30 17:37:55.263 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.GetAll (API)'
+2026-01-30 17:37:55.266 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Office - 200 null application/json; charset=utf-8 328.1269ms
+2026-01-30 17:38:01.083 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Organization - null null
+2026-01-30 17:38:01.095 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-01-30 17:38:01.103 +05:00 [INF] Route matched with {action = "GetAll", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OrganizationDto]]] GetAll() on controller BookingSystem.Web.Controllers.OrganizationController (API).
+2026-01-30 17:38:01.112 +05:00 [INF] Try to get all organizations
+2026-01-30 17:38:01.153 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."IsArchive", o."Name", o0."Id", o0."Address", o0."IsArchive", o0."OrganizationId"
+FROM "Organizations" AS o
+LEFT JOIN "Offices" AS o0 ON o."Id" = o0."OrganizationId"
+ORDER BY o."Id"
+2026-01-30 17:38:01.191 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Organization, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OrganizationDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-30 17:38:01.198 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OrganizationController.GetAll (API) in 92.5174ms
+2026-01-30 17:38:01.202 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OrganizationController.GetAll (API)'
+2026-01-30 17:38:01.204 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Organization - 200 null application/json; charset=utf-8 121.4455ms
+2026-01-30 17:38:32.342 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Office - application/json 109
+2026-01-30 17:38:32.364 +05:00 [INF] CORS policy execution successful.
+2026-01-30 17:38:32.372 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-01-30 17:38:32.380 +05:00 [INF] Route matched with {action = "Create", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.OfficeDto]] Create(BookingSystem.Application.DTOs.CreateOfficeRequest) on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-01-30 17:38:32.416 +05:00 [INF] Attempting to create an office for organization "905e7ec2-0505-4672-9410-dd9989699ea5" at address Адрес
+2026-01-30 17:38:32.623 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = Boolean), @p3='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Offices" ("Id", "Address", "IsArchive", "OrganizationId")
+VALUES (@p0, @p1, @p2, @p3);
+2026-01-30 17:38:32.646 +05:00 [INF] Successfully created office with ID "0b1ae521-f965-4f67-8ee3-32bfcc951749"
+2026-01-30 17:38:32.651 +05:00 [INF] Executing CreatedAtActionResult, writing value of type 'BookingSystem.Application.DTOs.OfficeDto'.
+2026-01-30 17:38:32.694 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.Create (API) in 310.9676ms
+2026-01-30 17:38:32.697 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.Create (API)'
+2026-01-30 17:38:32.707 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Office - 201 null application/json; charset=utf-8 365.2366ms
+2026-01-30 17:38:39.872 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Office - null null
+2026-01-30 17:38:39.880 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.OfficeController.GetAll (API)'
+2026-01-30 17:38:39.887 +05:00 [INF] Route matched with {action = "GetAll", controller = "Office"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.OfficeDto]]] GetAll() on controller BookingSystem.Web.Controllers.OfficeController (API).
+2026-01-30 17:38:39.914 +05:00 [INF] Try to get all officies
+2026-01-30 17:38:39.922 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT o."Id", o."Address", o."IsArchive", o."OrganizationId", r."Id", r."CountOfPlaces", r."IsArchive", r."IsAvailable", r."Number", r."OfficeId", r."ScheduleId", r."HasAirConditioning", r."HasInteractiveWhiteboard", r."HasMicrophones", r."HasProjector", r."HasSoundproofing", r."HasTelevisions", r."HasVideoConferenceSystem", r."HasWhiteboard", r."HasWiFi", r."NumberOfComputers", r."NumberOfMicrophones", r."NumberOfTelevisions"
+FROM "Offices" AS o
+LEFT JOIN "Rooms" AS r ON o."Id" = r."OfficeId"
+ORDER BY o."Id"
+2026-01-30 17:38:39.929 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Office, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.OfficeDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-30 17:38:39.933 +05:00 [INF] Executed action BookingSystem.Web.Controllers.OfficeController.GetAll (API) in 28.6352ms
+2026-01-30 17:38:39.936 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.OfficeController.GetAll (API)'
+2026-01-30 17:38:39.938 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Office - 200 null application/json; charset=utf-8 66.2088ms
+2026-01-30 17:38:55.965 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Room - null null
+2026-01-30 17:38:55.979 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.RoomController.GetAll (API)'
+2026-01-30 17:38:56.001 +05:00 [INF] Route matched with {action = "GetAll", controller = "Room"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.RoomDto]]] GetAll() on controller BookingSystem.Web.Controllers.RoomController (API).
+2026-01-30 17:38:56.030 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CountOfPlaces", r."IsArchive", r."IsAvailable", r."Number", r."OfficeId", r."ScheduleId", r."HasAirConditioning", r."HasInteractiveWhiteboard", r."HasMicrophones", r."HasProjector", r."HasSoundproofing", r."HasTelevisions", r."HasVideoConferenceSystem", r."HasWhiteboard", r."HasWiFi", r."NumberOfComputers", r."NumberOfMicrophones", r."NumberOfTelevisions"
+FROM "Rooms" AS r
+2026-01-30 17:38:56.034 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Room, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.RoomDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-30 17:38:56.049 +05:00 [INF] Executed action BookingSystem.Web.Controllers.RoomController.GetAll (API) in 44.6261ms
+2026-01-30 17:38:56.052 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.RoomController.GetAll (API)'
+2026-01-30 17:38:56.054 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Room - 200 null application/json; charset=utf-8 90.1494ms
+2026-01-30 17:39:19.369 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7124/api/Room - application/json 97
+2026-01-30 17:39:19.374 +05:00 [INF] CORS policy execution successful.
+2026-01-30 17:39:19.376 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.RoomController.Create (API)'
+2026-01-30 17:39:19.387 +05:00 [INF] Route matched with {action = "Create", controller = "Room"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BookingSystem.Application.DTOs.RoomDto]] Create(BookingSystem.Application.DTOs.CreateRoomRequest) on controller BookingSystem.Web.Controllers.RoomController (API).
+2026-01-30 17:39:19.448 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Address", t."IsArchive", t."OrganizationId", r."Id", r."CountOfPlaces", r."IsArchive", r."IsAvailable", r."Number", r."OfficeId", r."ScheduleId", r."HasAirConditioning", r."HasInteractiveWhiteboard", r."HasMicrophones", r."HasProjector", r."HasSoundproofing", r."HasTelevisions", r."HasVideoConferenceSystem", r."HasWhiteboard", r."HasWiFi", r."NumberOfComputers", r."NumberOfMicrophones", r."NumberOfTelevisions"
+FROM (
+    SELECT o."Id", o."Address", o."IsArchive", o."OrganizationId"
+    FROM "Offices" AS o
+    WHERE o."Id" = @__id_0
+    LIMIT 1
+) AS t
+LEFT JOIN "Rooms" AS r ON t."Id" = r."OfficeId"
+ORDER BY t."Id"
+2026-01-30 17:39:19.651 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Boolean), @p2='?' (DbType = Guid), @p3='?' (DbType = Int64), @p4='?' (DbType = Boolean), @p5='?', @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (DbType = Boolean), @p9='?' (DbType = Boolean), @p10='?' (DbType = Boolean), @p11='?' (DbType = Boolean), @p12='?' (DbType = Boolean), @p13='?' (DbType = Boolean), @p14='?' (DbType = Boolean), @p15='?' (DbType = Boolean), @p16='?' (DbType = Boolean), @p17='?' (DbType = Int32), @p18='?' (DbType = Int32), @p19='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Schedules" ("Id", "IsArchive")
+VALUES (@p0, @p1);
+INSERT INTO "Rooms" ("Id", "CountOfPlaces", "IsArchive", "Number", "OfficeId", "ScheduleId", "HasAirConditioning", "HasInteractiveWhiteboard", "HasMicrophones", "HasProjector", "HasSoundproofing", "HasTelevisions", "HasVideoConferenceSystem", "HasWhiteboard", "HasWiFi", "NumberOfComputers", "NumberOfMicrophones", "NumberOfTelevisions")
+VALUES (@p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19)
+RETURNING "IsAvailable";
+2026-01-30 17:39:19.705 +05:00 [INF] Executing CreatedAtActionResult, writing value of type 'BookingSystem.Application.DTOs.RoomDto'.
+2026-01-30 17:39:19.724 +05:00 [INF] Executed action BookingSystem.Web.Controllers.RoomController.Create (API) in 329.3539ms
+2026-01-30 17:39:19.732 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.RoomController.Create (API)'
+2026-01-30 17:39:19.737 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7124/api/Room - 201 null application/json; charset=utf-8 368.551ms
+2026-01-30 17:39:49.492 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/User - null null
+2026-01-30 17:39:49.512 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.UserController.GetAll (API)'
+2026-01-30 17:39:49.522 +05:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.UserDto]]] GetAll() on controller BookingSystem.Web.Controllers.UserController (API).
+2026-01-30 17:39:49.555 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."Role", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+2026-01-30 17:39:49.586 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Infrastructure.Identity.AppUser, Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.UserDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-30 17:39:49.596 +05:00 [INF] Executed action BookingSystem.Web.Controllers.UserController.GetAll (API) in 69.199ms
+2026-01-30 17:39:49.606 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.UserController.GetAll (API)'
+2026-01-30 17:39:49.607 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/User - 200 null application/json; charset=utf-8 115.2186ms
+2026-01-30 17:40:24.068 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/api/Room - null null
+2026-01-30 17:40:24.087 +05:00 [INF] Executing endpoint 'BookingSystem.Web.Controllers.RoomController.GetAll (API)'
+2026-01-30 17:40:24.091 +05:00 [INF] Route matched with {action = "GetAll", controller = "Room"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BookingSystem.Application.DTOs.RoomDto]]] GetAll() on controller BookingSystem.Web.Controllers.RoomController (API).
+2026-01-30 17:40:24.101 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CountOfPlaces", r."IsArchive", r."IsAvailable", r."Number", r."OfficeId", r."ScheduleId", r."HasAirConditioning", r."HasInteractiveWhiteboard", r."HasMicrophones", r."HasProjector", r."HasSoundproofing", r."HasTelevisions", r."HasVideoConferenceSystem", r."HasWhiteboard", r."HasWiFi", r."NumberOfComputers", r."NumberOfMicrophones", r."NumberOfTelevisions"
+FROM "Rooms" AS r
+2026-01-30 17:40:24.127 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[BookingSystem.Core.Entities.Room, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[BookingSystem.Application.DTOs.RoomDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-30 17:40:55.968 +05:00 [INF] Executed action BookingSystem.Web.Controllers.RoomController.GetAll (API) in 31872.1717ms
+2026-01-30 17:40:55.971 +05:00 [INF] Executed endpoint 'BookingSystem.Web.Controllers.RoomController.GetAll (API)'
+2026-01-30 17:40:55.976 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BookingSystem.Application.Services.RoomService.MapToDto(Room room) in C:\trash\curs\BoolingSystem\Application\Services\RoomService\RoomService.cs:line 83
+   at System.Linq.Enumerable.SelectListIterator`2.MoveNext()
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-01-30 17:40:56.066 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/api/Room - 500 null text/plain; charset=utf-8 31999.4647ms

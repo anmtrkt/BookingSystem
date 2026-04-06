@@ -13,6 +13,7 @@ public class AppUser : IdentityUser<Guid>
     public string NormalizedName => Name.ToUpperInvariant();
     public string? NormalizedPatronymic => Patronymic?.ToUpperInvariant();
     public string NormalizedFullName => FullName.ToUpperInvariant();
+    public AppUser() { }
     public AppUser(string email,
         string post, string surname, string name, string? patronymic,
         string phoneNumber)

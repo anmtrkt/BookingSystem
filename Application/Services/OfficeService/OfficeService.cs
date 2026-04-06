@@ -119,10 +119,18 @@ public class OfficeService : IOfficeService
 
     }
 
-    private static OfficeDto MapToDto(Office office) => new()
+    private static OfficeDto MapToDto(Office office)
     {
-        Id = office.Id,
-        Address = office.Address,
-        Rooms = office.RoomsId
-    };
+        var rooms =  new List<Guid>(office.Rooms.Count);
+        foreach (Room room in office.Rooms)
+        {
+            rooms.Add(room.Id);
+        }
+        return new()
+        {
+            Id = office.Id,
+            Address = office.Address,
+            Rooms = rooms
+        };
+    }
 }
