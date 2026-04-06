@@ -6,7 +6,6 @@ public class Office : BaseEntity
     public Guid OrganizationId { get; private set; }
     public Organization Organization { get; private set; }
     public ICollection<Room> Rooms { get; private set; } = new List<Room>();
-    public IList<Guid> RoomsId { get; private set; } = new List<Guid>();
 
 
 #pragma warning disable CS8618
@@ -22,7 +21,6 @@ public class Office : BaseEntity
         if (!Rooms.Any(r => r.Id == room.Id))
         { 
             Rooms.Add(room); 
-            RoomsId.Add(room.Id);
         }
 
         return;
@@ -35,7 +33,6 @@ public class Office : BaseEntity
         if (roomToRemove != null)
         {
             Rooms.Remove(roomToRemove);
-            RoomsId.Remove(roomToRemove.Id);
         }
     }
 }

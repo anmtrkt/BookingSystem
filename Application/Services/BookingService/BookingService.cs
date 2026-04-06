@@ -158,8 +158,8 @@ public class BookingService : IBookingService
         return new()
         {
             Id = meeting.Id,
-            RoomId = meeting.Id,
-            CreatorId = meeting.Id,
+            RoomId = meeting.RoomId,
+            CreatorId = meeting.CreatorId,
             StartTime = meeting.TimeRange.Start,
             EndTime = meeting.TimeRange.End,
             IsCancelled = meeting.IsCancelled,
