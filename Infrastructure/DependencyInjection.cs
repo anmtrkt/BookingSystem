@@ -1,7 +1,6 @@
 using BookingSystem.Domain.Interfaces;
 using BookingSystem.Infrastructure.Repositories;
 using BookingSystem.Infrastructure.Repositories.InvitationRepository;
-using BookingSystem.Infrastructure.Repositories.NotificationRepository;
 using BookingSystem.Infrastructure.Repositories.UnitOfWork;
 using Infrastructure.Repositories.UnitOfWork;
 using Microsoft.Extensions.DependencyInjection;

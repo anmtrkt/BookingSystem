@@ -39,11 +39,7 @@ public class RoomController : ControllerBase
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<RoomDto>> Create([FromBody] CreateRoomRequest request)
     {
-        // 1. Создаем объект Equipment на основе запроса (пока костыль, так как у тебя EquipmentId в CreateRoomRequest)
-        // В идеале: CreateRoomRequest должен мапиться в Room + Equipment внутри сервиса.
-        // Чтобы это работало с твоим текущим DTO, сервис должен уметь принимать эти поля.
 
-        // Предполагая, что ты исправил CreateRoomRequest и Service:
         var createdRoom = await _roomService.CreateRoomAsync(request);
         return CreatedAtAction(nameof(GetById), new { id = createdRoom.Id }, createdRoom);
     }

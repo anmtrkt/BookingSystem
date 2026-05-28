@@ -41,7 +41,9 @@ public class UserRepository : IUserRepository
 
     public async Task AddAsync(AppUser user, string password)
     {
-        await _userManager.CreateAsync(user, password);
+        IdentityResult result = await _userManager.CreateAsync(user, password);
+        if (!result.Succeeded) throw new ApplicationException(string.Join(", ", result.Errors.Select(x => x?.ToString() ?? "")));
+        
     }
 
     public async Task UpdateAsync(AppUser user)

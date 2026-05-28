@@ -24,11 +24,11 @@ public class AuthController : ControllerBase
     {
         // 1. Ищем пользователя
         var user = await _userManager.FindByEmailAsync(request.Email);
-        if (user == null) return Unauthorized("Пользователь не найден.");
+        if (user == null) return Unauthorized("Неверный email или пароль.");
 
         // 2. Проверяем пароль
         var result = await _userManager.CheckPasswordAsync(user, request.Password);
-        if (!result) return Unauthorized("Неверный пароль.");
+        if (!result) return Unauthorized("Неверный email или пароль");
 
         // 3. Получаем роли и генерируем токен
         var roles = await _userManager.GetRolesAsync(user);

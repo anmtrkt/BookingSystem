@@ -35,6 +35,9 @@ public class BookingService : IBookingService
         var room = await _roomRepo.GetByIdAsync(request.RoomId);
         if (room == null) throw new KeyNotFoundException($"Room with ID {request.RoomId} not found.");
 
+        var creator = await _userRepo.GetByIdAsync(request.UserId);
+        if (creator == null) throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
+
         // Проверка конфликта по времени
         var existingBookings = await _bookingRepo.GetByRoomIdAsync(request.RoomId, request.StartTime, request.EndTime);
         if (existingBookings.Any(b => !b.IsCancelled))
@@ -59,8 +62,7 @@ public class BookingService : IBookingService
                 Subscribers.Add(item);
             }
         }
-        var creator = await _userRepo.GetByIdAsync(request.UserId);
-        if (creator == null) throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
+
 
         var meeting = new Meeting(creator.Id,
             room.Id, request.Purpose, request.StartTime, request.EndTime);

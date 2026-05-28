@@ -4,8 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using BookingSystem.Application.DTOs;
 using BookingSystem.Core.Entities;
 using BookingSystem.Core.Entities.Aggregates;
+using BookingSystem.Domain.Interfaces;
 using BookingSystem.Infrastructure.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -149,11 +151,12 @@ public class NotificationService : INotificationService
         <li><strong>Тема:</strong> {meeting.Reason}</li>
         <li><strong>Время начала:</strong> {meeting.TimeRange.Start:dd.MM.yyyy HH:mm}</li>
         <li><strong>Время окончания:</strong> {meeting.TimeRange.End:dd.MM.yyyy HH:mm}</li>
-        <li><strong>Место:</strong> {meeting.Room.Name} (Офис: {meeting.Room.Office.Name})</li>
+        <li><strong>Место:</strong> {meeting.Room.Number} (Офис: {meeting.Room.Office.Address})</li>
         <li><strong>Организатор:</strong> {meeting.Creator.FullName}</li>
     </ul>
 </body>
 </html>";
+        await SendEmailAsync(recipient.Email, subject, body);
 
         await CreateNotificationAsync(new CreateNotificationRequest
         {
@@ -201,11 +204,12 @@ public class NotificationService : INotificationService
         <li><strong>Тема:</strong> {meeting.Reason}</li>
         <li><strong>Время начала:</strong> {meeting.TimeRange.Start:dd.MM.yyyy HH:mm}</li>
         <li><strong>Время окончания:</strong> {meeting.TimeRange.End:dd.MM.yyyy HH:mm}</li>
-        <li><strong>Место:</strong> {meeting.Room.Name} (Офис: {meeting.Room.Office.Name})</li>
+        <li><strong>Место:</strong> {meeting.Room.Number} (Офис: {meeting.Room.Office.Address})</li>
         <li><strong>Организатор:</strong> {meeting.Creator.FullName}</li>
     </ul>
 </body>
 </html>";
+        await SendEmailAsync(recipient.Email, subject, body);
 
         await CreateNotificationAsync(new CreateNotificationRequest
         {
@@ -245,11 +249,13 @@ public class NotificationService : INotificationService
         <li><strong>Тема:</strong> {meeting.Reason}</li>
         <li><strong>Время начала:</strong> {meeting.TimeRange.Start:dd.MM.yyyy HH:mm}</li>
         <li><strong>Время окончания:</strong> {meeting.TimeRange.End:dd.MM.yyyy HH:mm}</li>
-        <li><strong>Место:</strong> {meeting.Room.Name} (Офис: {meeting.Room.Office.Name})</li>
+        <li><strong>Место:</strong> {meeting.Room.Number} (Офис: {meeting.Room.Office.Address})</li>
     </ul>
     <p>Пожалуйста, подтвердите или отклоните приглашение.</p>
 </body>
 </html>";
+        await SendEmailAsync(invitee.Email, subject, body);
+
 
         await CreateNotificationAsync(new CreateNotificationRequest
         {
@@ -290,10 +296,11 @@ public class NotificationService : INotificationService
     <ul>
         <li><strong>Тема:</strong> {meeting.Reason}</li>
         <li><strong>Время начала:</strong> {meeting.TimeRange.Start:dd.MM.yyyy HH:mm}</li>
-        <li><strong>Место:</strong> {meeting.Room.Name}</li>
+        <li><strong>Место:</strong> {meeting.Room.Number}</li>
     </ul>
 </body>
 </html>";
+        await SendEmailAsync(inviter.Email, subject, body);
 
         await CreateNotificationAsync(new CreateNotificationRequest
         {
@@ -334,7 +341,7 @@ public class NotificationService : INotificationService
     <p>Для входа в систему используйте ваш email: {user.Email}</p>
 </body>
 </html>";
-
+        await SendEmailAsync(user.Email, subject, body);
         await CreateNotificationAsync(new CreateNotificationRequest
         {
             ReceiverId = userId,

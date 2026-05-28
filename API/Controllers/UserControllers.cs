@@ -54,7 +54,7 @@ public class UserController : ControllerBase
      
     }
 
-    // Метод удаления (тоже через UserManager, чтобы удалить и логин)
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {

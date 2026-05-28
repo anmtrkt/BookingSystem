@@ -17,6 +17,7 @@ public class BookingServiceTests
     private readonly Mock<IRoomRepository> _roomRepoMock;
     private readonly Mock<IUserRepository> _userRepoMock;
     private readonly Mock<IInvitationRepository> _invitationRepoMock;
+    private readonly Mock<INotificationService> _notificationService;
     private readonly Mock<IUnitOfWork> _unitOfWorkMock;
     private readonly Mock<ILogger<BookingService>> _loggerMock;
     private readonly BookingService _bookingService;
@@ -27,6 +28,7 @@ public class BookingServiceTests
         _roomRepoMock = new Mock<IRoomRepository>();
         _userRepoMock = new Mock<IUserRepository>();
         _invitationRepoMock = new Mock<IInvitationRepository>();
+        _notificationService = new Mock<INotificationService>();
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _loggerMock = new Mock<ILogger<BookingService>>();
 
@@ -35,6 +37,7 @@ public class BookingServiceTests
             _roomRepoMock.Object,
             _userRepoMock.Object,
             _invitationRepoMock.Object,
+            _notificationService.Object,
             _loggerMock.Object,
             _unitOfWorkMock.Object);
     }
