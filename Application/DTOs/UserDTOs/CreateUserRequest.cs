@@ -1,10 +1,13 @@
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BookingSystem.Application.DTOs;
 public class CreateUserRequest
 {
     [Required]
     [EmailAddress]
+    [NotNull]
+    [MinLength(1)]
     [Display(Name = "Email")]
     public string Email { get; set; } = null!;
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookingSystem.Web.Controllers;
+namespace BookingSystem.Api;
 
 [ApiController]
 [Route("api/[controller]")]

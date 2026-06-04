@@ -1,8 +1,8 @@
 using BookingSystem.Application.DTOs;
 using BookingSystem.Core.Entities;
 
-namespace BookingSystem.Application.Services
-{
+namespace BookingSystem.Application.Services;
+
     public interface IUserService
     {
         public Task<UserDto> GetUserByIdAsync(Guid id);
@@ -15,4 +15,4 @@ namespace BookingSystem.Application.Services
         /*        public Task<List<UserDto>?> GetUsersByIdsAsync(ICollection<Guid> ids);*/
         public Task<IEnumerable<UserDto>> GetAllUsersAsync();
     }
-}
+

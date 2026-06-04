@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace BookingSystem.Web.Controllers;
+namespace BookingSystem.Api;
+
 
 [ApiController]
 [Route("api/[controller]")]
@@ -31,6 +32,8 @@ public class BookingController : ControllerBase
             }
 
             var booking = await _bookingService.CreateBookingAsync(request);
+
+            
             return CreatedAtAction(nameof(GetById), new { id = booking.Id }, booking);
         
       

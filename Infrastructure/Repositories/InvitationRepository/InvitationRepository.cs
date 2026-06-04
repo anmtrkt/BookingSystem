@@ -1,9 +1,8 @@
 using BookingSystem.Core.Entities.Aggregates;
-using BookingSystem.Domain.Interfaces;
 using BookingSystem.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookingSystem.Infrastructure.Repositories.InvitationRepository;
+namespace BookingSystem.Infrastructure.Repositories;
 
 public class InvitationRepository : IInvitationRepository
 {

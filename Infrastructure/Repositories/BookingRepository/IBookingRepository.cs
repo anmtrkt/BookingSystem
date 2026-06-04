@@ -1,6 +1,7 @@
 using BookingSystem.Core.Entities.Aggregates;
 
-namespace BookingSystem.Domain.Interfaces;
+namespace BookingSystem.Infrastructure.Repositories;
+
 
 public interface IBookingRepository
 {

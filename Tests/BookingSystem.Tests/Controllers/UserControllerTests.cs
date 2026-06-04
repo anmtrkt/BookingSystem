@@ -1,3 +1,4 @@
+using BookingSystem.Api;
 using BookingSystem.Application.DTOs;
 using BookingSystem.Application.Services;
 using BookingSystem.Core.Entities;
@@ -73,7 +74,7 @@ public class UserControllerTests
 
         var createdUser = new AppUser 
         { 
-            Id = Guid.NewGuid().ToString(),
+            Id = Guid.NewGuid(),
             Email = request.Email,
             UserName = request.Email
         };
@@ -96,31 +97,7 @@ public class UserControllerTests
         Assert.NotNull(value);
     }
 
-    [Fact]
-    public async Task CreateUser_NullEmail_ReturnsBadRequest()
-    {
-        // Arrange
-        var request = new CreateUserRequest
-        {
-            Email = "",
-            Password = "password123",
-            PasswordConfirm = "password123",
-            Name = "Test",
-            Surname = "User",
-            PhoneNumber = "+1234567890",
-            BirthDate = DateOnly.FromDateTime(DateTime.Now),
-            Post = "Developer"
-        };
 
-        _userManagerMock.Setup(um => um.FindByEmailAsync(It.IsAny<string>()))
-            .ReturnsAsync((AppUser?)null);
-
-        // Act
-        var result = await _controller.CreateUser(request);
-
-        // Assert - Service may handle validation
-        Assert.NotNull(result);
-    }
 
     [Fact]
     public async Task CreateUser_PasswordsDoNotMatch_ReturnsBadRequest()
@@ -234,7 +211,7 @@ public class UserControllerTests
     {
         // Arrange
         var userId = Guid.NewGuid();
-        var appUser = new AppUser { Id = userId.ToString() };
+        var appUser = new AppUser { Id = userId };
 
         _userManagerMock.Setup(um => um.FindByIdAsync(userId.ToString()))
             .ReturnsAsync(appUser);

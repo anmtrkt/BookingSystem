@@ -1,6 +1,6 @@
 using BookingSystem.Application.DTOs;
 using BookingSystem.Core.Entities;
-using BookingSystem.Domain.Interfaces;
+using BookingSystem.Infrastructure.Repositories;
 using BookingSystem.Infrastructure.Repositories.UnitOfWork;
 using Microsoft.Extensions.Logging;
 

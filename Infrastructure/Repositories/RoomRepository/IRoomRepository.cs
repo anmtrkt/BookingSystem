@@ -1,6 +1,7 @@
 using BookingSystem.Core.Entities;
 
-namespace BookingSystem.Domain.Interfaces;
+namespace BookingSystem.Infrastructure.Repositories;
+
 
 public interface IRoomRepository
 {
@@ -11,7 +12,7 @@ public interface IRoomRepository
 
     Task<IEnumerable<Room>> GetAllAsync();
     Task<IEnumerable<Room>> GetAllAsyncWithInclude();
-
+    IQueryable<Room> AsQueryable();
     Task AddAsync(Room room);
     Task UpdateAsync(Room room);
     Task DeleteAsync(Guid id);

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Threading.Tasks;
-using BookingSystem.Core.Entities;
+﻿using BookingSystem.Application.DTOs;
 using BookingSystem.Core.Entities.Aggregates;
 using BookingSystem.Infrastructure.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Net;
+using System.Net.Mail;
 
 namespace BookingSystem.Application.Services;
 
@@ -18,6 +14,7 @@ public class NotificationService : INotificationService
     private readonly IUserRepository _userRepository;
     private readonly IBookingRepository _bookingRepository;
     private readonly IInvitationRepository _invitationRepository;
+    private readonly IRoomRepository _roomRepository;
     private readonly IConfiguration _configuration;
     private readonly ILogger<NotificationService> _logger;
 
@@ -33,6 +30,7 @@ public class NotificationService : INotificationService
         IUserRepository userRepository,
         IBookingRepository bookingRepository,
         IInvitationRepository invitationRepository,
+        IRoomRepository roomRepository,
         IConfiguration configuration,
         ILogger<NotificationService> logger)
     {
@@ -40,6 +38,7 @@ public class NotificationService : INotificationService
         _userRepository = userRepository;
         _bookingRepository = bookingRepository;
         _invitationRepository = invitationRepository;
+        _roomRepository = roomRepository;
         _configuration = configuration;
         _logger = logger;
 
@@ -134,6 +133,8 @@ public class NotificationService : INotificationService
         if (meeting == null)
             throw new KeyNotFoundException($"Meeting with ID {meetingId} not found.");
 
+        var room = await _roomRepository.GetByIdAsyncWithInclude(meeting.RoomId);
+
         var recipient = await _userRepository.GetByIdAsync(recipientId);
         if (recipient == null)
             throw new KeyNotFoundException($"User with ID {recipientId} not found.");
@@ -149,7 +150,7 @@ public class NotificationService : INotificationService
         <li><strong>Тема:</strong> {meeting.Reason}</li>
         <li><strong>Время начала:</strong> {meeting.TimeRange.Start:dd.MM.yyyy HH:mm}</li>
         <li><strong>Время окончания:</strong> {meeting.TimeRange.End:dd.MM.yyyy HH:mm}</li>
-        <li><strong>Место:</strong> {meeting.Room.Name} (Офис: {meeting.Room.Office.Name})</li>
+        <li><strong>Место:</strong> {meeting.Room.Number} (Офис: {room.Office.Address})</li>
         <li><strong>Организатор:</strong> {meeting.Creator.FullName}</li>
     </ul>
 </body>
@@ -165,6 +166,7 @@ public class NotificationService : INotificationService
             SendEmail = true,
             MeetingId = meetingId
         });
+        await SendEmailAsync(recipient.Email, subject, body);
 
         _logger.LogInformation("Meeting created email sent to user {UserId}", recipientId);
     }
@@ -201,7 +203,7 @@ public class NotificationService : INotificationService
         <li><strong>Тема:</strong> {meeting.Reason}</li>
         <li><strong>Время начала:</strong> {meeting.TimeRange.Start:dd.MM.yyyy HH:mm}</li>
         <li><strong>Время окончания:</strong> {meeting.TimeRange.End:dd.MM.yyyy HH:mm}</li>
-        <li><strong>Место:</strong> {meeting.Room.Name} (Офис: {meeting.Room.Office.Name})</li>
+        <li><strong>Место:</strong> {meeting.Room.Number} (Офис: {meeting.Room.Office.Address})</li>
         <li><strong>Организатор:</strong> {meeting.Creator.FullName}</li>
     </ul>
 </body>
@@ -218,6 +220,7 @@ public class NotificationService : INotificationService
             MeetingId = meetingId,
             ReminderTime = meeting.TimeRange.Start - reminderBefore
         });
+        await SendEmailAsync(recipient.Email, subject, body);
 
         _logger.LogInformation("Meeting reminder sent to user {UserId}", recipientId);
     }
@@ -245,7 +248,7 @@ public class NotificationService : INotificationService
         <li><strong>Тема:</strong> {meeting.Reason}</li>
         <li><strong>Время начала:</strong> {meeting.TimeRange.Start:dd.MM.yyyy HH:mm}</li>
         <li><strong>Время окончания:</strong> {meeting.TimeRange.End:dd.MM.yyyy HH:mm}</li>
-        <li><strong>Место:</strong> {meeting.Room.Name} (Офис: {meeting.Room.Office.Name})</li>
+        <li><strong>Место:</strong> {meeting.Room.Number} (Офис: {meeting.Room.Office.Address})</li>
     </ul>
     <p>Пожалуйста, подтвердите или отклоните приглашение.</p>
 </body>
@@ -261,6 +264,7 @@ public class NotificationService : INotificationService
             SendEmail = true,
             MeetingId = meeting.Id
         });
+        await SendEmailAsync(invitee.Email, subject, body);
 
         _logger.LogInformation("Meeting invitation sent to user {UserId}", invitation.InviteeId);
     }
@@ -290,7 +294,7 @@ public class NotificationService : INotificationService
     <ul>
         <li><strong>Тема:</strong> {meeting.Reason}</li>
         <li><strong>Время начала:</strong> {meeting.TimeRange.Start:dd.MM.yyyy HH:mm}</li>
-        <li><strong>Место:</strong> {meeting.Room.Name}</li>
+        <li><strong>Место:</strong> {meeting.Room.Number}</li>
     </ul>
 </body>
 </html>";
@@ -305,6 +309,7 @@ public class NotificationService : INotificationService
             SendEmail = true,
             MeetingId = meeting.Id
         });
+        await SendEmailAsync(inviter.Email, subject, body);
 
         _logger.LogInformation("Invitation declined notification sent to user {UserId}", invitation.InviterId);
     }
@@ -344,7 +349,7 @@ public class NotificationService : INotificationService
             Type = NotificationType.Registration,
             SendEmail = true
         });
-
+        await SendEmailAsync(user.Email, subject, body);
         _logger.LogInformation("Registration email sent to user {UserId}", userId);
     }
 
@@ -359,10 +364,20 @@ public class NotificationService : INotificationService
 
         try
         {
-            using var client = new SmtpClient(_smtpServer, _smtpPort)
+            //using var client = new SmtpClient(_smtpServer, _smtpPort)
+            //{
+            //    Credentials = new NetworkCredential(_smtpUsername, _smtpPassword),
+            //    EnableSsl = true
+            //};
+
+
+            using var client = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential(_smtpUsername, _smtpPassword),
-                EnableSsl = true
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("anmtrkt2@gmail.com", "ijma nyni njiq pvuz"),
+                EnableSsl = true, 
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Timeout = 30000
             };
 
             var mailMessage = new MailMessage
@@ -373,7 +388,6 @@ public class NotificationService : INotificationService
                 IsBodyHtml = true
             };
             mailMessage.To.Add(toEmail);
-
             await client.SendMailAsync(mailMessage);
             _logger.LogInformation("Email sent successfully to {Email}", toEmail);
         }

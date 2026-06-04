@@ -1,9 +1,12 @@
+using Application.DTOs.RoomDTOs;
 using BookingSystem.Application.DTOs;
 using BookingSystem.Core.Entities;
 using BookingSystem.Core.ValueObjects;
-using BookingSystem.Domain.Interfaces;
+using BookingSystem.Infrastructure.Repositories;
 using BookingSystem.Infrastructure.Repositories.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BookingSystem.Application.Services;
 
@@ -97,13 +100,34 @@ public class RoomService : IRoomService
         var available = allRooms.Where(r => r.IsAvailable).ToList();
         return available.Select(MapToDto);
     }
+    public async Task<IEnumerable<RoomDto>> SearchByFilterAsync(FilterRoomDto filter)
+    {
+        var query = _roomRepo.AsQueryable();
 
+        var result = await query
+        .ApplyFilter(filter)
+        .ToListAsync();
+        return result.Select(MapToDto);
+
+    }
     private static RoomDto MapToDto(Room room) => new()
     {
         Id = room.Id,
         Number = room.Number,
         CountOfPlaces = room.CountOfPlaces,
         IsAvailable = room.IsAvailable,
-        OfficeId = room.OfficeId
+        OfficeId = room.OfficeId,
+        HasProjector = room.Equipment.HasProjector,
+        HasSoundproofing = room.Equipment.HasSoundproofing,
+        HasWhiteboard = room.Equipment.HasWhiteboard,
+        HasInteractiveWhiteboard = room.Equipment.HasInteractiveWhiteboard,
+        NumberOfComputers = room.Equipment.NumberOfComputers,
+        HasVideoConferenceSystem = room.Equipment.HasVideoConferenceSystem,
+        HasMicrophones = room.Equipment.HasMicrophones,
+        NumberOfMicrophones = room.Equipment.NumberOfMicrophones,
+        HasAirConditioning = room.Equipment.HasAirConditioning,
+        HasTelevisions = room.Equipment.HasTelevisions,
+        NumberOfTelevisions = room.Equipment.NumberOfTelevisions,
+        HasWiFi = room.Equipment.HasWiFi
     };
 }

@@ -1,0 +1,48 @@
+2026-06-02 13:33:30.985 +05:00 [INF] User profile is available. Using 'C:\Users\anmtrkt.кампутар\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-02 13:33:33.656 +05:00 [INF] Executed DbCommand (100ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-02 13:33:33.799 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-02 13:33:33.803 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @normalizedName
+LIMIT 1
+2026-06-02 13:33:33.836 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@normalizedEmail='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."Name", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."Patronymic", a."PhoneNumber", a."PhoneNumberConfirmed", a."Post", a."SecurityStamp", a."Surname", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @normalizedEmail
+LIMIT 2
+2026-06-02 13:33:34.510 +05:00 [INF] Now listening on: https://localhost:7124
+2026-06-02 13:33:34.511 +05:00 [INF] Now listening on: http://localhost:5164
+2026-06-02 13:33:34.607 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-02 13:33:34.608 +05:00 [INF] Hosting environment: Development
+2026-06-02 13:33:34.609 +05:00 [INF] Content root path: C:\trash\curs\BoolingSystem\API
+2026-06-02 13:33:34.994 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger - null null
+2026-06-02 13:33:35.186 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger - 301 null null 203.1323ms
+2026-06-02 13:33:35.195 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/index.html - null null
+2026-06-02 13:33:35.316 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/index.html - 200 null text/html;charset=utf-8 120.7761ms
+2026-06-02 13:33:35.344 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/swagger-ui.css - null null
+2026-06-02 13:33:35.345 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/index.js - null null
+2026-06-02 13:33:35.344 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/index.css - null null
+2026-06-02 13:33:35.356 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/index.js - 200 null application/javascript;charset=utf-8 11.2696ms
+2026-06-02 13:33:35.346 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-02 13:33:35.344 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/swagger-ui-bundle.js - null null
+2026-06-02 13:33:35.345 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/swagger-ui-standalone-preset.js - null null
+2026-06-02 13:33:35.346 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/_vs/browserLink - null null
+2026-06-02 13:33:35.372 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/index.css - 200 152 text/css 27.4631ms
+2026-06-02 13:33:35.430 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_framework/aspnetcore-browser-refresh.js - 200 14910 application/javascript; charset=utf-8 84.7101ms
+2026-06-02 13:33:35.435 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/swagger-ui-standalone-preset.js - 200 76581 text/javascript 90.086ms
+2026-06-02 13:33:35.432 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/swagger-ui.css - 200 26248 text/css 87.6232ms
+2026-06-02 13:33:35.440 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/swagger-ui-bundle.js - 200 416963 text/javascript 95.9787ms
+2026-06-02 13:33:35.492 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/_vs/browserLink - 200 null text/javascript; charset=UTF-8 146.2846ms
+2026-06-02 13:33:35.567 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - null null
+2026-06-02 13:33:35.576 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7124/swagger/favicon-32x32.png - null null
+2026-06-02 13:33:35.581 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/favicon-32x32.png - 200 628 image/png 4.8311ms
+2026-06-02 13:33:35.608 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7124/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 41.6418ms

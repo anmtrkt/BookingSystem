@@ -1,6 +1,7 @@
 using BookingSystem.Core.Entities;
 
-namespace BookingSystem.Domain.Interfaces;
+namespace BookingSystem.Infrastructure.Repositories;
+
 
 public interface IOfficeRepository
 {

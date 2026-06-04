@@ -1,5 +1,4 @@
 using BookingSystem.Core.Entities;
-using BookingSystem.Domain.Interfaces;
 using BookingSystem.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -55,7 +54,10 @@ public class RoomRepository : IRoomRepository
         _context.Set<Room>().Update(room);
         return Task.CompletedTask;
     }
-
+    public IQueryable<Room> AsQueryable()
+    {
+        return _context.Rooms.AsQueryable();
+    }
     public async Task DeleteAsync(Guid id)
     {
         var room = await _context.Set<Room>().FindAsync(id);

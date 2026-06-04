@@ -2,7 +2,7 @@ using BookingSystem.Application.DTOs;
 using BookingSystem.Application.Exceptions;
 using BookingSystem.Core.Entities;
 using BookingSystem.Core.Entities.Aggregates;
-using BookingSystem.Domain.Interfaces;
+using BookingSystem.Infrastructure.Repositories;
 using BookingSystem.Infrastructure.Repositories.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
@@ -41,7 +41,7 @@ public class BookingService : IBookingService
         {
             throw new BookingConflictException("Room is already booked during this time.");
         }
-        List<AppUser> Subscribers = new();
+        List<Guid> Subscribers = new();
         //подписка всех указанных подписчиков
         if (request.SubscribersId.Any())
         {
@@ -56,7 +56,7 @@ public class BookingService : IBookingService
             }
             foreach (var item in users)
             {
-                Subscribers.Add(item);
+                Subscribers.Add(item.Id);
             }
         }
         var creator = await _userRepo.GetByIdAsync(request.UserId);
@@ -72,11 +72,8 @@ public class BookingService : IBookingService
         // Отправка уведомлений о создании встречи
         await _notificationService.SendMeetingCreatedEmailAsync(meeting.Id, creator.Id);
         
-        // Уведомления для всех подписчиков
-        foreach (var subscriber in Subscribers)
-        {
-            await _notificationService.SendMeetingCreatedEmailAsync(meeting.Id, subscriber.Id);
-        }
+
+        await CreateInvitationsAsync(meeting.Id, Subscribers, creator.Id);
 
         return MapToDto(meeting);
     }
@@ -132,9 +129,9 @@ public class BookingService : IBookingService
         var booking = await _bookingRepo.GetByIdAsync(bookingId);
         if (booking == null) throw new KeyNotFoundException($"Booking with ID {bookingId} not found.");
 
-        booking.Cancel();
+        await _bookingRepo.DeleteAsync(bookingId);
         
-        await _bookingRepo.UpdateAsync(booking);
+
         _logger.LogInformation("Succesfully cancel an meeting {@BookingId}", bookingId);
         await _unitOfWork.SaveChangesAsync();
 
@@ -144,7 +141,7 @@ public class BookingService : IBookingService
     {
         _logger.LogInformation("Trying to find an meeting {@BookingId}", bookingId);
 
-        var booking = await _bookingRepo.GetByIdAsync(bookingId);
+        var booking = await _bookingRepo.GetByIdAsyncWithInclude(bookingId);
         if (booking == null) throw new KeyNotFoundException($"Booking with ID {bookingId} not found.");
         _logger.LogInformation("Succesfully find an meeting {@BookingId}", bookingId);
 
@@ -154,14 +151,14 @@ public class BookingService : IBookingService
     public async Task<IEnumerable<BookingDto>> GetBookingsByRoomIdAsync(Guid roomId)
     {
         _logger.LogInformation("Trying to find an meetings by room {@RoomId}", roomId);
-        var bookings = await _bookingRepo.GetByRoomIdAsync(roomId, DateTime.MinValue, DateTime.MaxValue);
+        var bookings = await _bookingRepo.GetByRoomIdAsyncWithInclude(roomId, DateTime.MinValue, DateTime.MaxValue);
         return bookings.Select(MapToDto);
     }
 
     public async Task<IEnumerable<BookingDto>> GetBookingsByUserIdAsync(Guid userId)
     {
         _logger.LogInformation("Trying to find an meetings by room {@RoomId}", userId);
-        var bookings = await _bookingRepo.GetByUserIdAsync(userId);
+        var bookings = await _bookingRepo.GetByUserIdAsyncWithInclude(userId);
         return bookings.Select(MapToDto);
     }
 
@@ -188,12 +185,15 @@ public class BookingService : IBookingService
         {
             try
             {
+                await _notificationService.SendMeetingCreatedEmailAsync(meeting.Id, inviterId);
                 var invitation = meeting.CreateInvitation(invitee.Id, inviterId);
                 invitations.Add(invitation);
+                await _invitationRepo.AddAsync(invitation);
             }
             catch (InvalidOperationException ex)
             {
                 _logger.LogWarning("Skipping invitation for user {@UserId}: {Message}", invitee.Id, ex.Message);
+                throw; 
             }
         }
 
@@ -220,11 +220,16 @@ public class BookingService : IBookingService
             throw new UnauthorizedAccessException("Only the invitee can respond to this invitation.");
 
         if (accept)
+        {
             invitation.Accept();
+            invitation.Meeting.Subscribe(invitation.Invitee);
+            await _bookingRepo.UpdateAsync(invitation.Meeting);
+        }
         else
             invitation.Decline();
 
         await _invitationRepo.UpdateAsync(invitation);
+        await _bookingRepo.UpdateAsync(invitation.Meeting);
         await _unitOfWork.SaveChangesAsync();
 
         // Если приглашение отклонено - отправляем уведомление организатору

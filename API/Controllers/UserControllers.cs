@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookingSystem.Web.Controllers;
+namespace BookingSystem.Api;
+
 
 [ApiController]
 [Route("api/[controller]")]
@@ -24,7 +25,7 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
     {
-        // Проверяем, существует ли пользователь
+
         var existingUser = await _userManager.FindByEmailAsync(request.Email);
         if (existingUser != null) return BadRequest("Пользователь с таким Email уже существует.");
         var user = await _userService.CreateUserAsync(request);

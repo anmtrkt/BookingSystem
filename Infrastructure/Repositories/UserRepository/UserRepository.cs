@@ -1,5 +1,4 @@
 using BookingSystem.Core.Entities;
-using BookingSystem.Domain.Interfaces;
 using BookingSystem.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +40,8 @@ public class UserRepository : IUserRepository
 
     public async Task AddAsync(AppUser user, string password)
     {
-        await _userManager.CreateAsync(user, password);
+        var result = await _userManager.CreateAsync(user, password);
+        if(!result.Succeeded) throw new Exception(result.Errors.First().Description);
     }
 
     public async Task UpdateAsync(AppUser user)

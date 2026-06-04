@@ -1,3 +1,4 @@
+using BookingSystem.Api;
 using BookingSystem.Application.DTOs;
 using BookingSystem.Application.Services;
 using Microsoft.AspNetCore.Http;

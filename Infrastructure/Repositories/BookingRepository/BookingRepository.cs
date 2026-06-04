@@ -1,5 +1,4 @@
 using BookingSystem.Core.Entities.Aggregates;
-using BookingSystem.Domain.Interfaces;
 using BookingSystem.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 

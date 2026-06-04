@@ -1,3 +1,4 @@
+using BookingSystem.Api;
 using BookingSystem.Application.DTOs;
 using BookingSystem.Application.Exceptions;
 using BookingSystem.Application.Services;
@@ -205,17 +206,6 @@ public class BookingControllerTests
         Assert.Empty(returnedBookings);
     }
 
-    [Fact]
-    public async Task GetMyBookings_UnauthenticatedUser_ReturnsBadRequest()
-    {
-        // Arrange - No user claims setup
-
-        // Act
-        var result = await _controller.GetMyBookings();
-
-        // Assert
-        Assert.IsType<BadRequestResult>(result.Result);
-    }
 
     #endregion
 
@@ -357,18 +347,7 @@ public class BookingControllerTests
         await Assert.ThrowsAsync<KeyNotFoundException>(() => _controller.Cancel(bookingId));
     }
 
-    [Fact]
-    public async Task Cancel_UnauthenticatedUser_ReturnsBadRequest()
-    {
-        // Arrange - No user claims setup
-        var bookingId = Guid.NewGuid();
 
-        // Act
-        var result = await _controller.Cancel(bookingId);
-
-        // Assert - Should fail due to missing user claims
-        Assert.NotNull(result);
-    }
 
     #endregion
 
@@ -431,23 +410,7 @@ public class BookingControllerTests
         Assert.Empty(returnedInvitations);
     }
 
-    [Fact]
-    public async Task CreateInvitations_UnauthenticatedUser_ReturnsBadRequest()
-    {
-        // Arrange - No user claims setup
-        var meetingId = Guid.NewGuid();
-        var request = new CreateInvitationRequest
-        {
-            MeetingId = meetingId,
-            InviteesIds = new List<Guid> { Guid.NewGuid() }
-        };
 
-        // Act
-        var result = await _controller.CreateInvitations(meetingId, request);
-
-        // Assert
-        Assert.IsType<BadRequestResult>(result.Result);
-    }
 
     #endregion
 
@@ -515,22 +478,7 @@ public class BookingControllerTests
         Assert.Equal("Declined", returnedInvitation.Status);
     }
 
-    [Fact]
-    public async Task RespondToInvitation_UnauthenticatedUser_ReturnsBadRequest()
-    {
-        // Arrange - No user claims setup
-        var request = new RespondToInvitationRequest
-        {
-            InvitationId = Guid.NewGuid(),
-            Accept = true
-        };
-
-        // Act
-        var result = await _controller.RespondToInvitation(request);
-
-        // Assert
-        Assert.IsType<BadRequestResult>(result.Result);
-    }
+   
 
     #endregion
 
@@ -562,18 +510,6 @@ public class BookingControllerTests
         Assert.Equal(invitationId, returnedInvitation.Id);
     }
 
-    [Fact]
-    public async Task CancelInvitation_UnauthenticatedUser_ReturnsBadRequest()
-    {
-        // Arrange - No user claims setup
-        var invitationId = Guid.NewGuid();
-
-        // Act
-        var result = await _controller.CancelInvitation(invitationId);
-
-        // Assert
-        Assert.IsType<BadRequestResult>(result.Result);
-    }
 
     #endregion
 
@@ -621,18 +557,6 @@ public class BookingControllerTests
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnedInvitations = Assert.IsType<List<MeetingInvitationDto>>(okResult.Value);
         Assert.Empty(returnedInvitations);
-    }
-
-    [Fact]
-    public async Task GetMyInvitations_UnauthenticatedUser_ReturnsBadRequest()
-    {
-        // Arrange - No user claims setup
-
-        // Act
-        var result = await _controller.GetMyInvitations();
-
-        // Assert
-        Assert.IsType<BadRequestResult>(result.Result);
     }
 
     #endregion

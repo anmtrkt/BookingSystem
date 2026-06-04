@@ -1,9 +1,7 @@
-using BookingSystem.Application.DTOs;
-using BookingSystem.Application.Exceptions;
 using BookingSystem.Application.Services;
 using BookingSystem.Core.Entities;
 using BookingSystem.Core.Entities.Aggregates;
-using BookingSystem.Domain.Interfaces;
+using BookingSystem.Infrastructure.Repositories;
 using BookingSystem.Infrastructure.Repositories.UnitOfWork;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -19,6 +17,7 @@ public class BookingServiceTests
     private readonly Mock<IInvitationRepository> _invitationRepoMock;
     private readonly Mock<IUnitOfWork> _unitOfWorkMock;
     private readonly Mock<ILogger<BookingService>> _loggerMock;
+    private readonly Mock<NotificationService> _notificationServiceMock;
     private readonly BookingService _bookingService;
 
     public BookingServiceTests()
@@ -35,6 +34,7 @@ public class BookingServiceTests
             _roomRepoMock.Object,
             _userRepoMock.Object,
             _invitationRepoMock.Object,
+            _notificationServiceMock.Object,
             _loggerMock.Object,
             _unitOfWorkMock.Object);
     }
